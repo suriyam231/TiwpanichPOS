@@ -24,6 +24,8 @@ import th from '@angular/common/locales/th';
 import { NzBreadCrumbModule } from 'ng-zorro-antd';
 import { NzPopoverModule } from 'ng-zorro-antd';
 import { HttpService } from './http.service';
+import { AppRoutingModule } from './app-routing.module';
+import { HomePageModule } from './home-page/home-page.module';
 
 
 
@@ -34,15 +36,14 @@ registerLocaleData(th);
 @NgModule({
   declarations: [
     AppComponent,
-
-   
     
   ],
   imports: [
 
     BrowserModule,
     BrowserAnimationsModule,
-
+    AppRoutingModule,
+   
 
     HttpClientModule,
 

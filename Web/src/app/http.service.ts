@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-//import { AngularReduxRequestOptions } from '../redux/angular-redux-request.options';
-import { RequestOptions } from '@angular/http';
+
  
 import { environment } from '../environments/environment.prod';
 import { HttpParams, HttpClient } from '@angular/common/http';
@@ -11,25 +10,19 @@ import { Observable } from 'rxjs/internal/Observable';
 export class HttpService {
 
     constructor(
-        //backend: XHRBackend,
-        //defaultOptions: AngularReduxRequestOptions,
-        //handler : HttpHandler,
-        //private loaderService: LoadingService,
         private httpClient: HttpClient
     ) {
-        //super(handler);
-        //super(backend,defaultOptions);
+       
     }
 
     countLoader: number = 0
  
 
     get(url: string, responseType: any = 'json'): Observable<any> {
-        // debugger
-        //this.showLoader(url);
+       
         return this.httpClient.get<any>(this.getFullUrl(url), { responseType: responseType });
 
-        //return this.sendRequest('GET', url);
+       
     }
 
     getResponseBlob(url: string, responseType: any = 'blob'): Observable<any> {

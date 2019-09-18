@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 // router
 import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
-  
+  { path: 'home', loadChildren: './home-page/home-page.module#HomePageModule' },
 ];
 
 @NgModule({
@@ -11,3 +11,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+

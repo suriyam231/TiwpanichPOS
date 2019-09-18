@@ -1,0 +1,1 @@
+﻿{"ContextClassName":"SRM_DEVContext","DefaultDacpacSchema":null,"IdReplace":false,"IncludeConnectionString":true,"OutputPath":"","ProjectRootNamespace":"WebApplication2","SelectedToBeGenerated":0,"Tables":[{"HasPrimaryKey":true,"Name":"dbo.EMPLOYEE_PROFILE"}],"UseDatabaseNames":false,"UseFluentApiOnly":true,"UseHandleBars":false,"UseInflector":false}

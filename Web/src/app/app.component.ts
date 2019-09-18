@@ -2,6 +2,7 @@
 import { Component, Output, EventEmitter, ViewChild, Directive, OnInit } from '@angular/core';
 import { RouterOutlet, Router, NavigationStart } from '@angular/router';
 import { slide } from './animations';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -15,11 +16,14 @@ export class AppComponent  implements OnInit  {
   status: boolean;
   user: any = {};
 
-  constructor() {
+  constructor( private service : AppService) {
 
   }
 
   ngOnInit() {
+    this.service.get().subscribe((res : any) =>{
+      debugger
+    })
 }
 
   // checkAuthen(value) {

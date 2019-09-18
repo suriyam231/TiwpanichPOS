@@ -1,0 +1,17 @@
+﻿using Database.API.DTOs;
+using Database.API.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Database.API.Interface
+{
+    public interface DBBranchInterface
+    {
+        List<DbBranch> GetBranchs();
+        string AddBranchValue(DbBranch value);
+        string EditBranchValue(EditBranchDTO value);
+        string DeleteBranchValue(string BranchCode, string BranchName);
+    }
+}

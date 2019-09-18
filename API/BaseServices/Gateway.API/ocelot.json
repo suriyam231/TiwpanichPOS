@@ -1,0 +1,94 @@
+{
+  "ReRoutes": [
+    {
+      "UpstreamPathTemplate": "/auther/{everything}",
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET", "OPTIONS", "DELETE" ],
+
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 2001
+        }
+      ]
+
+    },
+    {
+      "UpstreamPathTemplate": "/register/{everything}",
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET", "OPTIONS", "DELETE" ],
+
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 2002
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/resource/{everything}",
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET", "OPTIONS", "DELETE" ],
+
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 2003
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/database/{everything}",
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET", "OPTIONS", "DELETE" ],
+
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 2004
+        }
+      ]
+    }
+    //// Authentication
+    //{
+    //  "DownstreamPathTemplate": "/api/auther/{url}",
+    //  "DownstreamScheme": "http",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "localhost",
+    //      "Port": 2001
+    //    }
+    //  ],
+    //  "UpstreamPathTemplate": "/{url}",
+    //  "UpstreamHttpMethod": [ "Get" ],
+    //  "ReRouteIsCaseSensitive": true,
+    //  "HttpHandlerOptions": {
+    //    "UseTracing": true
+    //  }
+    //},
+
+    //// Resource
+    //{
+    //  "DownstreamPathTemplate": "/api/EmployeeProfile/{url}",
+    //  "DownstreamScheme": "http",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "localhost",
+    //      "Port": 2003
+    //    }
+    //  ],
+    //  "UpstreamPathTemplate": "/{url}",
+    //  "UpstreamHttpMethod": [ "" ],
+    //  "HttpHandlerOptions": {
+    //    "Get": null,
+    //    "UseTracing": true
+    //  }
+    //}
+
+  ],
+  "GlobalConfiguration": {}
+}

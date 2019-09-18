@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  gateway.api:
+    image: ${DOCKER_REGISTRY-}gatewayapi
+    build:
+      context: .
+      dockerfile: Gateway.API/Dockerfile
+    ports:
+      - "5101"
+
+
+  auther.api:
+    image: ${DOCKER_REGISTRY-}autherapi
+    build:
+      context: .
+      dockerfile: Auther.API/Dockerfile
+    expose:
+      - "80"
+    ports:
+      - "5102:80"

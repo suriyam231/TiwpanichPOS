@@ -1,0 +1,70 @@
+$greenmint: #00b294 !important;
+//ยังไม่ได้ Login
+body {
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
+}
+.container-fluid {
+  background-color: $greenmint;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+}
+.flex-display {
+  display: flex;
+  flex-direction: row;
+}
+.sub-item {
+  color: snow;
+  padding: 10px 10px 10px 5px;
+}
+.sub-item a {
+  text-decoration: none;
+  font-size: 14px;
+  color: snow;
+}
+.sub-item a:hover {
+  text-decoration: underline;
+}
+.item-right {
+  margin-left: auto;
+}
+//ยังไม่ได้ Login
+//เมื่อ login
+// nz-layout {
+//   height: 100vh;
+// }
+.trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.trigger:hover {
+  color: #1890ff;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: lightgray;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #00b294;;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #02c2a2;
+}
+//เมื่อ login

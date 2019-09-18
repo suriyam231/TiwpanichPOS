@@ -1,0 +1,145 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+// @import "~@ng-select/ng-select/themes/default.theme.css";
+// if you'd like to use it without importing all of bootstrap it requires 
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~ngx-toastr/toastr-bs4-alert';
+// @import url('https://fonts.googleapis.com/css?family=Prompt:300,400,700');
+
+@font-face {
+    font-family: 'Prompt';
+    src: local('Prompt'), local('Prompt-Regular'), url(./assets/font/Prompt-Regular.ttf);
+    font-style: normal;
+    font-weight: 400;
+}
+
+body {
+    background-color: #eff3f6; // background all page
+    font-family: 'Prompt', sans-serif !important;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Prompt', sans-serif !important;
+}
+svg {
+    vertical-align: baseline !important;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+    background-color: white !important;
+    opacity: 1;
+}
+
+svg:not(:root).svg-inline--fa {
+    margin-right: -2px !important;
+}
+
+.toast {
+    opacity: 1 !important;
+}
+
+.mat-fab:not([class*=mat-elevation-z]),
+.mat-mini-fab:not([class*=mat-elevation-z]) {
+    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+    outline: none;
+    border: 1px solid #ccc !important;
+}
+
+.fab-toggler[_ngcontent-c3] {
+    float: right;
+    z-index: 100;
+    background-color: #299ae6;
+}
+
+.mat-fab .mat-button-wrapper {
+    padding: 16px 0;
+    display: inline-block;
+    line-height: 100% !important;
+}
+
+.ant-modal-confirm .ant-modal-confirm-btns button+button {
+    margin-left: 8px;
+    color: white;
+    margin-bottom: 0;
+}
+
+.hahaha {
+    background-color: white !important;
+    opacity: 1;
+    border: solid 1px green !important;
+}
+
+input.ng-invalid.ng-touched[_ngcontent-c8] {
+    border: solid 1px #ccc !important;
+}
+
+.require {
+    color: red;
+}
+
+.mat-fab.mat-accent[_ngcontent-c4],
+.mat-flat-button.mat-accent[_ngcontent-c4],
+.mat-mini-fab.mat-accent[_ngcontent-c4],
+.mat-raised-button.mat-accent[_ngcontent-c4] {
+    background-color: #007BFF !important;
+}
+
+.badge {
+    // padding: 1px 10px 1px;
+    font-size: 12.5px;
+    white-space: nowrap;
+    color: #ffffff;
+    background-color: #999999;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+}
+
+.badge:hover {
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.badge-error {
+    background-color: #b94a48;
+}
+
+.badge-error:hover {
+    background-color: #953b39;
+}
+
+.badge-warning {
+    background-color: #f89406;
+}
+
+.badge-warning:hover {
+    background-color: #c67605;
+}
+
+.badge-success {
+    background-color: #468847;
+}
+
+.badge-success:hover {
+    background-color: #356635;
+}
+
+.badge-info {
+    background-color: #3a87ad;
+}
+
+.badge-info:hover {
+    background-color: #2d6987;
+}
+
+.badge-inverse {
+    background-color: #333333;
+}
+
+.badge-inverse:hover {
+    background-color: #1a1a1a;
+}

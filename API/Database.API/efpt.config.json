@@ -1,1 +1,22 @@
-﻿{"ContextClassName":"SRM_DEVContext","DefaultDacpacSchema":null,"IdReplace":false,"IncludeConnectionString":false,"OutputPath":"Models","ProjectRootNamespace":"Database.API","SelectedToBeGenerated":0,"Tables":[{"HasPrimaryKey":true,"Name":"dbo.DB_BRANCH"},{"HasPrimaryKey":true,"Name":"dbo.DB_COMPANY"},{"HasPrimaryKey":true,"Name":"dbo.DB_DEPARTMENT_GROUP"},{"HasPrimaryKey":true,"Name":"dbo.DB_POSITION"}],"UseDatabaseNames":false,"UseFluentApiOnly":true,"UseHandleBars":false,"UseInflector":false}
+﻿{
+   "ContextClassName": "SRM_DEVContext",
+   "DefaultDacpacSchema": null,
+   "DoNotCombineNamespace": false,
+   "IdReplace": false,
+   "IncludeConnectionString": false,
+   "OutputPath": "Models",
+   "ProjectRootNamespace": "Database.API",
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "HasPrimaryKey": true,
+         "Name": "dbo.TestName"
+      }
+   ],
+   "UseDatabaseNames": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false
+}

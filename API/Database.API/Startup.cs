@@ -37,9 +37,12 @@ namespace Database.API
                 .AllowCredentials();
             }));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddDbContext<SRM_DEVContext>(options => options.UseSqlServer(@"Data Source=12.16.0.29;Initial Catalog=SRM_DEV;Persist Security Info=True;User ID=sa;Password=p@ssw0rd"));
+            services.AddDbContext<SRM_DEVContext>(options => options.UseSqlServer
+            //(@"Data Source=databasetiwpanich.database.windows.net Catalog=Tiwpanich;Persist Security Info=True;User ID=ppap;Password=0944353673Pab"));
+            (@"Server = tcp:databasetiwpanich.database.windows.net,1433; Initial Catalog = Tiwpanich; Persist Security Info = False; 
+            User ID = ppap; Password =0944353673Pab; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False;"));
             services.AddScoped<DBBranchInterface, DBBranchService>();
-            services.AddScoped<DBDepartmentGroupInterface, DBDepartmentGroupService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -9,6 +9,6 @@ export class AppService{
     
 
     public get(){
-        return this.http.post(`DBBranch/AddBranchValue`,{ responseType: 'text' });
+        return this.http.get(`DBBranch/GetName`);
     }
 }

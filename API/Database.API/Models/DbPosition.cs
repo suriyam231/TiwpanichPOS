@@ -15,6 +15,6 @@ namespace Database.API.Models
         public int PositionNo { get; set; }
         public int? SeqNo { get; set; }
 
-        public virtual DbDepartmentGroup DepartmentGroupNavigation { get; set; }
+   
     }
 }

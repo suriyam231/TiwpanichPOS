@@ -11,4 +11,12 @@ export class AppService{
     public get(){
         return this.http.get(`DBBranch/GetName`);
     }
+    public add(firstname:any , lastname:any){
+      debugger
+      return this.http.post(`DBBranch/addName/${firstname}/${lastname}`,firstname,{ responseType: 'text' });
+    }
+
+    public getProvince(){
+      return this.http.get(`App/getProvine`);
+    } 
 }

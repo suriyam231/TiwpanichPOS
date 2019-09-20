@@ -1,7 +1,7 @@
 // library
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { FormsModule, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, FormGroup, FormControl, ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 // router
 
 
@@ -43,16 +43,15 @@ registerLocaleData(th);
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-   
-
     HttpClientModule,
-
     FormsModule,
     ReactiveFormsModule,
-
     NgZorroAntdModule,
     NzBreadCrumbModule,
-    NzPopoverModule
+    NzPopoverModule,
+    
+  
+
   ],
   providers: [
     { provide: NZ_I18N, useValue: th_TH }

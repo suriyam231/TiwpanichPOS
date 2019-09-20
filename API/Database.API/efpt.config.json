@@ -11,7 +11,27 @@
    "Tables": [
       {
          "HasPrimaryKey": true,
+         "Name": "dbo.Districts"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "dbo.Provinces"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "dbo.Store"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "dbo.Subdistricts"
+      },
+      {
+         "HasPrimaryKey": true,
          "Name": "dbo.TestName"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "dbo.UserDB"
       }
    ],
    "UseDatabaseNames": false,

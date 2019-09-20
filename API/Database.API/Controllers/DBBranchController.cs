@@ -28,6 +28,14 @@ namespace Database.API.Controllers
             catch (Exception e) { return Ok(e.InnerException.Message); }
         }
 
+        [HttpPost("addName/{firstname}/{lastname}")]
+        public IActionResult addName(string firstname ,string lastname)
+        {
+            string result = IBranch.addName(firstname, lastname);
+            return Ok(result);
+        }
+
+
     //    [Route("AddBranchValue")]
     //    [HttpPost]
     //    public IActionResult AddBranchValue(DbBranch value)

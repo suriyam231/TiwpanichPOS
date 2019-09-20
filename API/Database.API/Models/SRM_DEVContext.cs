@@ -16,7 +16,12 @@ namespace Database.API.Models
         {
         }
 
+        public virtual DbSet<Districts> Districts { get; set; }
+        public virtual DbSet<Provinces> Provinces { get; set; }
+        public virtual DbSet<Store> Store { get; set; }
+        public virtual DbSet<Subdistricts> Subdistricts { get; set; }
         public virtual DbSet<TestName> TestName { get; set; }
+        public virtual DbSet<UserDb> UserDb { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -28,6 +33,91 @@ namespace Database.API.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.0-rtm-35687");
+
+            modelBuilder.Entity<Districts>(entity =>
+            {
+                entity.HasIndex(e => e.Code)
+                    .HasName("UX_Districts_Code")
+                    .IsUnique();
+
+                entity.HasIndex(e => e.ProvinceId);
+
+                entity.Property(e => e.NameInEnglish)
+                    .IsRequired()
+                    .HasMaxLength(150);
+
+                entity.Property(e => e.NameInThai)
+                    .IsRequired()
+                    .HasMaxLength(150);
+
+                entity.HasOne(d => d.Province)
+                    .WithMany(p => p.Districts)
+                    .HasForeignKey(d => d.ProvinceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Districts_Provinces");
+            });
+
+            modelBuilder.Entity<Provinces>(entity =>
+            {
+                entity.HasIndex(e => e.Code)
+                    .HasName("UX_Provinces_Code")
+                    .IsUnique();
+
+                entity.Property(e => e.NameInEnglish)
+                    .IsRequired()
+                    .HasMaxLength(150);
+
+                entity.Property(e => e.NameInThai)
+                    .IsRequired()
+                    .HasMaxLength(150);
+            });
+
+            modelBuilder.Entity<Store>(entity =>
+            {
+                entity.Property(e => e.StoreId)
+                    .HasColumnName("StoreID")
+                    .HasMaxLength(30)
+                    .IsUnicode(false)
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Location).IsUnicode(false);
+
+                entity.Property(e => e.NameOwner)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.StoreName)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Subdistricts>(entity =>
+            {
+                entity.HasIndex(e => e.Code)
+                    .HasName("UX_Subdistricts_Code")
+                    .IsUnique();
+
+                entity.HasIndex(e => e.DistrictId);
+
+                entity.HasIndex(e => e.ZipCode)
+                    .HasName("UX_Subdistricts_ZipCode");
+
+                entity.Property(e => e.Latitude).HasColumnType("decimal(6, 3)");
+
+                entity.Property(e => e.Longitude).HasColumnType("decimal(6, 3)");
+
+                entity.Property(e => e.NameInEnglish).HasMaxLength(150);
+
+                entity.Property(e => e.NameInThai)
+                    .IsRequired()
+                    .HasMaxLength(150);
+
+                entity.HasOne(d => d.District)
+                    .WithMany(p => p.Subdistricts)
+                    .HasForeignKey(d => d.DistrictId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Subdistricts_Districts");
+            });
 
             modelBuilder.Entity<TestName>(entity =>
             {
@@ -44,6 +134,22 @@ namespace Database.API.Models
 
                 entity.Property(e => e.Nickname)
                     .HasMaxLength(10)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<UserDb>(entity =>
+            {
+                entity.HasKey(e => new { e.UserId, e.Username });
+
+                entity.ToTable("UserDB");
+
+                entity.Property(e => e.UserId)
+                    .HasColumnName("UserID")
+                    .HasMaxLength(4)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Username)
+                    .HasMaxLength(30)
                     .IsUnicode(false);
             });
 

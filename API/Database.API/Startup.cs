@@ -42,6 +42,7 @@ namespace Database.API
             (@"Server = tcp:databasetiwpanich.database.windows.net,1433; Initial Catalog = Tiwpanich; Persist Security Info = False; 
             User ID = ppap; Password =0944353673Pab; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False;"));
             services.AddScoped<DBBranchInterface, DBBranchService>();
+            services.AddScoped<AppInterface, AppService>();
 
         }
 

@@ -27,6 +27,16 @@ namespace Database.API.Service
                                      }).ToList();
             return result;
         }
+
+        public string addName(string firstname , string lastname)
+        {
+            TestName add = new TestName();
+            add.Firstname = firstname;
+            add.Lastname = lastname;
+            Context.TestName.Add(add);
+            Context.SaveChanges();
+            return "success";
+        }
         //public string AddBranchValue(DbBranch value)
         //{
         //    //DbBranch BranchValue = new DbBranch();

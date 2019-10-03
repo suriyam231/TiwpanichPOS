@@ -1,30 +1,39 @@
-<div class="container">
+<div class="bg"> </div>
+    
+
+<div class="container bg-text">
     <div class="row">
         <div class="col-sm">
 
         </div>
-        <div class="col-sm">
-            <form style="margin: 100px 0px 0px 10px" nz-form [formGroup]="validateForm" class="login-form"
+        <div class="col-sm bg-content">
+            <form style="margin: 0px 20px 0px 20px" nz-form [formGroup]="validateForm" class="login-form"
                 (ngSubmit)="submitForm()">
                 <br>
                 <br>
                 <h2 class="text-center">
-                    <b style="color: #1095ee">โปรแกรมขายหน้าร้าน POS </b>
+                    <b style="color: #6d12e6be">โปรแกรมขายหน้าร้าน POS </b>
                 </h2>
                 <br>
                 <br>
                 <nz-form-item>
                     <nz-form-control nzErrorTip="Please input your username!">
                         <nz-input-group nzPrefixIcon="user">
-                            <input type="text" nz-input formControlName="userName" placeholder="Username" />
+                            <input type="text" nz-input formControlName="userName" [(ngModel)]="userName" placeholder="Username" />
                         </nz-input-group>
+                        <nz-form-explain *ngIf="validateForm.get('userName')?.dirty && validateForm.get('userName')?.errors">
+                            กรุณากรอกรหัสผู้ใช้
+                          </nz-form-explain>
                     </nz-form-control>
                 </nz-form-item>
                 <nz-form-item>
                     <nz-form-control nzErrorTip="Please input your Password!">
                         <nz-input-group nzPrefixIcon="lock">
-                            <input type="password" nz-input formControlName="password" placeholder="Password" />
+                            <input type="password" nz-input formControlName="password" [(ngModel)]="password" placeholder="Password" />
                         </nz-input-group>
+                        <nz-form-explain *ngIf="validateForm.get('password')?.dirty && validateForm.get('password')?.errors">
+                            กรุณากรอกรหัสผ่าน
+                          </nz-form-explain>
                     </nz-form-control>
                 </nz-form-item>
                 <nz-form-item>
@@ -33,10 +42,9 @@
                             <span>จำรหัสผ่าน</span>
                         </label>
                         <button nz-button class="login-form-button" [nzType]="'primary'">เข้าสู่ระบบ</button>
-                        Or
+                        สำหรับลูกค้าที่ไม่มีร้านในระบบ
                         <button nz-button [nzType]="'default'"
                             (click)="createTplModal(tplTitle, tplContent, tplFooter)">สมัครเข้าใช้งาน</button>
-
                     </nz-form-control>
                 </nz-form-item>
             </form>
@@ -48,36 +56,41 @@
 </div>
 
 
-
 <ng-template #tplTitle>
     <span>สมัครเข้าใช้งาน</span>
 </ng-template>
 <ng-template #tplContent>
     <form nz-form [formGroup]="validateRegister">
         <nz-form-item>
-            <nz-form-label [nzSm]="10" [nzXs]="20" nzRequired nzFor="email">เลขทะเบียนใบประกอบการ</nz-form-label>
+            <nz-form-label [nzSm]="10" [nzXs]="20" nzRequired >เลขทะเบียนใบประกอบการ</nz-form-label>
             <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="กรุณากรอกเลขทะเบียนใบประกอบการ">
                 <input nz-input formControlName="StoreID" id="StoreID" />
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-            <nz-form-label [nzSm]="10" [nzXs]="20" nzRequired nzFor="email">ชื่อร้านค้า</nz-form-label>
+            <nz-form-label [nzSm]="10" [nzXs]="20" nzRequired >ชื่อร้านค้า</nz-form-label>
             <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="กรุณากรอกชื่อร้านค้า">
                 <input nz-input formControlName="StoreName" id="StoreName" />
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-            <nz-form-label [nzSm]="10" [nzXs]="20" nzRequired nzFor="email">ที่อยู่</nz-form-label>
+            <nz-form-label [nzSm]="10" [nzXs]="20" nzRequired >ที่อยู่</nz-form-label>
             <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="กรุณากรอกเลขที่">
                 <input nz-input formControlName="LocationNmber" id="LocationNmber" />
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-            <nz-form-label [nzSm]="10" [nzXs]="20" nzRequired nzFor="email">จังหวัด</nz-form-label>
+            <nz-form-label [nzSm]="10" [nzXs]="20" nzRequired >จังหวัด</nz-form-label>
             <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="กรุณากรอกจังหวัด">
                     <nz-select [(ngModel)]="mProvince" formControlName="Province" (ngModelChange)="getAddress($event, data.id)" nzShowSearch nzAllowClear [(nzOpen)]="openProvince">
                             <nz-option *ngFor="let data of province" [nzValue]="data.nameInThai" [nzLabel]="data.nameInThai"></nz-option>
                         </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="10" [nzXs]="20" nzRequired >อำเภอ/เขต</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="กรุณากรอกเลขที่">
+                <input nz-input formControlName="LocationNmber" id="LocationNmber" />
             </nz-form-control>
         </nz-form-item>
     </form>

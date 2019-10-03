@@ -19,13 +19,15 @@ export class AppComponent implements OnInit {
   user: any = {};
   validateForm: FormGroup;
   validateRegister: FormGroup;
-
+  userName
+  password
   province
 
   constructor(private service: AppService,
     private notification: NzNotificationService,
     private fb: FormBuilder,
-    private modalService: NzModalService
+    private modalService: NzModalService,
+    public Ruoter: Router
   ) {
 
   }
@@ -49,6 +51,24 @@ export class AppComponent implements OnInit {
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
+    }
+
+    
+    if(this.userName === "admin"&& this.password === "1234"){
+      this.notification.create('success','สำเร็จ','1234')
+
+      this.Ruoter.navigate(['']);
+      debugger
+    }
+
+    if(this.userName != "admin"&& this.password === "1234"){
+      this.notification.create('error','รหัสผู้ใช้ผิด','กรุณาตรวจสอบรหัสผู้ใช้')
+    } 
+    if(this.userName === "admin"&& this.password != "1234"){
+      this.notification.create('error','รหัสผ่านผิด','กรุณาตรวจสอบรหัสผ่าน')
+    } 
+    if(this.userName != "admin"&& this.password != "1234"){
+      this.notification.create('error','รหัสผู้ใช้และรหัสผ่านผิด','กรุณาตรวจสอบหัสผู้ใช้และรหัสผ่าน')
     }
   }
   getAddress(event,data){

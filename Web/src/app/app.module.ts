@@ -25,7 +25,6 @@ import { NzBreadCrumbModule } from 'ng-zorro-antd';
 import { NzPopoverModule } from 'ng-zorro-antd';
 import { HttpService } from './http.service';
 import { AppRoutingModule } from './app-routing.module';
-import { HomePageModule } from './home-page/home-page.module';
 
 
 
@@ -35,7 +34,7 @@ registerLocaleData(th);
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
     
   ],
   imports: [
@@ -48,8 +47,7 @@ registerLocaleData(th);
     ReactiveFormsModule,
     NgZorroAntdModule,
     NzBreadCrumbModule,
-    NzPopoverModule,
-    
+    NzPopoverModule
   
 
   ],

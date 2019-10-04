@@ -19,26 +19,25 @@ import { ToastrModule } from 'ngx-toastr';
 /** config angular i18n **/
 // ng-zorro
 import { NgZorroAntdModule, NZ_I18N, th_TH } from 'ng-zorro-antd';
-import { registerLocaleData } from '@angular/common';
+import { registerLocaleData, CommonModule } from '@angular/common';
 import th from '@angular/common/locales/th';
 import { NzBreadCrumbModule } from 'ng-zorro-antd';
 import { NzPopoverModule } from 'ng-zorro-antd';
 import { HttpService } from './http.service';
 import { AppRoutingModule } from './app-routing.module';
-
-
-
-
+import { LayoutModule } from '@angular/cdk/layout';
+import { PageModule } from './page/page.module';
+import { HomeModule } from './page/home/home.module';
 
 registerLocaleData(th);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
     
   ],
-  imports: [
-
+  imports: [ CommonModule,
+    LayoutModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -47,8 +46,9 @@ registerLocaleData(th);
     ReactiveFormsModule,
     NgZorroAntdModule,
     NzBreadCrumbModule,
-    NzPopoverModule
-  
+    NzPopoverModule,
+    PageModule,
+    HomeModule
 
   ],
   providers: [

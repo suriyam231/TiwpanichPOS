@@ -2,14 +2,21 @@
 import { NgModule } from '@angular/core';
 // router
 import { Routes, RouterModule } from '@angular/router';
-import { from } from 'rxjs';
+import { PageComponent } from './page/page.component';
+import { HomeComponent } from './page/home/home.component';
+
 const routes: Routes = [
-  { path: 'home', loadChildren: '../app/home-page/home-page.module#HomePageModule' },
+  {
+    path: '',
+    component:PageComponent
+  },
+  { path: '', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  
 })
 export class AppRoutingModule { }
 

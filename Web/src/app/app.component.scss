@@ -30,17 +30,3 @@ body, html {
   background-size: cover;
 }
 
-.bg-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  text-align: center;
-}
-
-.bg-content{
-  border-radius: 20px;
-  background:rgba(127, 131, 130, 0.397);
-  
-}

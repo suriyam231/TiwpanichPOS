@@ -1,8 +1,8 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { NzModalRef, NzNotificationService, NzModalService } from 'ng-zorro-antd';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AppService } from '../app.service';
 import { Router } from '@angular/router';
+import { PageService } from './page.service';
 
 @Component({
   selector: 'app-page',
@@ -18,8 +18,11 @@ export class PageComponent implements OnInit {
   userName
   password
   province
+  District
+  Subdistricts
+  Zipcode
 
-  constructor(private service: AppService,
+  constructor(private service: PageService,
     private notification: NzNotificationService,
     private fb: FormBuilder,
     private modalService: NzModalService,
@@ -35,11 +38,14 @@ export class PageComponent implements OnInit {
       remember: [true]
     });
     this.validateRegister = this.fb.group({
-      StoreID: [null , [ Validators.required]],
-      StoreName:[null , [ Validators.required]],
-      LocationNmber:[null , [ Validators.required]],
+      StoreID: [null, [Validators.required]],
+      StoreName: [null, [Validators.required]],
+      LocationNmber: [null, [Validators.required]],
+      Province: [null, [Validators.required]],
+      District: [null, [Validators.required]],
+      Subdistricts:[null, [Validators.required]],
     });
-    
+
   }
 
 
@@ -49,31 +55,28 @@ export class PageComponent implements OnInit {
       this.validateForm.controls[i].updateValueAndValidity();
     }
 
-    
-    if(this.userName === "admin"&& this.password === "1234"){
-      this.notification.create('success','สำเร็จ','1234')
+
+    if (this.userName === "admin" && this.password === "1234") {
+      this.notification.create('success', 'สำเร็จ', '1234')
 
       this.Ruoter.navigate(['/home']);
       debugger
     }
 
-    if(this.userName != "admin"&& this.password === "1234"){
-      this.notification.create('error','รหัสผู้ใช้ผิด','กรุณาตรวจสอบรหัสผู้ใช้')
-    } 
-    if(this.userName === "admin"&& this.password != "1234"){
-      this.notification.create('error','รหัสผ่านผิด','กรุณาตรวจสอบรหัสผ่าน')
-    } 
-    if(this.userName != "admin"&& this.password != "1234"&& this.userName != undefined ){
-      this.notification.create('error','รหัสผู้ใช้และรหัสผ่านผิด','กรุณาตรวจสอบหัสผู้ใช้และรหัสผ่าน')
+    if (this.userName != "admin" && this.password === "1234") {
+      this.notification.create('error', 'รหัสผู้ใช้ผิด', 'กรุณาตรวจสอบรหัสผู้ใช้')
+    }
+    if (this.userName === "admin" && this.password != "1234") {
+      this.notification.create('error', 'รหัสผ่านผิด', 'กรุณาตรวจสอบรหัสผ่าน')
+    }
+    if (this.userName != "admin" && this.password != "1234" && this.userName != undefined) {
+      this.notification.create('error', 'รหัสผู้ใช้และรหัสผ่านผิด', 'กรุณาตรวจสอบหัสผู้ใช้และรหัสผ่าน')
     }
   }
-  getAddress(event,data){
-debugger
-  }
 
 
 
-  
+
   tplModal: NzModalRef;
   tplModalButtonLoading = false;
   htmlModalVisible = false;
@@ -100,8 +103,28 @@ debugger
       this.tplModal.destroy();
     });
   }
-  
+
+  getDistrict(data) {
+    let District = this.province.filter(a => a.nameInThai === data)
+
+    this.service.getDistrict(District[0].id).subscribe((res: any) => {
+      this.District = res
+    });
+
+  }
+  getSubdistricts(data) {
+    let Subdistricts = this.District.filter(a => a.nameInThai === data)
+
+    this.service.getSubdistricts(Subdistricts[0].id).subscribe((res: any) => {
+      this.Subdistricts = res
+    });
+  }
+
+  getZipcode(data){
+    let Subdistricts = this.Subdistricts.filter(a => a.nameInThai === data)
+    this.Zipcode = Subdistricts[0].zipCode
+  }
   RegisterOK(): void {
-  
+
   }
 }

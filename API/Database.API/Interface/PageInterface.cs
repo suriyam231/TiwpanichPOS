@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Database.API.Interface
 {
-    public interface AppInterface
+    public interface PageInterface
     {
         List<Provinces> GetProvinces();
+        List<Districts> GetDistricts(string District);
+        List<Subdistricts> GetSubdistricts(string Subdistricts);
     }
 }

@@ -18,22 +18,22 @@ namespace Database.API.Controllers
         {
             IBranch = branchs;
         }
-        [HttpGet("GetName")]
-        public IActionResult GetBranchs()
-        {
-            try
-            {
-                return Ok(IBranch.GetName());
-            }
-            catch (Exception e) { return Ok(e.InnerException.Message); }
-        }
+        //[HttpGet("GetName")]
+        //public IActionResult GetBranchs()
+        //{
+        //    try
+        //    {
+        //        return Ok(IBranch.GetName());
+        //    }
+        //    catch (Exception e) { return Ok(e.InnerException.Message); }
+        //}
 
-        [HttpPost("addName/{firstname}/{lastname}")]
-        public IActionResult addName(string firstname ,string lastname)
-        {
-            string result = IBranch.addName(firstname, lastname);
-            return Ok(result);
-        }
+        //[HttpPost("addName/{firstname}/{lastname}")]
+        //public IActionResult addName(string firstname ,string lastname)
+        //{
+        //    string result = IBranch.addName(firstname, lastname);
+        //    return Ok(result);
+        //}
 
 
     //    [Route("AddBranchValue")]

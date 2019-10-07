@@ -38,11 +38,11 @@ namespace Database.API
             }));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<SRM_DEVContext>(options => options.UseSqlServer
-            //(@"Data Source=databasetiwpanich.database.windows.net Catalog=Tiwpanich;Persist Security Info=True;User ID=ppap;Password=0944353673Pab"));
-            (@"Server = tcp:databasetiwpanich.database.windows.net,1433; Initial Catalog = Tiwpanich; Persist Security Info = False; 
-            User ID = ppap; Password =0944353673Pab; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False;"));
+            //(@"Data Source=122.155.3.151; Catalog=posservicetp_co_cc_data;Persist Security Info=True;User ID=posservicetp_co_cc_data;Password=p@$$w0rd"));
+
+            ("Data Source=122.155.3.151;Initial Catalog=posservicetp_co_cc_data;User Id=posservicetp_co_cc_data;Password=p@$$w0rd;"));
             services.AddScoped<DBBranchInterface, DBBranchService>();
-            services.AddScoped<AppInterface, AppService>();
+            services.AddScoped<PageInterface, PageService>();
 
         }
 

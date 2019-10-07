@@ -82,17 +82,33 @@
         <nz-form-item>
             <nz-form-label [nzSm]="10" [nzXs]="20" nzRequired >จังหวัด</nz-form-label>
             <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="กรุณากรอกจังหวัด">
-                    <nz-select [(ngModel)]="mProvince" formControlName="Province" (ngModelChange)="getAddress($event, data.id)" nzShowSearch nzAllowClear [(nzOpen)]="openProvince">
+                    <nz-select [(ngModel)]="mProvince" nzPlaceHolder="กรุณากรอกจังหวัด"   (ngModelChange)="getDistrict($event)" formControlName="Province" nzShowSearch nzAllowClear >
                             <nz-option *ngFor="let data of province" [nzValue]="data.nameInThai" [nzLabel]="data.nameInThai"></nz-option>
                         </nz-select>
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
             <nz-form-label [nzSm]="10" [nzXs]="20" nzRequired >อำเภอ/เขต</nz-form-label>
-            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="กรุณากรอกเลขที่">
-                <input nz-input formControlName="LocationNmber" id="LocationNmber" />
+            <nz-form-control [nzSm]="14" [nzXs]="24" >
+                    <nz-select [(ngModel)]="mDistrict" nzPlaceHolder="กรุณากรอกอำเภอ/เขต"   (ngModelChange)="getSubdistricts($event)" formControlName="District" nzShowSearch nzAllowClear >
+                            <nz-option *ngFor="let data of District" [nzValue]="data.nameInThai" [nzLabel]="data.nameInThai"></nz-option>
+                        </nz-select>
             </nz-form-control>
         </nz-form-item>
+        <nz-form-item>
+                <nz-form-label [nzSm]="10" [nzXs]="20" nzRequired >ตําบล/แขวง</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" >
+                        <nz-select [(ngModel)]="mSubdistricts" nzPlaceHolder="กรุณากรอกตําบล/แขวง" (ngModelChange)="getZipcode($event)"  formControlName="Subdistricts" nzShowSearch nzAllowClear >
+                                <nz-option *ngFor="let data of Subdistricts" [nzValue]="data.nameInThai" [nzLabel]="data.nameInThai"></nz-option>
+                        </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                    <nz-form-label [nzSm]="10" [nzXs]="20" nzRequired >รหัสไปรษณีย์</nz-form-label>
+                    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="รหัสไปรษณีย์">
+                        <input  nz-input formControlName="Zipcode" id="Zipcode" />
+                    </nz-form-control>
+                </nz-form-item>
     </form>
 
 </ng-template>

@@ -15,28 +15,28 @@ namespace Database.API.Service
         {
             Context = context;
         }
-        public List<TestName> GetName()
-        {
-            List<TestName> result = (from data in Context.TestName
-                                     select new TestName
-                                     {
-                                         Firstname = data.Firstname,
-                                         Lastname = data.Lastname,
-                                         Nickname = data.Nickname
+        //public List<TestName> GetName()
+        //{
+        //    List<TestName> result = (from data in Context.TestName
+        //                             select new TestName
+        //                             {
+        //                                 Firstname = data.Firstname,
+        //                                 Lastname = data.Lastname,
+        //                                 Nickname = data.Nickname
 
-                                     }).ToList();
-            return result;
-        }
+        //                             }).ToList();
+        //    return result;
+        //}
 
-        public string addName(string firstname , string lastname)
-        {
-            TestName add = new TestName();
-            add.Firstname = firstname;
-            add.Lastname = lastname;
-            Context.TestName.Add(add);
-            Context.SaveChanges();
-            return "success";
-        }
+        //public string addName(string firstname , string lastname)
+        //{
+        //    TestName add = new TestName();
+        //    add.Firstname = firstname;
+        //    add.Lastname = lastname;
+        //    Context.TestName.Add(add);
+        //    Context.SaveChanges();
+        //    return "success";
+        //}
         //public string AddBranchValue(DbBranch value)
         //{
         //    //DbBranch BranchValue = new DbBranch();

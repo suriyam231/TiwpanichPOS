@@ -1,0 +1,65 @@
+﻿using Database.API.Interface;
+using Database.API.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Database.API.Service
+{
+    public class PageService : PageInterface
+    {
+        private readonly SRM_DEVContext Context;
+
+        public PageService(SRM_DEVContext context)
+        {
+            Context = context;
+        }
+
+
+        public List<Provinces> GetProvinces()
+        {
+            List<Provinces> res = (from data in Context.Provinces
+                                   select new Provinces
+                                   {
+                                       Id = data.Id,
+                                       Code = data.Code,
+                                       NameInThai = data.NameInThai
+                                   }).ToList();
+            return res;
+        }
+
+
+        public List<Districts> GetDistricts(string District)
+        {
+            int value = Int32.Parse(District);
+     
+            List<Districts> res = (from data in Context.Districts
+                                   where data.ProvinceId == value
+                                   select new Districts
+                                   {
+                                       Id = data.Id,
+                                       Code = data.Code,
+                                       NameInThai = data.NameInThai,
+                                   }).ToList();
+            return res;
+        }
+
+
+        public List<Subdistricts> GetSubdistricts(string Subdistricts)
+        {
+            int value = Int32.Parse(Subdistricts);
+
+            List<Subdistricts> res = (from data in Context.Subdistricts
+                                   where data.DistrictId == value
+                                   select new Subdistricts
+                                   {
+                                       Id = data.Id,
+                                       Code = data.Code,
+                                       NameInThai = data.NameInThai,
+                                       ZipCode = data.ZipCode
+                                   }).ToList();
+            return res;
+        }
+    }
+}

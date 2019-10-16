@@ -25,7 +25,7 @@ namespace Database.API.Controllers
         }
 
         // POST api/values
-        [HttpPost]
+        [HttpPost("post")]
         public void Post([FromBody] string value)
         {
         }

@@ -61,5 +61,15 @@ namespace Database.API.Service
                                    }).ToList();
             return res;
         }
+
+        public string addRegister(ProfileUser value)
+        {
+            //Seq = Context.DbExam.Where(i => i.ExamType == value.ExamType).Max(i => i.Seq) + 1;
+
+             int UserID;
+           // UserID = Context.ProfileUser.Where(i => i.UserId == value).Max(i => i.UserId) + 1;
+
+            return "UserID";
+        }
     }
 }

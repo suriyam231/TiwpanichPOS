@@ -1,3 +1,146 @@
-<p>
-  home works!
-</p>
+<nz-layout class="layout">
+  <nz-header class="shadow-sm p-0 mb-5 rounded">
+
+    <div class="row ">
+      <div class="col-0" style=" margin: 7px 0px 0px 25px;">
+        <i class="fas fa-chalkboard-teacher iconSize"></i>
+      </div>
+      <div class="col-2">
+        <div style="font-size: 20px;">: ร้านพาณิช</div>
+      </div>
+      <div class="col-0" style="margin-top: 7px;">
+        <i class="fas fa-user Usericon"></i>
+      </div>
+      <div class="col-2">
+        <div style="font-size: 20px;">: นาย</div>
+      </div>
+      <div class="col-0" style="margin-top: 7px;">
+        <i class="fas fa-map-pin Usericon"></i>
+      </div>
+      <div class="col-5">
+        <div style="font-size: 20px;">: เจ้าของร้าน</div>
+      </div>
+      <div class="col-1">
+        <button nz-button nzType="default">รายละเอียดร้าน</button>
+      </div>
+      <div class="col-1 ">
+        <button style="background: rgb(243, 67, 67);" nz-button> <span style="color: white;">ออกจากระบบ</span> </button>
+      </div>
+
+    </div>
+
+  </nz-header>
+
+  <nz-content>
+
+
+    <div class="row">
+      <div class="col">
+        <div class="inner-content">
+
+          <div class="row">
+            <div class="col-3">
+              <button class="buttonSize" nz-button [nzSize]="size" nzType="default">Default</button>
+            </div>
+            <div class="col-3">
+              <button class="buttonSize" nz-button [nzSize]="size" nzType="default">Default</button>
+            </div>
+            <div class="col-3">
+              <button class="buttonSize" nz-button [nzSize]="size" nzType="default">Default</button>
+            </div>
+            <div class="col-3">
+              <button class="buttonSize" nz-button [nzSize]="size" nzType="default">Default</button>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 20px;">
+            <div class="col-3">
+              <button class="buttonSize" nz-button [nzSize]="size" nzType="default">Default</button>
+            </div>
+            <div class="col-3">
+              <button class="buttonSize" nz-button [nzSize]="size" nzType="default">Default</button>
+            </div>
+            <div class="col-3">
+              <button class="buttonSize" nz-button [nzSize]="size" nzType="default">Default</button>
+            </div>
+            <div class="col-3">
+              <button class="buttonSize" nz-button [nzSize]="size" nzType="default">Default</button>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 20px;">
+            <div class="col-3">
+              <button class="buttonSize" nz-button [nzSize]="size" nzType="default">Default</button>
+            </div>
+            <div class="col-3">
+              <button class="buttonSize" nz-button [nzSize]="size" nzType="default">Default</button>
+            </div>
+            <div class="col-3">
+              <button class="buttonSize" nz-button [nzSize]="size" nzType="default">Default</button>
+            </div>
+            <div class="col-3">
+              <button class="buttonSize" nz-button [nzSize]="size" nzType="default">Default</button>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 20px;">
+            <div class="col-3">
+              <button class="buttonSize" nz-button [nzSize]="size" nzType="default">Default</button>
+            </div>
+            <div class="col-3">
+              <button class="buttonSize" nz-button [nzSize]="size" nzType="default">Default</button>
+            </div>
+            <div class="col-3">
+              <button class="buttonSize" nz-button [nzSize]="size" nzType="default">Default</button>
+            </div>
+            <div class="col-3">
+              <button class="buttonSize" nz-button [nzSize]="size" nzType="default">Default</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="col">
+        <div class="inner-content">
+          <nz-table #basicTable [nzData]="listOfData">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Address</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of basicTable.data">
+                <td>{{ data.name }}</td>
+                <td>{{ data.age }}</td>
+                <td>{{ data.address }}</td>
+                <td>
+                  <a>Action 一 {{ data.name }}</a>
+                  <nz-divider nzType="vertical"></nz-divider>
+                  <a>Delete</a>
+                </td>
+              </tr>
+            </tbody>
+          </nz-table>
+          <div class="row" style="margin-top: 20px;">
+              <div class="col-3">
+                <button class="buttonSize" nz-button [nzSize]="size" nzType="default">Default</button>
+              </div>
+              <div class="col-3">
+                <button class="buttonSize" nz-button [nzSize]="size" nzType="default">Default</button>
+              </div>
+              <div class="col-3">
+                <button class="buttonSize" nz-button [nzSize]="size" nzType="default">Default</button>
+              </div>
+              <div class="col-3">
+                <button class="buttonSize" nz-button [nzSize]="size" nzType="default">Default</button>
+              </div>
+            </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </nz-content>
+  <nz-footer>Ant Design ©2019 Implement By Angular</nz-footer>
+</nz-layout>

@@ -3,6 +3,7 @@ import { NzModalRef, NzNotificationService, NzModalService } from 'ng-zorro-antd
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PageService } from './page.service';
+import { IRegisterModel, RegisterModel } from '../Model/register.model';
 
 @Component({
   selector: 'app-page',
@@ -17,11 +18,25 @@ export class PageComponent implements OnInit {
   validateRegister: FormGroup;
   userName
   password
+
+
+
+  //registerType
   province
   District
   Subdistricts
   Zipcode
-
+  ActivePass
+  rePasswordNew
+  PasswordNew
+  UsernameNew
+  ZipcodeStak
+  mSubdistricts
+  mDistrict
+  mProvince
+  LocationNmber
+  StoreName
+  StoreID
   constructor(private service: PageService,
     private notification: NzNotificationService,
     private fb: FormBuilder,
@@ -43,7 +58,12 @@ export class PageComponent implements OnInit {
       LocationNmber: [null, [Validators.required]],
       Province: [null, [Validators.required]],
       District: [null, [Validators.required]],
-      Subdistricts:[null, [Validators.required]],
+      Subdistricts: [null, [Validators.required]],
+      Zipcode: [null, [Validators.required]],
+      UsernameNew: [null, [Validators.required]],
+      PasswordNew: [null, [Validators.required]],
+      rePasswordNew: [null, [Validators.required]],
+      ActivePass: [null, [Validators.required]],
     });
 
   }
@@ -58,9 +78,7 @@ export class PageComponent implements OnInit {
 
     if (this.userName === "admin" && this.password === "1234") {
       this.notification.create('success', 'สำเร็จ', '1234')
-
       this.Ruoter.navigate(['/home']);
-      debugger
     }
 
     if (this.userName != "admin" && this.password === "1234") {
@@ -120,11 +138,31 @@ export class PageComponent implements OnInit {
     });
   }
 
-  getZipcode(data){
+  getZipcode(data) {
     let Subdistricts = this.Subdistricts.filter(a => a.nameInThai === data)
-    this.Zipcode = Subdistricts[0].zipCode
-  }
-  RegisterOK(): void {
+    this.ZipcodeStak = Subdistricts[0].zipCode
 
+  }
+  data = []
+
+  RegisterOK(): void {
+    for (let i = 0; i < 1; i++) {
+      let register = new RegisterModel()
+      register.STOREID = this.StoreID
+      register.STORENAME = this.StoreName
+      register.LOCATIONNUMBER = this.LocationNmber
+      register.PROVINCE = this.mProvince
+      register.DISTRICT = this.mDistrict
+      register.SUBDISTRICT = this.mSubdistricts
+      register.ZIPCODE = this.ZipcodeStak
+      register.USERNAME = this.UsernameNew
+      register.PASSWORD = this.PasswordNew
+      register.STATUS = 'owner'
+      this.data.push(register)
+    }
+    this.service.AddRegister(this.data).subscribe((res :any)=>{
+      debugger
+    })
+  
   }
 }

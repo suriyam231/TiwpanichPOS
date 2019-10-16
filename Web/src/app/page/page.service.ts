@@ -26,4 +26,8 @@ import { HttpService } from "../http.service";
       public getSubdistricts(Subdistricts :any){
         return this.http.get(`Page/getSubdistricts/${Subdistricts}`)
     }
-  }
+    public AddRegister(data : any){
+      debugger
+      return this.http.post(`Page/addRegister/${data}`,data,{ responseType: 'text' });
+    }
+  } 

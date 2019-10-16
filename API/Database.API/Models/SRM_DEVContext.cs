@@ -16,6 +16,7 @@ namespace Database.API.Models
         }
 
         public virtual DbSet<Districts> Districts { get; set; }
+        public virtual DbSet<ProfileUser> ProfileUser { get; set; }
         public virtual DbSet<Provinces> Provinces { get; set; }
         public virtual DbSet<Subdistricts> Subdistricts { get; set; }
         public virtual DbSet<UserId> UserId { get; set; }
@@ -52,6 +53,53 @@ namespace Database.API.Models
                     .HasForeignKey(d => d.ProvinceId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Districts_Provinces");
+            });
+
+            modelBuilder.Entity<ProfileUser>(entity =>
+            {
+                entity.HasKey(e => e.UserId);
+
+                entity.Property(e => e.UserId)
+                    .HasColumnName("UserID")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.District)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.LocationNumber).IsUnicode(false);
+
+                entity.Property(e => e.Password)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Province)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Status)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.StoreId)
+                    .HasColumnName("StoreID")
+                    .IsUnicode(false);
+
+                entity.Property(e => e.StoreName)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.SubDistrict)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Username)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ZipCode)
+                    .HasMaxLength(5)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Provinces>(entity =>

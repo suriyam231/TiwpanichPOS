@@ -36,5 +36,11 @@ namespace Database.API.Controllers
         {
             return Ok(IPage.GetSubdistricts(Subdistricts));
         }
+
+        [HttpPost("addRegister/{data}")]
+        public IActionResult addRegister(ProfileUser data)
+        {
+            return Ok(IPage.addRegister(data));
+        }
     }
 }

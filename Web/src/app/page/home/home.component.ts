@@ -8,43 +8,42 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   constructor() { }
-
+Total :number =0
   ngOnInit() {
+
+    this.listOfData
+    for(let i = 0; i < this.listOfData.length;i++ ){
+      this.Total =   this.Total + this.listOfData[i].Price
+    }
+    debugger
   }
 
   listOfData = [
     {
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park'
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park'
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park'
-    },   {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park'
-    },   {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park'
-    },   {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park'
+      index : 1,
+      ProductName : 'เลย์',
+      number : 1,
+      Price : 20
+    },{
+      index : 2,
+      ProductName : 'ผงซักฟอง',
+      number : 2,
+      Price : 208
+    },{
+      index : 3,
+      ProductName : 'ปรับผ้านุ่ม',
+      number : 10,
+      Price : 180
+    },{
+      index : 4,
+      ProductName : 'ไม้กวาด',
+      number : 1,
+      Price : 40
+    },{
+      index : 5,
+      ProductName : 'ไม้ถูพื้น',
+      number : 1,
+      Price : 100
     }
   ];
 }

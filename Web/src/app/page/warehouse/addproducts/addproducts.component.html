@@ -1,3 +1,96 @@
-<p>
-  addproducts works!
-</p>
+<nz-layout class="layout">
+  <nz-header class="shadow-sm p-0 mb-5 rounded">
+    <app-navbar [pageInput]="pageInput"></app-navbar>
+  </nz-header>
+  <br>
+  <nz-content>
+    <div class="row">
+      <div class="col-8">
+        <div class="inner-content">
+          <div class="row">
+            <div class="col">
+              <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+                <input type="text" nz-input placeholder="กรองชื่อสินค้า" />
+              </nz-input-group>
+              <ng-template #suffixButton>
+                <button nz-button nzType="primary" nzSize="large" nzSearch>ค้นหาสินค้า</button>
+              </ng-template>
+            </div>
+
+          </div>
+          <br>
+          <nz-table #basicTable [nzData]="listOfData" [nzScroll]="{ y: '275px' }" [nzBordered]="false"
+            [nzFrontPagination]="false" [nzShowPagination]="false">
+            <thead>
+              <tr>
+                <th nzWidth="100px">ลำดับ</th>
+                <th nzWidth="300px">รหัสสินค้า</th>
+                <th nzWidth="300px">ชื่อสินค้า</th>
+                <th nzWidth="200px" class="text-center">จำนวน</th>
+                <th nzWidth="200px" class="text-center">ราคา(บาท)</th>
+                <th nzWidth="200px" class="text-center">ราคาต้นทุน(บาท)</th>
+                <th nzWidth="300px" class="text-center"> จัดการสินค้า</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of basicTable.data">
+                <td>{{ data.index }}</td>
+                <td>{{ data.ProductID }}</td>
+                <td>{{ data.ProductName }}</td>
+                <td class="text-center">{{ data.number }}</td>
+                <td class="text-center">{{ data.Price }}</td>
+                <td class="text-center">{{ data.CostPrice }}</td>
+                <td class="text-center">
+                  <button style="height: 23px;" nz-button nzType="primary"> เพิ่ม</button>&nbsp;
+                  <button style="height: 23px; background: rgb(243, 231, 231); border: red; " nz-button> <span
+                      style="color: red;">ลด</span></button>&nbsp;
+                  <button style="height: 23px; background: lightcoral; border: 0px;" nz-button> <span
+                      style="color: white;">ลบ</span></button>&nbsp;
+
+                </td>
+              </tr>
+            </tbody>
+          </nz-table>
+        </div>
+      </div>
+      <!-- Input for add Product -->
+      <div class="col-4">
+
+        <div class="inner-content">
+            <div style="font-size: 20px; color: #903AF2;">กรอกข้อมูลสำหรับเพิ่มสินค้า</div>
+            <hr>
+            <div class="form-group">
+              <label for="pdID">รหัสสินค้า :</label>
+              <input type="text" nz-input class="form-control" id="productid" placeholder="กรอกรหัสสินค้า"
+                name="productid" ngModule />
+            </div>
+            <div class="form-group">
+              <label for="pdID">ชื่อสินค้า :</label>
+              <input type="text" nz-input class="form-control" id="productname" placeholder="กรอกชื่อสินค้า"
+                name="productname" ngModule />
+            </div>
+            <div class="form-group">
+              <label for="pdID">จำนวน :</label>
+              <input type="text" nz-input class="form-control" placeholder="กรอกจำนวน" />
+            </div>
+            <div class="form-group">
+              <label for="pdID">ราคา :</label>
+              <input type="text" nz-input class="form-control" placeholder="กรอกราคา" />
+            </div>
+            <div class="form-group">
+              <label for="pdID">ราคาต้นทุน :</label>
+              <input type="text" nz-input class="form-control" placeholder="กรอกราคาต้นทุน" />
+            </div>
+            <br>
+            <div style="text-align: right;">
+              <button nz-button nzType="danger"> ยกเลิก</button>&nbsp;
+              <button type="submit" nz-button nzType="primary"> เพิ่มสินค้า</button>&nbsp;
+            </div>
+        </div>
+
+      </div>
+
+    </div>
+  </nz-content>
+  <nz-footer>Ant Design ©2019 Implement By Angular</nz-footer>
+</nz-layout>

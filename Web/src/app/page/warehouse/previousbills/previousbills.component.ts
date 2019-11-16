@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class PreviousbillsComponent implements OnInit {
 
   constructor() { }
-
+  pageInput = 'previousbills';
   ngOnInit() {
   }
 

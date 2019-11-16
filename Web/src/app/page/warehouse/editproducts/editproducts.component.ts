@@ -11,5 +11,6 @@ export class EditproductsComponent implements OnInit {
 
   ngOnInit() {
   }
+  pageInput = 'editproducts'
 
 }

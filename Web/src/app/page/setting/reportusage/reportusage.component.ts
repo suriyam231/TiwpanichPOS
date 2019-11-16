@@ -11,5 +11,6 @@ export class ReportusageComponent implements OnInit {
 
   ngOnInit() {
   }
+  pageInput = 'reportusage'
 
 }

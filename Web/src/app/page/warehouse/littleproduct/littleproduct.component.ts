@@ -11,5 +11,6 @@ export class LittleproductComponent implements OnInit {
 
   ngOnInit() {
   }
+  pageInput = 'littleproduct'
 
 }

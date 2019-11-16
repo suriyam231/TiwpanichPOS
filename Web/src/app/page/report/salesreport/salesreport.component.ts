@@ -11,5 +11,5 @@ export class SalesreportComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  pageInput ='salesreport'
 }

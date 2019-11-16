@@ -11,5 +11,6 @@ export class EditstoreComponent implements OnInit {
 
   ngOnInit() {
   }
+  pageInput = 'editstore'
 
 }

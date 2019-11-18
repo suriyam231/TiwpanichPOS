@@ -77,7 +77,7 @@ export class PageComponent implements OnInit {
 
 
     if (this.userName === "admin" && this.password === "1234") {
-      this.notification.create('success', 'สำเร็จ', '1234')
+  
       this.Ruoter.navigate(['/home']);
     }
 

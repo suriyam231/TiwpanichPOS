@@ -1,0 +1,51 @@
+.layout {
+    height: 100vh;
+  }
+
+
+  nz-header {
+    position: fixed;
+    width: 100%;
+    background: #ffffff;
+    color: #6d12e6be;
+  }
+  .iconSize {
+    width: 50PX;
+    height: 50px;
+  }
+  .Usericon{
+    width: 30PX;
+    height: 30px;
+  }
+
+  [nz-menu] {
+    line-height: 64px;
+  }
+
+  nz-content {
+    padding: 0 20px;
+    margin-top: 80px;
+  }
+
+  nz-breadcrumb {
+    margin: 16px 0;
+  }
+
+  .inner-content {
+    background: #fff;
+    padding: 24px;
+    min-height: 700px;
+  }
+
+  nz-footer {
+    text-align: center;
+  }
+  .buttonSize{
+    width: 180px;
+    height: 80px;
+    text-align: center;
+  }
+
+  .fontSize{
+    font-size: 30px;
+  }

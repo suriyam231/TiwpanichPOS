@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class WarehouseComponent implements OnInit {
 
   constructor() { }
-
+  pageInput = 'warehouse';
   ngOnInit() {
   }
 

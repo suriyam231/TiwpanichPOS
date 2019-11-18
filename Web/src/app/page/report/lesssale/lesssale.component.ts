@@ -11,5 +11,5 @@ export class LesssaleComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  pageInput = 'lesssale'
 }

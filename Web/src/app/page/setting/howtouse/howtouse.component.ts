@@ -11,5 +11,6 @@ export class HowtouseComponent implements OnInit {
 
   ngOnInit() {
   }
+  pageInput = 'howtouse'
 
 }

@@ -11,5 +11,6 @@ export class TestscannerComponent implements OnInit {
 
   ngOnInit() {
   }
+  pageInput = 'testscanner'
 
 }

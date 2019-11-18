@@ -7,6 +7,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgZorroAntdModule, NzBreadCrumbModule, NzPopoverModule } from 'ng-zorro-antd';
+import { NavbarComponent } from '../widget/navbar/navbar.component';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -24,5 +25,6 @@ import { NgZorroAntdModule, NzBreadCrumbModule, NzPopoverModule } from 'ng-zorro
   ],exports:[
     PageRoutingModule
   ],
+  bootstrap:    [ NavbarComponent ],
 })
 export class HomeModule { }

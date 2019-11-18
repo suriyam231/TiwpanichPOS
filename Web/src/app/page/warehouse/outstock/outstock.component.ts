@@ -9,6 +9,7 @@ export class OutstockComponent implements OnInit {
 
   constructor() { }
 
+  pageInput = 'outstock';
   ngOnInit() {
   }
 

@@ -24,7 +24,7 @@
         <button nz-button nzType="default">รายละเอียดร้าน</button>
       </div>
       <div class="col-1 ">
-        <button style="background: rgb(243, 67, 67);" nz-button> <span style="color: white;">ออกจากระบบ</span> </button>
+        <button [routerLink]="['../']" style="background: rgb(243, 67, 67);" nz-button> <span style="color: white;">ออกจากระบบ</span> </button>
       </div>
 
     </div>
@@ -33,18 +33,17 @@
 
   <nz-content>
 
-
     <div class="row">
       <div class="col">
         <div class="inner-content">
 
           <div class="row">
             <div class="col-3">
-              <button [routerLink]="['/previousbills']" class="buttonSize" style="background: rgba(141, 241, 236, 0.733);" nz-button [nzSize]="size"
+              <button [routerLink]="['/previousbills']" (click)="onClickEvent('previousbills')"class="buttonSize" style="background: rgba(141, 241, 236, 0.733);" nz-button [nzSize]="size"
                 nzType="default"> <b style="font-size: 18px;">ตรวจสอบบิล <br> ย้อนหลัง</b> </button>
             </div>
             <div class="col-3">
-              <button  [routerLink]="['/billmanage']" class="buttonSize" style="background: rgba(113, 245, 238, 0.733);" nz-button [nzSize]="size"
+              <button  [routerLink]="['/billmanage']" (click)="onClickEvent('billmanage')" class="buttonSize" style="background: rgba(113, 245, 238, 0.733);" nz-button [nzSize]="size"
                 nzType="default"> <b style="font-size: 18px;"> จัดการบิล</b> </button>
             </div>
             <div class="col-3">

@@ -1,5 +1,5 @@
-import { Component, OnInit, TemplateRef, ElementRef, ViewChild } from '@angular/core';
-import { HostListener } from '@angular/core';
+import { Component, OnInit, TemplateRef, ElementRef, ViewChild, Output } from '@angular/core';
+import { HostListener, EventEmitter } from '@angular/core';
 import { Key } from 'protractor';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd';
 @Component({
@@ -15,14 +15,19 @@ export class HomeComponent implements OnInit {
 
   constructor(private modalService: NzModalService) { }
   Total: number = 0
+  
+  @Output() eventData:EventEmitter<string> = new EventEmitter();
   ngOnInit() {
-
     this.listOfData
     for (let i = 0; i < this.listOfData.length; i++) {
       this.Total = this.Total + this.listOfData[i].Price
     }
   }
 
+  onClickEvent(res){ 
+    this.eventData.emit(res)
+    
+  }
   listOfData = [
     {
       index: 1,

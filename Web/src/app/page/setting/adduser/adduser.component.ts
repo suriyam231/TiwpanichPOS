@@ -11,5 +11,5 @@ export class AdduserComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  pageInput = 'adduser'
 }

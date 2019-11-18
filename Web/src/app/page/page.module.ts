@@ -23,6 +23,7 @@ import { AdduserComponent } from './setting/adduser/adduser.component';
 import { TestscannerComponent } from './setting/testscanner/testscanner.component';
 import { HowtouseComponent } from './setting/howtouse/howtouse.component';
 import { ReportusageComponent } from './setting/reportusage/reportusage.component';
+import { NavbarComponent } from './widget/navbar/navbar.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { ReportusageComponent } from './setting/reportusage/reportusage.componen
     TestscannerComponent,
     HowtouseComponent,
     ReportusageComponent,
+    NavbarComponent,
     ],
   imports: [
     CommonModule,

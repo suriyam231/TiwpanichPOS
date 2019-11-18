@@ -11,5 +11,5 @@ export class BillmanageComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  pageInput = 'billmanage'
 }

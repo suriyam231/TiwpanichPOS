@@ -111,12 +111,12 @@
                 nzType="default"><b style="font-size: 18px;">วิธีใช้งานระบบ </b></button>
             </div>
           </div>
-          <div class="row" style="margin-top: 20px;">
+          <!-- <div class="row" style="margin-top: 20px;">
             <div class="col-3">
               <button [routerLink]="['/reportusage']" class="buttonSize" style="background: rgba(248, 150, 165, 0.884);" nz-button [nzSize]="size"
                 nzType="default"><b style="font-size: 18px;">แจ้งปัญหาการใช้งาน </b></button>
             </div>
-          </div>
+          </div> -->
 
         </div>
       </div>
@@ -138,7 +138,7 @@
                 <th nzWidth="200px">ชื่อสินค้า</th>
                 <th nzWidth="100px" class="text-center">จำนวน</th>
                 <th nzWidth="100px" class="text-center">ราคา(บาท)</th>
-                <th class="text-center"> จัดการสินค้า</th>
+                
               </tr>
             </thead>
             <tbody>
@@ -147,14 +147,7 @@
                 <td>{{ data.ProductName }}</td>
                 <td class="text-center">{{ data.number }}</td>
                 <td class="text-center">{{ data.Price }}</td>
-                <td class="text-center">
-                  <button style="height: 23px;" nz-button nzType="primary"> เพิ่ม</button>&nbsp;
-                  <button style="height: 23px; background: rgb(243, 231, 231); border: red; " nz-button> <span
-                      style="color: red;">ลด</span></button>&nbsp;
-                  <button style="height: 23px; background: lightcoral; border: 0px;" nz-button> <span
-                      style="color: white;">ลบ</span></button>&nbsp;
-
-                </td>
+                
               </tr>
             </tbody>
           </nz-table>

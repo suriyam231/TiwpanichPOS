@@ -1,7 +1,8 @@
 <div class="row" [ngSwitch]="pageInput">
-    <a class="col-2" [routerLink]="'/home'" style="margin: 0px 0px 0px 25px;"><i nz-icon nzType="left" nzTheme="outline"></i> กลับหน้าหลัก </a>
+    <a class="col-2" [routerLink]="'/home'" style="margin: 0px 0px 0px 20px; color: rgb(240, 89, 78);">
+        <i nz-icon nzType="caret-left" nzTheme="outline"></i> <b style="size: 20px;">กลับหน้าหลัก</b> </a>
     <div class="col-3"></div>
-    <div style="font-size: 20px ; margin: 0px 0px 0px 25px;" *ngSwitchCase="'previousbills'"> ตรวจสอบบิลย้อนหลัง </div>
+    <div style="font-size: 30px ; margin: 0px 0px 0px 0px;" *ngSwitchCase="'previousbills'"> <b> ตรวจสอบบิลย้อนหลัง </b></div>
     <div style="font-size: 20px ; margin: 0px 0px 0px 25px;" *ngSwitchCase="'billmanage'"> จัดการบิล </div>
     <div style="font-size: 20px ; margin: 0px 0px 0px 25px;" *ngSwitchCase="'addproducts'"> เพิ่มสินค้า </div>
     <div style="font-size: 20px ; margin: 0px 0px 0px 25px;" *ngSwitchCase="'editproducts'"> แก้ไขสินค้า </div>

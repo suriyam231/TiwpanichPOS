@@ -75,6 +75,10 @@ export class PageComponent implements OnInit {
       this.validateForm.controls[i].updateValueAndValidity();
     }
 
+    this.service.CheckUser(this.userName,this.password).subscribe((res: any) => {
+      debugger
+    })
+
 
     if (this.userName === "admin" && this.password === "1234") {
   

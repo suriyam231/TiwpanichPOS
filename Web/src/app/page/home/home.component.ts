@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef, ElementRef, ViewChild, Output } from '@
 import { HostListener, EventEmitter } from '@angular/core';
 import { Key } from 'protractor';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -10,18 +11,31 @@ import { NzModalRef, NzModalService } from 'ng-zorro-antd';
 export class HomeComponent implements OnInit {
 
 
-
+  UserID : any;
+  StoreName : string;
+  FirstName : string;
+  LastName : string;
+  Position : string;
   
 
-  constructor(private modalService: NzModalService) { }
+  constructor(private modalService: NzModalService,
+    private Router: ActivatedRoute) { }
   Total: number = 0
   
   @Output() eventData:EventEmitter<string> = new EventEmitter();
   ngOnInit() {
+
+    this.UserID =this.Router.snapshot.params.UserID;
+    this.Position = this.Router.snapshot.params.Position;
+    this.StoreName = this.Router.snapshot.params.Store;
+    this.FirstName = this.Router.snapshot.params.FirstName;
+    this.LastName = this.Router.snapshot.params.LastName;
     this.listOfData
     for (let i = 0; i < this.listOfData.length; i++) {
       this.Total = this.Total + this.listOfData[i].Price
     }
+
+
   }
 
   onClickEvent(res){ 

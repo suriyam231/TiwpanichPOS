@@ -68,32 +68,33 @@ export class PageComponent implements OnInit {
 
   }
 
-
+  UserID: any;
+  Store: string;
+  FirstName: string;
+  LastName: string;
+  Position: string;
   submitForm(): void {
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
 
-    this.service.CheckUser(this.userName,this.password).subscribe((res: any) => {
-      debugger
+    this.service.CheckUser(this.userName, this.password).subscribe((res: any[]) => {
+
+      if (res.length > 0) {
+        this.UserID = res[0].userId;
+        this.Store = res[0].storeName;
+        this.FirstName = res[0].firstName;
+        this.LastName = res[0].lastName;
+        this.Position = res[0].position;
+        this.Ruoter.navigate(['/home', { UserID: this.UserID, Store: this.Store, FirstName: this.FirstName, LastName: this.LastName, Position: this.Position }]);
+      }
+  
+      if (res.length === 0) {
+        this.notification.create('error', 'รหัสผู้ใช้หรือรหัสผ่านผิด', 'กรุณาตรวจสอบหัสผู้ใช้และรหัสผ่าน')
+      }
     })
 
-
-    if (this.userName === "admin" && this.password === "1234") {
-  
-      this.Ruoter.navigate(['/home']);
-    }
-
-    if (this.userName != "admin" && this.password === "1234") {
-      this.notification.create('error', 'รหัสผู้ใช้ผิด', 'กรุณาตรวจสอบรหัสผู้ใช้')
-    }
-    if (this.userName === "admin" && this.password != "1234") {
-      this.notification.create('error', 'รหัสผ่านผิด', 'กรุณาตรวจสอบรหัสผ่าน')
-    }
-    if (this.userName != "admin" && this.password != "1234" && this.userName != undefined) {
-      this.notification.create('error', 'รหัสผู้ใช้และรหัสผ่านผิด', 'กรุณาตรวจสอบหัสผู้ใช้และรหัสผ่าน')
-    }
   }
 
 
@@ -164,9 +165,9 @@ export class PageComponent implements OnInit {
       register.STATUS = 'owner'
       this.data.push(register)
     }
-    this.service.AddRegister(this.data).subscribe((res :any)=>{
+    this.service.AddRegister(this.data).subscribe((res: any) => {
       debugger
     })
-  
+
   }
 }

@@ -71,5 +71,44 @@ namespace Database.API.Service
 
             return "UserID";
         }
+
+
+        // หน้า Home 
+        public List<Profile> CheckUser(string password , string username)
+        {
+            List<Profile> res = (from data in Context.Profile
+                                 where data.Username == username && data.Password == password
+                                 select new Profile
+                                 {
+                                     UserId = data.UserId,
+                                     Username = data.Username,
+                                     Password = data.Password,
+                                     StoreName = data.StoreName,
+                                     FirstName = data.FirstName,
+                                     LastName = data.LastName,
+                                     StoreOwner = data.StoreOwner,
+                                     Position = data.Position,
+                                     StoreId = data.StoreId
+                                 }).ToList();
+
+            return res;
+        }
+
+        public List<Store> getStore(string StoreID)
+        {
+            List<Store> res = (from data in Context.Store
+                               where data.StoreId == StoreID
+                               select new Store
+                               {
+                                   StoreId = data.StoreId,
+                                   StoreName = data.StoreName,
+                                   StoreFront = data.StoreFront,
+                                   Address = data.Address,
+                                   Onwer = data.Onwer,
+                                   PhoneNumber = data.PhoneNumber,
+                                   OperatorNumber = data.OperatorNumber
+                               }).ToList();
+            return res;
+        }
     }
 }

@@ -42,5 +42,18 @@ namespace Database.API.Controllers
         {
             return Ok(IPage.addRegister(data));
         }
+
+        // หน้า Home 
+        [HttpGet("CheckUser/{password}/{username}")]
+        public IActionResult CheckUser(string password , string username)
+        {
+            return Ok(IPage.CheckUser(password, username));
+        }
+
+        [HttpGet("getStore/{StoreID}")]
+        public IActionResult getStore(string StoreID)
+        {
+            return Ok(IPage.getStore(StoreID));
+        }
     }
 }

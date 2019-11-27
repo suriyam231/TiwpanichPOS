@@ -17,7 +17,7 @@
                 <br>
                 <br>
                 <nz-form-item>
-                    <nz-form-control nzErrorTip="Please input your username!">
+                    <nz-form-control nzErrorTip="กรุณากรอกชื่อผู้ใช้!">
                         <nz-input-group nzPrefixIcon="user">
                             <input type="text" nz-input formControlName="userName" [(ngModel)]="userName"
                                 placeholder="Username" />
@@ -29,7 +29,7 @@
                     </nz-form-control>
                 </nz-form-item>
                 <nz-form-item>
-                    <nz-form-control nzErrorTip="Please input your Password!">
+                    <nz-form-control nzErrorTip="กรุณากรอกรหัสผ่าน!">
                         <nz-input-group nzPrefixIcon="lock">
                             <input type="password" nz-input formControlName="password" [(ngModel)]="password"
                                 placeholder="Password" />
@@ -46,9 +46,9 @@
                             <span>จำรหัสผ่าน</span>
                         </label>
                         <button nz-button class="login-form-button" [nzType]="'primary'">เข้าสู่ระบบ</button>
-                        สำหรับลูกค้าที่ไม่มีร้านในระบบ
+                        <!-- สำหรับลูกค้าที่ไม่มีร้านในระบบ
                         <button nz-button [nzType]="'default'"
-                            (click)="createTplModal(tplTitle, tplContent, tplFooter)">สมัครเข้าใช้งาน</button>
+                            (click)="createTplModal(tplTitle, tplContent, tplFooter)">สมัครเข้าใช้งาน</button> -->
                     </nz-form-control>
                 </nz-form-item>
             </form>

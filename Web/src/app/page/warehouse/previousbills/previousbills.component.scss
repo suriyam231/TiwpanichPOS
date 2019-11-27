@@ -49,3 +49,10 @@
   .fontSize{
     font-size: 30px;
   }
+
+  nz-date-picker,
+  nz-month-picker,
+  nz-range-picker,
+  nz-week-picker {
+    margin: 0 8px 12px 0;
+  }

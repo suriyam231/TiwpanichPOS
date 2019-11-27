@@ -11,5 +11,11 @@ export class PreviousbillsComponent implements OnInit {
   pageInput = 'previousbills';
   ngOnInit() {
   }
+  onChange(result: Date): void {
+    console.log('Selected Time: ', result);
+  }
 
+  onOk(result: Date): void {
+    console.log('onOk', result);
+  }
 }

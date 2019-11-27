@@ -3,9 +3,96 @@
     <app-navbar [pageInput]="pageInput"></app-navbar>
   </nz-header>
   <nz-content>
-    <p>
-      previousbills works!
-    </p>
+    <div class="row">
+      <div class="col">
+        <div class="inner-content">
+          <div class="row">
+            <div class="col">
+              <nz-input-group nzSearch [nzAddOnAfter]="suffixButton">
+                <input type="number"  nz-input placeholder="กรอกเลขที่บิล"/>
+              </nz-input-group>
+              <ng-template #suffixButton>
+                <button nz-button nzType="primary" nzSearch>ค้นหา</button>
+              </ng-template>
+            </div>
+          </div>
+          <br>
+          <b>ระยะเวลา : </b>
+          <nz-range-picker [nzShowTime]="{ nzFormat: 'HH:mm' }" nzFormat="yyyy-MM-dd HH:mm"
+            [nzPlaceHolder]="['ตั้งแต่วันที่', 'ถึงวันที่']" ngModel (ngModelChange)="onChange($event)"
+            (nzOnOk)="onOk($event)"></nz-range-picker>
+          <br>
+          <br>
+          <nz-table #basicTable [nzData]="listOfData" [nzScroll]="{ y: '275px' }" [nzBordered]="false"
+            [nzFrontPagination]="false" [nzShowPagination]="false">
+            <thead>
+              <tr>
+                <th nzWidth="100px">ลำดับ</th>
+                <th nzWidth="100px">เลขที่บิล</th>
+                <th nzWidth="100px">วันที่ซื้อสินค้า</th>
+                <th nzWidth="100px">ราคา(บาท)</th>
+                <th nzWidth="100px">สถานะรายการ</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of basicTable.data">
+                <td>{{ data.index }}</td>
+                <td>{{ data.ProductName }}</td>
+                <td class="text-center">{{ data.number }}</td>
+                <td class="text-center">{{ data.Price }}</td>
+
+              </tr>
+            </tbody>
+          </nz-table>
+
+        </div>
+      </div>
+
+
+
+
+      <div class="col">
+
+        <div class="inner-content">
+          <div style="font-size: 20px; color: #903AF2;">ข้อมูลการซื้อสินค้า</div>
+          <hr>
+
+          <B>
+            ##
+          </B>
+          <nz-table #basicTable [nzData]="listOfData" [nzScroll]="{ y: '275px' }" [nzBordered]="false"
+            [nzFrontPagination]="false" [nzShowPagination]="false">
+            <thead>
+              <tr>
+                <th nzWidth="100px">ลำดับ</th>
+                <th nzWidth="200px">ชื่อสินค้า</th>
+                <th nzWidth="100px" class="text-center">จำนวน</th>
+                <th nzWidth="100px" class="text-center">ราคา(บาท)</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of basicTable.data">
+                <td>{{ data.index }}</td>
+                <td>{{ data.ProductName }}</td>
+                <td class="text-center">{{ data.number }}</td>
+                <td class="text-center">{{ data.Price }}</td>
+
+              </tr>
+            </tbody>
+          </nz-table>
+          <br>
+          <div class="text-right">
+            <B class="fontSize">ยอดรวม : {{ Total }} </B>
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
   </nz-content>
   <nz-footer>Ant Design ©2019 Implement By Angular</nz-footer>
 </nz-layout>

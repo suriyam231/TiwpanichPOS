@@ -36,4 +36,7 @@ export class PageService {
   public CheckUser(username,password){
     return this.http.get(`Page/CheckUser/${password}/${username}`)
   }
+  public getStore(StoreID){
+    return this.http.get(`Page/getStore/${StoreID}`)
+  }
 } 

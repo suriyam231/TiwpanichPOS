@@ -73,6 +73,7 @@ export class PageComponent implements OnInit {
   FirstName: string;
   LastName: string;
   Position: string;
+  Storeid : any;
   submitForm(): void {
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
@@ -80,14 +81,13 @@ export class PageComponent implements OnInit {
     }
 
     this.service.CheckUser(this.userName, this.password).subscribe((res: any[]) => {
-
       if (res.length > 0) {
         this.UserID = res[0].userId;
-        this.Store = res[0].storeName;
         this.FirstName = res[0].firstName;
         this.LastName = res[0].lastName;
         this.Position = res[0].position;
-        this.Ruoter.navigate(['/home', { UserID: this.UserID, Store: this.Store, FirstName: this.FirstName, LastName: this.LastName, Position: this.Position }]);
+        this.Storeid = res[0].storeId;
+        this.Ruoter.navigate(['/home', { UserID: this.UserID, Storeid: this.Storeid, FirstName: this.FirstName, LastName: this.LastName, Position: this.Position }]);
       }
   
       if (res.length === 0) {
@@ -166,7 +166,7 @@ export class PageComponent implements OnInit {
       this.data.push(register)
     }
     this.service.AddRegister(this.data).subscribe((res: any) => {
-      debugger
+      
     })
 
   }

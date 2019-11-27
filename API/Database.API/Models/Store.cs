@@ -6,9 +6,19 @@ namespace Database.API.Models
 {
     public partial class Store
     {
+        public Store()
+        {
+            Profile = new HashSet<Profile>();
+        }
+
         public string StoreId { get; set; }
         public string StoreName { get; set; }
-        public string Location { get; set; }
-        public string NameOwner { get; set; }
+        public string StoreFront { get; set; }
+        public string Address { get; set; }
+        public string Onwer { get; set; }
+        public string PhoneNumber { get; set; }
+        public string OperatorNumber { get; set; }
+
+        public virtual ICollection<Profile> Profile { get; set; }
     }
 }

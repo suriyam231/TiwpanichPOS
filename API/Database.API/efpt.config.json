@@ -30,6 +30,10 @@
       },
       {
          "HasPrimaryKey": true,
+         "Name": "[dbo].[Store]"
+      },
+      {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[Subdistricts]"
       },
       {

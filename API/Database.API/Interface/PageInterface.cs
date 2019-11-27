@@ -13,5 +13,6 @@ namespace Database.API.Interface
         List<Subdistricts> GetSubdistricts(string Subdistricts);
         string addRegister(ProfileUser value);
         List<Profile> CheckUser(string password, string username);
+        List<Store> getStore(string StoreID);
     }
 }

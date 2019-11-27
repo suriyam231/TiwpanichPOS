@@ -49,5 +49,11 @@ namespace Database.API.Controllers
         {
             return Ok(IPage.CheckUser(password, username));
         }
+
+        [HttpGet("getStore/{StoreID}")]
+        public IActionResult getStore(string StoreID)
+        {
+            return Ok(IPage.getStore(StoreID));
+        }
     }
 }

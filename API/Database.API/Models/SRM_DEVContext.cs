@@ -20,6 +20,7 @@ namespace Database.API.Models
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<Profile> Profile { get; set; }
         public virtual DbSet<Provinces> Provinces { get; set; }
+        public virtual DbSet<Store> Store { get; set; }
         public virtual DbSet<Subdistricts> Subdistricts { get; set; }
         public virtual DbSet<TypeProduct> TypeProduct { get; set; }
         public virtual DbSet<UserId> UserId { get; set; }
@@ -116,6 +117,11 @@ namespace Database.API.Models
                     .HasMaxLength(30)
                     .IsUnicode(false);
 
+                entity.Property(e => e.StoreId)
+                    .HasColumnName("StoreID")
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.StoreName)
                     .HasMaxLength(30)
                     .IsUnicode(false);
@@ -127,6 +133,11 @@ namespace Database.API.Models
                 entity.Property(e => e.Username)
                     .HasMaxLength(30)
                     .IsUnicode(false);
+
+                entity.HasOne(d => d.Store)
+                    .WithMany(p => p.Profile)
+                    .HasForeignKey(d => d.StoreId)
+                    .HasConstraintName("FK__Profile__StoreID__2CF2ADDF");
             });
 
             modelBuilder.Entity<Provinces>(entity =>
@@ -142,6 +153,37 @@ namespace Database.API.Models
                 entity.Property(e => e.NameInThai)
                     .IsRequired()
                     .HasMaxLength(150);
+            });
+
+            modelBuilder.Entity<Store>(entity =>
+            {
+                entity.Property(e => e.StoreId)
+                    .HasColumnName("StoreID")
+                    .HasMaxLength(30)
+                    .IsUnicode(false)
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Address)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Onwer)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.OperatorNumber)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.PhoneNumber)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.StoreFront).IsUnicode(false);
+
+                entity.Property(e => e.StoreName)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Subdistricts>(entity =>

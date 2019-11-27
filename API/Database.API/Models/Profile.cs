@@ -14,5 +14,8 @@ namespace Database.API.Models
         public string LastName { get; set; }
         public string StoreOwner { get; set; }
         public string Position { get; set; }
+        public string StoreId { get; set; }
+
+        public virtual Store Store { get; set; }
     }
 }

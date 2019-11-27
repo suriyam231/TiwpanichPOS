@@ -3,6 +3,7 @@ import { HostListener, EventEmitter } from '@angular/core';
 import { Key } from 'protractor';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd';
 import { ActivatedRoute } from '@angular/router';
+import { PageService } from '../page.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,36 +12,45 @@ import { ActivatedRoute } from '@angular/router';
 export class HomeComponent implements OnInit {
 
 
-  UserID : any;
-  StoreName : string;
-  FirstName : string;
-  LastName : string;
-  Position : string;
-  
+  UserID: any;
+  StoreName: string;
+  FirstName: string;
+  LastName: string;
+  Position: string;
+  StoreID : any;
+
 
   constructor(private modalService: NzModalService,
-    private Router: ActivatedRoute) { }
+    private Router: ActivatedRoute,
+    private service: PageService) { }
   Total: number = 0
-  
-  @Output() eventData:EventEmitter<string> = new EventEmitter();
+
+  @Output() eventData: EventEmitter<string> = new EventEmitter();
   ngOnInit() {
 
-    this.UserID =this.Router.snapshot.params.UserID;
+    this.UserID = this.Router.snapshot.params.UserID;
     this.Position = this.Router.snapshot.params.Position;
-    this.StoreName = this.Router.snapshot.params.Store;
+    this.StoreID = this.Router.snapshot.params.Storeid;
     this.FirstName = this.Router.snapshot.params.FirstName;
     this.LastName = this.Router.snapshot.params.LastName;
-    this.listOfData
+    this.getStore();
     for (let i = 0; i < this.listOfData.length; i++) {
       this.Total = this.Total + this.listOfData[i].Price
     }
-
-
   }
 
-  onClickEvent(res){ 
+  getStore() {
+    this.service.getStore(this.StoreID).subscribe((res : any) =>  {
+      this.StoreName = res[0].storeName
+    })
+  }
+
+
+
+
+  onClickEvent(res) {
     this.eventData.emit(res)
-    
+
   }
   listOfData = [
     {
@@ -89,11 +99,11 @@ export class HomeComponent implements OnInit {
     if (event.key === 'Escape') {
       this.CheckModal = false
     }
-    if(event.key === 'F2'){
+    if (event.key === 'F2') {
       let el: HTMLElement = document.getElementById('Getbill') as HTMLElement;
       el.click();
     }
-    if(event.key === 'F3'){
+    if (event.key === 'F3') {
       let el: HTMLElement = document.getElementById('Selectbill') as HTMLElement;
       el.click();
     }
@@ -121,7 +131,7 @@ export class HomeComponent implements OnInit {
 
   GetbillModal: NzModalRef;
   GetbillModalButtonLoading = false;
- 
+
   Getbill(tplTitle: TemplateRef<{}>, tplContent: TemplateRef<{}>, tplFooter: TemplateRef<{}>): void {
     this.CheckbillModal = this.modalService.create({
       nzTitle: tplTitle,
@@ -138,7 +148,7 @@ export class HomeComponent implements OnInit {
 
   SelectbillModal: NzModalRef;
   SelectbillModalButtonLoading = false;
- 
+
   Selectbill(tplTitle: TemplateRef<{}>, tplContent: TemplateRef<{}>, tplFooter: TemplateRef<{}>): void {
     this.CheckbillModal = this.modalService.create({
       nzTitle: tplTitle,

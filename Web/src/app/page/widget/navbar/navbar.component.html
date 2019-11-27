@@ -1,5 +1,5 @@
 <div class="row" [ngSwitch]="pageInput">
-    <a class="col-2" [routerLink]="'/home'" style="margin: 0px 0px 0px 20px; color: rgb(240, 89, 78);">
+    <a class="col-2" [routerLink]="'/home'" (click)="onClickEvent()" style="margin: 0px 0px 0px 20px; color: rgb(240, 89, 78);">
         <i nz-icon nzType="caret-left" nzTheme="outline"></i> <b style="size: 20px;">กลับหน้าหลัก</b> </a>
     <div class="col-3"></div>
     <div style="font-size: 30px ; margin: 0px 0px 0px 0px;" *ngSwitchCase="'previousbills'"> <b> ตรวจสอบบิลย้อนหลัง </b></div>

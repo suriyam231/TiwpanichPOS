@@ -2,7 +2,7 @@ import { Component, OnInit, TemplateRef, ElementRef, ViewChild, Output } from '@
 import { HostListener, EventEmitter } from '@angular/core';
 import { Key } from 'protractor';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PageService } from '../page.service';
 @Component({
   selector: 'app-home',
@@ -21,18 +21,19 @@ export class HomeComponent implements OnInit {
 
 
   constructor(private modalService: NzModalService,
-    private Router: ActivatedRoute,
-    private service: PageService) { }
+    private router: ActivatedRoute,
+    private service: PageService,
+    public Ruoter: Router) { }
   Total: number = 0
 
   @Output() eventData: EventEmitter<string> = new EventEmitter();
   ngOnInit() {
 
-    this.UserID = this.Router.snapshot.params.UserID;
-    this.Position = this.Router.snapshot.params.Position;
-    this.StoreID = this.Router.snapshot.params.Storeid;
-    this.FirstName = this.Router.snapshot.params.FirstName;
-    this.LastName = this.Router.snapshot.params.LastName;
+    this.UserID = this.router.snapshot.params.UserID;
+    this.Position = this.router.snapshot.params.Position;
+    this.StoreID = this.router.snapshot.params.Storeid;
+    this.FirstName = this.router.snapshot.params.FirstName;
+    this.LastName = this.router.snapshot.params.LastName;
     this.getStore();
     for (let i = 0; i < this.listOfData.length; i++) {
       this.Total = this.Total + this.listOfData[i].Price
@@ -47,11 +48,15 @@ export class HomeComponent implements OnInit {
 
 
 
-
-  onClickEvent(res) {
-    this.eventData.emit(res)
-
+  //ส่งค่าไปหน้า "ตรวจสอบบิลย้อนหลัง"
+  onClickPreviousbills() {
+    this.Ruoter.navigate(['/previousbills', { UserID: this.UserID, Storeid: this.StoreID, FirstName: this.FirstName, LastName: this.LastName, Position: this.Position }]);
   }
+  //ส่งค่าไปหน้า "แก้ไข้ข้อมูลร้าน"
+  onClickEditstore(){
+    this.Ruoter.navigate(['/editstore', { UserID: this.UserID, Storeid: this.StoreID, FirstName: this.FirstName, LastName: this.LastName, Position: this.Position }]);
+  }
+
   listOfData = [
     {
       index: 1,

@@ -39,7 +39,7 @@
 
           <div class="row">
             <div class="col-3">
-              <button [routerLink]="['/previousbills']" (click)="onClickEvent('previousbills')"class="buttonSize" style="background: rgba(141, 241, 236, 0.733);" nz-button [nzSize]="size"
+              <button [routerLink]="['/previousbills']" (click)="onClickPreviousbills()"class="buttonSize" style="background: rgba(141, 241, 236, 0.733);" nz-button [nzSize]="size"
                 nzType="default"> <b style="font-size: 18px;">ตรวจสอบบิล <br> ย้อนหลัง</b> </button>
             </div>
             <!-- <div class="col-3">
@@ -95,8 +95,8 @@
           <br>
           <div class="row" style="margin-top: 20px;">
             <div class="col-3">
-              <button [routerLink]="['/editstore']" class="buttonSize" style="background: rgba(248, 210, 216, 0.884);" nz-button [nzSize]="size"
-                nzType="default"><b style="font-size: 18px;">แก้ไขข้อมูลร้าน </b></button>
+              <button [routerLink]="['/editstore']" (click)="onClickEditstore()"class="buttonSize" style="background: rgba(248, 210, 216, 0.884);" nz-button [nzSize]="size"
+                nzType="default"><b style="font-size: 18px;">ข้อมูลร้าน </b></button>
             </div>
             <div class="col-3">
               <button  [routerLink]="['/adduser']" class="buttonSize" style="background: rgba(247, 194, 202, 0.884);" nz-button [nzSize]="size"

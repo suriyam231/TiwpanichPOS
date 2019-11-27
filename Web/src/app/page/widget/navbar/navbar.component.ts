@@ -10,7 +10,6 @@ export class NavbarComponent implements OnInit {
   @Input() pageInput :  string;
   constructor() { }
   ngOnInit() {
-    console.log(this.pageInput)
   }
   
   

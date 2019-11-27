@@ -11,16 +11,19 @@ import { Router } from '@angular/router';
 })
 export class AddproductsComponent implements OnInit {
 
+  productid: '';
+  productname: '';
   constructor() { }
-  // productid: string;
-  // productname: string;
   // amount: number;
   // price: number;
   // cost: number;
   ngOnInit() {
   }
   pageInput = 'addproducts';
-
+  submitForm(value){
+    this.listOfData.push(value);
+    console.log('listOfData',this.listOfData);
+  }
   listOfData = [
     {
       index: 1,

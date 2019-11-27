@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
   constructor( private router: ActivatedRoute,
     public Ruoter: Router) { }
   ngOnInit() {
+<<<<<<< HEAD
     console.log(this.pageInput)
     this.UserID = this.router.snapshot.params.UserID;
     this.Position = this.router.snapshot.params.Position;
@@ -28,6 +29,8 @@ export class NavbarComponent implements OnInit {
 
   onClickEvent() {
     this.Ruoter.navigate(['/home', { UserID: this.UserID, Storeid: this.StoreID, FirstName: this.FirstName, LastName: this.LastName, Position: this.Position }]);
+=======
+>>>>>>> bb4f957186e98767e6c75e495ce1a6322b6a68a2
   }
   
   

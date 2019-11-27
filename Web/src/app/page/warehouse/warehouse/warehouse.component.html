@@ -3,9 +3,106 @@
     <app-navbar [pageInput]="pageInput"></app-navbar>
   </nz-header>
   <nz-content>
-    <p>
-      warehouse works!
-    </p>
+    <div class="inner-content">
+      <div class="row">
+        <div class="col-4">
+          <div class="row">
+            <nz-form-label class="col-2" for="listOfData.ProductName">ประเภทสินค้า</nz-form-label>
+            <nz-select class="col-10" nzShowSearch nzAllowClear nzSize="large" nzPlaceHolder="เลือกประเภทของสินค้า"
+              [(ngModel)]="selectedValue">
+              <nz-option nzLabel="ขนมขบเขี้ยว" nzValue="ขนมขบเขี้ยว"></nz-option>
+              <nz-option nzLabel="เครื่องดื่ม" nzValue="เครื่องดื่ม"></nz-option>
+              <nz-option nzLabel="เครื่องใช้" nzValue="เครื่องใช้"></nz-option>
+              <nz-option nzLabel="อาหารสำเร็จรูป" nzValue="อาหารสำเร็จรูป"></nz-option>
+            </nz-select>
+          </div>
+
+        </div>
+        <div class="col-8">
+          <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+            <input type="text" nz-input placeholder="กรองชื่อสินค้า" />
+          </nz-input-group>
+          <ng-template #suffixButton>
+            <button nz-button nzType="primary" nzSize="large" nzSearch>ค้นหาสินค้า</button>
+          </ng-template>
+        </div>
+      </div>
+      <nz-table class="table-padding" #rowSelectionTable nzShowSizeChanger [nzData]="listOfAllData">
+        <thead>
+          <tr>
+            <th nzWidth="100px">ลำดับ</th>
+            <th nzWidth="300px">รหัสสินค้า</th>
+            <th nzWidth="300px">ชื่อสินค้า</th>
+            <th nzWidth="200px" class="text-center">จำนวน</th>
+            <th nzWidth="200px" class="text-center">ราคา(บาท)</th>
+            <th nzWidth="200px" class="text-center">ราคาต้นทุน(บาท)</th>
+            <th nzWidth="300px" class="text-center"> จัดการสินค้า</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of rowSelectionTable.data">
+            <td>{{ data.index }}</td>
+            <td>{{ data.ProductID }}</td>
+            <td>{{ data.ProductName }}</td>
+            <td class="text-center">{{ data.number }}</td>
+            <td class="text-center">{{ data.Price }}</td>
+            <td class="text-center">{{ data.CostPrice }}</td>
+            <td class="text-center">
+              <button style="height: 23px; background: rgb(243, 231, 231); border: red;" (click)="onEdit(data)"
+                nz-button> <span style="color: red;">แก้ไข</span></button>
+              <!-- modal  -->
+              <nz-modal [(nzVisible)]="isVisible" nzTitle="แก้ไขสินค้า" (nzOnCancel)="handleCancel()"
+                (nzOnOk)="handleOk()">
+                <form nz-form (ngSubmit)="submitForm(f.value)" #f="ngForm">
+                  <nz-form-item>
+                  </nz-form-item>
+                  <nz-form-item>
+                    <nz-form-label for="ProductID">รหัสสินค้า </nz-form-label>
+                    <nz-form-control>
+                      <input type="text" nz-input class="form-control" id="ProductID" name="ProductID"
+                        [(ngModel)]="dataTest" />
+                    </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item>
+                    <nz-form-label for="ProductName">ชื่อสินค้า </nz-form-label>
+                    <nz-form-control>
+                      <input type="text" nz-input class="form-control" id="ProductName" placeholder="กรอกรหัสสินค้า"
+                        name="ProductName" [(ngModel)]="ProductName" />
+                    </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item>
+                    <nz-form-label for="number">จำนวน </nz-form-label>
+                    <nz-form-control>
+                      <input type="number" nz-input class="form-control" id="number" placeholder="กรอกรหัสสินค้า"
+                        name="number" [(ngModel)]="number" />
+                    </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item>
+                    <nz-form-label for="Price">ราคา </nz-form-label>
+                    <nz-form-control>
+                      <input type="number" nz-input class="form-control" id="Price" placeholder="กรอกรหัสสินค้า"
+                        name="Price" [(ngModel)]="Price" />
+                    </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item>
+                    <nz-form-label for="CostPrice">ราคาต้นทุน </nz-form-label>
+                    <nz-form-control>
+                      <input type="number" nz-input class="form-control" id="CostPrice" placeholder="กรอกรหัสสินค้า"
+                        name="CostPrice" [(ngModel)]="CostPrice" />
+                    </nz-form-control>
+                  </nz-form-item>
+                </form>
+              </nz-modal>
+              &nbsp;
+              <button style="height: 23px; background: lightcoral; border: 0px;" nz-button> <span
+                  style="color: white;">ลบ</span></button>&nbsp;
+
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+
   </nz-content>
   <nz-footer>Ant Design ©2019 Implement By Angular</nz-footer>
 </nz-layout>

@@ -56,35 +56,58 @@
       <div class="col-4">
 
         <div class="inner-content">
-            <div style="font-size: 20px; color: #903AF2;">กรอกข้อมูลสำหรับเพิ่มสินค้า</div>
-            <hr>
-            <div class="form-group">
-              <label for="pdID">รหัสสินค้า :</label>
-              <input type="text" nz-input class="form-control" id="productid" placeholder="กรอกรหัสสินค้า"
-                name="productid" ngModule />
-            </div>
-            <div class="form-group">
-              <label for="pdID">ชื่อสินค้า :</label>
-              <input type="text" nz-input class="form-control" id="productname" placeholder="กรอกชื่อสินค้า"
-                name="productname" ngModule />
-            </div>
-            <div class="form-group">
-              <label for="pdID">จำนวน :</label>
-              <input type="text" nz-input class="form-control" placeholder="กรอกจำนวน" />
-            </div>
-            <div class="form-group">
-              <label for="pdID">ราคา :</label>
-              <input type="text" nz-input class="form-control" placeholder="กรอกราคา" />
-            </div>
-            <div class="form-group">
-              <label for="pdID">ราคาต้นทุน :</label>
-              <input type="text" nz-input class="form-control" placeholder="กรอกราคาต้นทุน" />
-            </div>
+          <div style="font-size: 20px; color: #903AF2;">กรอกข้อมูลสำหรับเพิ่มสินค้า</div>
+          <hr>
+          <form nz-form (ngSubmit)="submitForm(f.value)" #f="ngForm">
+            <nz-form-item>
+              <nz-form-label for="ProductID">รหัสสินค้า </nz-form-label>
+              <nz-form-control>
+                <input type="text" nz-input class="form-control" id="ProductID" placeholder="กรอกรหัสสินค้า"
+                  name="ProductID" [(ngModel)]="ProductID" />
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-label for="listOfData.ProductName">ชื่อสินค้า </nz-form-label>
+              <nz-form-control>
+                <input type="text" nz-input class="form-control" id="listOfData.ProductName"
+                  placeholder="กรอกรหัสสินค้า" name="listOfData.ProductName" [(ngModel)]="listOfData.ProductName" />
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-label for="listOfData.number">จำนวน </nz-form-label>
+              <nz-form-control>
+                <input type="number" nz-input class="form-control" id="listOfData.number" placeholder="กรอกรหัสสินค้า"
+                  name="listOfData.number" [(ngModel)]="listOfData.number" />
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-label for="listOfData.Price">ราคา </nz-form-label>
+              <nz-form-control>
+                <input type="number" nz-input class="form-control" id="listOfData.Price" placeholder="กรอกรหัสสินค้า"
+                  name="listOfData.Price" [(ngModel)]="listOfData.Price" />
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-label for="listOfData.CostPrice">ราคาต้นทุน </nz-form-label>
+              <nz-form-control>
+                <input type="number" nz-input class="form-control" id="listOfData.CostPrice" placeholder="กรอกรหัสสินค้า"
+                  name="listOfData.CostPrice" [(ngModel)]="listOfData.CostPrice" />
+              </nz-form-control>
+            </nz-form-item>
             <br>
-            <div style="text-align: right;">
-              <button nz-button nzType="danger"> ยกเลิก</button>&nbsp;
-              <button type="submit" nz-button nzType="primary"> เพิ่มสินค้า</button>&nbsp;
+            <div class="row addButton">
+              <nz-form-item>
+                <nz-form-control>
+                  <button nz-button nzType="danger"> ยกเลิก</button>&nbsp;
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-control>
+                  <button type="submit" nz-button nzType="primary"> เพิ่มสินค้า</button>&nbsp;
+                </nz-form-control>
+              </nz-form-item>
             </div>
+          </form>
         </div>
 
       </div>

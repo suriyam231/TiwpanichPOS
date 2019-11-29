@@ -10,56 +10,54 @@ import { Router } from '@angular/router';
   styleUrls: ['./addproducts.component.scss']
 })
 export class AddproductsComponent implements OnInit {
-
+  listOfData 
   productid: '';
   productname: '';
-  constructor() { }
+  Data : any[];  
+  TypeGroup : any[];
+  constructor(private service: PageService,private notification: NzNotificationService) { }
   // amount: number;
   // price: number;
   // cost: number;
+  
   ngOnInit() {
+    this.getTypeProduct();
+    this.getProduct();
   }
+
+  getTypeProduct(){
+    this.service.getTypeProduct().subscribe((res : any[]) =>{
+      this.TypeGroup = res
+    })
+  }
+  
+   getProduct(){
+     this.service.getProduct().subscribe((res : any[]) =>{
+       this.listOfData = res;
+       this.Data =res;
+     })
+   }
+
+ 
   pageInput = 'addproducts';
   submitForm(value){
-    this.listOfData.push(value);
-    console.log('listOfData',this.listOfData);
+    
+    this.Data[0] = value
+    this.service.AddProduct(this.Data).subscribe((res :  any) => {
+      if(res === 'success'){
+        this.notification.create('success', 'เพิ่มสินเค้าใหม่สำเร็จ', '')
+        this.ngOnInit(); 
+      }
+    })
   }
-  listOfData = [
-    {
-      index: 1,
-      ProductID: '001',
-      ProductName: 'เลย์',
-      number: 1,
-      Price: 20,
-      CostPrice: 18
-    }, {
-      index: 2,
-      ProductID: '002',
-      ProductName: 'ผงซักฟอง',
-      number: 2,
-      Price: 208,
-      CostPrice: 200
-    }, {
-      index: 3,
-      ProductID: '003',
-      ProductName: 'ปรับผ้านุ่ม',
-      number: 10,
-      Price: 180,
-      CostPrice: 175
-    }, {
-      index: 4,
-      ProductID: '004',
-      ProductName: 'ไม้กวาด',
-      number: 1,
-      Price: 40,
-      CostPrice: 39
-    }, {
-      index: 5,
-      ProductID: '005',
-      ProductName: 'ไม้ถูพื้น',
-      number: 1,
-      Price: 100,
-      CostPrice: 98
+
+  Product
+  searchProduct(value){
+    this.listOfData = this.listOfData.filter(a => a.productId === value)
+    debugger
+    if(value === ""){
+      this.listOfData = this.Data
     }
-  ];
+  }
+  
 }

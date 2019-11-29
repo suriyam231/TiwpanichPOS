@@ -43,6 +43,7 @@ namespace Database.API
             ("Data Source=122.155.3.151;Initial Catalog=posservicetp_co_cc_data;User Id=posservicetp_co_cc_data;Password=p@$$w0rd;"));
             services.AddScoped<DBBranchInterface, DBBranchService>();
             services.AddScoped<PageInterface, PageService>();
+            services.AddScoped<WarehouseInterface, WarehouseService>();
 
         }
 

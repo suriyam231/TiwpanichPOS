@@ -39,4 +39,15 @@ export class PageService {
   public getStore(StoreID){
     return this.http.get(`Page/getStore/${StoreID}`)
   }
+
+  // หน้า Addproduct
+  public getTypeProduct(){
+    return this.http.get(`Warehouse/getTypeProduct`);
+  }
+  public getProduct(){
+    return this.http.get(`Warehouse/getProduct`);
+  }
+  public AddProduct(values){
+    return this.http.post(`Warehouse/addProduct`,values ,{ responseType: 'text' });
+  }
 } 

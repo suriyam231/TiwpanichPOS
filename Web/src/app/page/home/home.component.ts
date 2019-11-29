@@ -52,6 +52,13 @@ export class HomeComponent implements OnInit {
   onClickPreviousbills() {
     this.Ruoter.navigate(['/previousbills', { UserID: this.UserID, Storeid: this.StoreID, FirstName: this.FirstName, LastName: this.LastName, Position: this.Position }]);
   }
+
+  onClickAddproducts() {
+    this.Ruoter.navigate(['/addproducts', { UserID: this.UserID, Storeid: this.StoreID, FirstName: this.FirstName, LastName: this.LastName, Position: this.Position }]);
+  }
+
+
+
   //ส่งค่าไปหน้า "แก้ไข้ข้อมูลร้าน"
   onClickEditstore(){
     this.Ruoter.navigate(['/editstore', { UserID: this.UserID, Storeid: this.StoreID, FirstName: this.FirstName, LastName: this.LastName, Position: this.Position }]);

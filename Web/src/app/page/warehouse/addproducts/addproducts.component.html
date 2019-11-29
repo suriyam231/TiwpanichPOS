@@ -5,40 +5,42 @@
   <br>
   <nz-content>
     <div class="row">
-      <div class="col-8">
+      <div class="col-7">
         <div class="inner-content">
           <div class="row">
             <div class="col">
-              <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
-                <input type="text" nz-input placeholder="กรองชื่อสินค้า" />
-              </nz-input-group>
-              <ng-template #suffixButton>
-                <button nz-button nzType="primary" nzSize="large" nzSearch>ค้นหาสินค้า</button>
-              </ng-template>
+              <form nz-form (ngSubmit)="searchProduct(Product)">
+                <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+                  <input type="text" nz-input placeholder="กรองชื่อสินค้า"[(ngModel)]="Product"name="Product" />
+                </nz-input-group>
+                <ng-template #suffixButton>
+                  <button nz-button nzType="primary" nzSize="large" nzSearch>ค้นหาสินค้า</button>
+                </ng-template>
+              </form>
             </div>
           </div>
           <br>
-          <nz-table #basicTable [nzData]="listOfData" [nzScroll]="{ y: '275px' }" [nzBordered]="false"
+          <nz-table #basicTable [nzData]="listOfData" [nzScroll]="{ y: '500px' }" [nzBordered]="false"
             [nzFrontPagination]="false" [nzShowPagination]="false">
             <thead>
               <tr>
-                <th nzWidth="100px">ลำดับ</th>
-                <th nzWidth="300px">รหัสสินค้า</th>
-                <th nzWidth="300px">ชื่อสินค้า</th>
-                <th nzWidth="200px" class="text-center">จำนวน</th>
-                <th nzWidth="200px" class="text-center">ราคา(บาท)</th>
+                <th nzWidth="50px">ลำดับ</th>
+                <th nzWidth="250px">รหัสสินค้า</th>
+                <th nzWidth="250px">ชื่อสินค้า</th>
+                <th nzWidth="100px" class="text-center">จำนวน</th>
+                <th nzWidth="100px" class="text-center">ราคา(บาท)</th>
                 <th nzWidth="200px" class="text-center">ราคาต้นทุน(บาท)</th>
                 <th nzWidth="300px" class="text-center"> จัดการสินค้า</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let data of basicTable.data">
-                <td>{{ data.index }}</td>
-                <td>{{ data.ProductID }}</td>
-                <td>{{ data.ProductName }}</td>
-                <td class="text-center">{{ data.number }}</td>
-                <td class="text-center">{{ data.Price }}</td>
-                <td class="text-center">{{ data.CostPrice }}</td>
+              <tr *ngFor="let data of basicTable.data; let i = index">
+                <td>{{ i+1}}</td>
+                <td>{{ data.productId }}</td>
+                <td>{{ data.productName }}</td>
+                <td class="text-center">{{ data.productAmount }}</td>
+                <td class="text-center">{{ data.productPrice }}</td>
+                <td class="text-center">{{ data.costPrice }}</td>
                 <td class="text-center">
                   <button style="height: 23px;" nz-button nzType="primary"> เพิ่ม</button>&nbsp;
                   <button style="height: 23px; background: rgb(243, 231, 231); border: red; " nz-button> <span
@@ -53,54 +55,75 @@
         </div>
       </div>
       <!-- Input for add Product -->
-      <div class="col-4">
+      <div class="col-5">
 
         <div class="inner-content">
-          <div style="font-size: 20px; color: #903AF2;">กรอกข้อมูลสำหรับเพิ่มสินค้า</div>
+          <div style="font-size: 20px; color: #903AF2;">กรอกข้อมูลสำหรับเพิ่มสินค้าใหม่</div>
           <hr>
           <form nz-form (ngSubmit)="submitForm(f.value)" #f="ngForm">
+
             <nz-form-item>
-              <nz-form-label for="ProductID">รหัสสินค้า </nz-form-label>
-              <nz-form-control>
-                <input type="text" nz-input class="form-control" id="ProductID" placeholder="กรอกรหัสสินค้า"
-                  name="ProductID" [(ngModel)]="ProductID" />
+              <nz-form-label [nzSm]="5" [nzXs]="24" for="ProductName">ชื่อสินค้า </nz-form-label>
+              <nz-form-control [nzSm]="14" [nzXs]="24">
+                <input type="text" nz-input id="listOfData.ProductName" placeholder="กรอกชื่อสินค้า" name="ProductName"
+                  [(ngModel)]="ProductName" />
               </nz-form-control>
             </nz-form-item>
             <nz-form-item>
-              <nz-form-label for="listOfData.ProductName">ชื่อสินค้า </nz-form-label>
-              <nz-form-control>
-                <input type="text" nz-input class="form-control" id="listOfData.ProductName"
-                  placeholder="กรอกรหัสสินค้า" name="listOfData.ProductName" [(ngModel)]="listOfData.ProductName" />
+              <nz-form-label [nzSm]="5" [nzXs]="24" for="ProductName">ประเภทสินค้า </nz-form-label>
+              <nz-form-control [nzSm]="14" [nzXs]="24">
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="กรอกประเภทสินค้า" name="TypeID"
+                  [(ngModel)]="TypeProduct">
+                  <nz-option *ngFor="let data of TypeGroup" nzLabel="{{data.typeName}}" nzValue="{{ data.typeId }}">
+                  </nz-option>
+
+                </nz-select>
               </nz-form-control>
             </nz-form-item>
             <nz-form-item>
-              <nz-form-label for="listOfData.number">จำนวน </nz-form-label>
-              <nz-form-control>
-                <input type="number" nz-input class="form-control" id="listOfData.number" placeholder="กรอกรหัสสินค้า"
-                  name="listOfData.number" [(ngModel)]="listOfData.number" />
+              <nz-form-label [nzSm]="5" [nzXs]="24" for="number">จำนวน </nz-form-label>
+              <nz-form-control [nzSm]="14" [nzXs]="24">
+                <input type="number" nz-input id="listOfData.number" placeholder="กรอกจำนวน" name="ProductAmount"
+                  [(ngModel)]="ProductAmount" />
               </nz-form-control>
             </nz-form-item>
             <nz-form-item>
-              <nz-form-label for="listOfData.Price">ราคา </nz-form-label>
-              <nz-form-control>
-                <input type="number" nz-input class="form-control" id="listOfData.Price" placeholder="กรอกรหัสสินค้า"
-                  name="listOfData.Price" [(ngModel)]="listOfData.Price" />
+              <nz-form-label [nzSm]="5" [nzXs]="24" for="Price">ราคาขาย </nz-form-label>
+              <nz-form-control [nzSm]="14" [nzXs]="24">
+                <input type="number" nz-input id="listOfData.Price" placeholder="กรอกราคา" name="ProductPrice"
+                  [(ngModel)]="ProductPrice" />
               </nz-form-control>
             </nz-form-item>
             <nz-form-item>
-              <nz-form-label for="listOfData.CostPrice">ราคาต้นทุน </nz-form-label>
-              <nz-form-control>
-                <input type="number" nz-input class="form-control" id="listOfData.CostPrice" placeholder="กรอกรหัสสินค้า"
-                  name="listOfData.CostPrice" [(ngModel)]="listOfData.CostPrice" />
+              <nz-form-label [nzSm]="5" [nzXs]="24" for="CostPrice">ราคาต้นทุน </nz-form-label>
+              <nz-form-control [nzSm]="14" [nzXs]="24">
+                <input type="number" nz-input id="listOfData.CostPrice" placeholder="กรอกราคาต้นทุน" name="CostPrice"
+                  [(ngModel)]="CostPrice" />
+              </nz-form-control>
+            </nz-form-item>
+            <!-- <nz-form-item>
+                <nz-form-label [nzSm]="5" [nzXs]="24" for="CostPrice">รายละเอียดสินค้า </nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24">
+                  <input type="number" nz-input  id="listOfData.CostPrice" placeholder="กรอกรายละเอียดสินค้า"
+                    name="ProductDetail" [(ngModel)]="ProductDetail" />
+                </nz-form-control>
+              </nz-form-item> -->
+            <nz-form-item>
+              <nz-form-label [nzSm]="5" [nzXs]="24" for="CostPrice">ซื้อสินค้าจาก </nz-form-label>
+              <nz-form-control [nzSm]="14" [nzXs]="24">
+                <input type="text" nz-input id="listOfData.CostPrice" placeholder="กรอกซื้อสินค้าจาก "
+                  name="ProductReference" [(ngModel)]="ProductReference" />
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-label [nzSm]="6" [nzXs]="24" for="ProductID">สแกนบาร์โค้ดของสินค้า </nz-form-label>
+              <nz-form-control [nzSm]="14" [nzXs]="24">
+                <input type="text" nz-input id="ProductID" placeholder="กรอกรหัสสินค้า" name="ProductID"
+                  [(ngModel)]="ProductID" />
               </nz-form-control>
             </nz-form-item>
             <br>
             <div class="row addButton">
-              <nz-form-item>
-                <nz-form-control>
-                  <button nz-button nzType="danger"> ยกเลิก</button>&nbsp;
-                </nz-form-control>
-              </nz-form-item>
               <nz-form-item>
                 <nz-form-control>
                   <button type="submit" nz-button nzType="primary"> เพิ่มสินค้า</button>&nbsp;

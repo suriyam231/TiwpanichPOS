@@ -39,5 +39,16 @@ namespace Database.API.Controllers
             string result = IWarehouse.addProduct(values);
             return Ok(result);
         }
+
+        [HttpPost("updateProduct/{ProductID}/{number}")]
+        public IActionResult updateProduct(string ProductID,float number)
+        {
+            try
+            {
+                string result = IWarehouse.updateProduct(ProductID, number);
+                return Ok(result);
+            }
+            catch (Exception e) { return Ok(e.InnerException.Message); }
+        }
     }
 }

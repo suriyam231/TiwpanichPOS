@@ -122,14 +122,16 @@
       </div>
       <div class="col">
         <div class="inner-content">
-          <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
-            <input type="text" nz-input placeholder="กรองชื่อสินค้า" autofocus="autofocus"/>
-          </nz-input-group>
-          <ng-template #suffixButton>
-            <button nz-button nzType="primary" nzSize="large" nzSearch>ค้นหาสินค้า</button>
-          </ng-template>
-          <br>
-          <br><br><br><br><br>
+          <p>กรุณาตรวจสอบภาษาให้เป็นภาษา ENG ก่อนจะสแกนสินค้า</p>
+          <form nz-form (ngSubmit)="searchProduct(Product)">
+            <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+              <input type="text" nz-input placeholder="สแกนสินค้าใส่ในช่องนี้"[(ngModel)]="Product"name="Product" autofocus="autofocus"/>
+            </nz-input-group>
+            <ng-template #suffixButton>
+              <button nz-button nzType="primary" nzSize="large" nzSearch>สแกน</button>
+            </ng-template>
+          </form>
+          <br><br><br>
           <nz-table #basicTable [nzData]="listOfData" [nzScroll]="{ y: '275px' }" [nzBordered]="false"
             [nzFrontPagination]="false" [nzShowPagination]="false">
             <thead>
@@ -142,11 +144,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let data of basicTable.data">
-                <td>{{ data.index }}</td>
-                <td>{{ data.ProductName }}</td>
+              <tr *ngFor="let data of basicTable.data;let i = index">
+                <td>{{ i+1 }}</td>
+                <td>{{ data.productName }}</td>
                 <td class="text-center">{{ data.number }}</td>
-                <td class="text-center">{{ data.Price }}</td>
+                <td class="text-center">{{ data.productPrice}}</td>
                 
               </tr>
             </tbody>

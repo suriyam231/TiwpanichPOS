@@ -50,4 +50,8 @@ export class PageService {
   public AddProduct(values){
     return this.http.post(`Warehouse/addProduct`,values ,{ responseType: 'text' });
   }
+  public updateProduct(number,ProductID){
+    debugger
+    return this.http.post(`Warehouse/updateProduct/${ProductID}/${number}`,number,{ responseType: 'text' });
+  }
 } 

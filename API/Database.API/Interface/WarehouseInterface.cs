@@ -11,5 +11,6 @@ namespace Database.API.Interface
         List<TypeProduct> getTypeProduct();
         List<Product> getProducts();
         string addProduct(Product[] values);
+        string updateProduct(string ProductID, float number);
     }
 }

@@ -59,5 +59,17 @@ namespace Database.API.Service
             return "success";
 
         }
+
+        public string updateProduct(string ProductID, float number)
+        {
+            Product PD = new Product();
+
+            PD = Context.Product.Where(x => x.ProductId == ProductID).FirstOrDefault();
+
+            PD.ProductAmount = number;
+            Context.Product.Update(PD);
+            Context.SaveChanges();
+            return "success";
+        }
     }
 }

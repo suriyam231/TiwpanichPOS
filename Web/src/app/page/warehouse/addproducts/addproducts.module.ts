@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   declarations: [],
   imports: [
     CommonModule,
-    FormsModule,
+
     BrowserModule,
     HttpClientModule,
     HttpClientJsonpModule,

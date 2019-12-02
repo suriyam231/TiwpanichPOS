@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PageService } from '../../page.service';
 import { NzNotificationService, NzModalService } from 'ng-zorro-antd';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-addproducts',
@@ -10,56 +11,122 @@ import { Router } from '@angular/router';
   styleUrls: ['./addproducts.component.scss']
 })
 export class AddproductsComponent implements OnInit {
+  UserID;
+  Position;
 
+  listOfData
   productid: '';
   productname: '';
-  constructor() { }
-  // amount: number;
-  // price: number;
-  // cost: number;
+  Data: any[];
+  TypeGroup: any[];
+
+  ProductName;
+  TypeProduct;
+  ProductAmount;
+  ProductPrice;
+  CostPrice;
+  ProductReference;
+  ProductID;
+
+  validateForm: FormGroup;
+  isVisible = false;
+  constructor(private service: PageService, private notification: NzNotificationService,
+    private router: ActivatedRoute,
+    private fb: FormBuilder) { }
+
+
   ngOnInit() {
+    this.UserID = this.router.snapshot.params.UserID;
+    this.Position = this.router.snapshot.params.Position;
+
+    this.getTypeProduct();
+    this.getProduct();
+
+    this.validateForm = this.fb.group({
+      ProductName: [null, [Validators.required]],
+      TypeProduct: [null, [Validators.required]],
+      ProductAmount: [null, [Validators.required]],
+      ProductPrice: [null, [Validators.required]],
+      CostPrice: [null, [Validators.required]],
+      ProductReference: [null, [Validators.required]],
+      ProductID: [null, [Validators.required]],
+    });
+
   }
+
+  getTypeProduct() {
+    this.service.getTypeProduct().subscribe((res: any[]) => {
+      this.TypeGroup = res
+    })
+  }
+
+  getProduct() {
+    this.service.getProduct().subscribe((res: any[]) => {
+      this.listOfData = res;
+      this.Data = res;
+    })
+  }
+
+
   pageInput = 'addproducts';
-  submitForm(value){
-    this.listOfData.push(value);
-    console.log('listOfData',this.listOfData);
-  }
-  listOfData = [
-    {
-      index: 1,
-      ProductID: '001',
-      ProductName: 'เลย์',
-      number: 1,
-      Price: 20,
-      CostPrice: 18
-    }, {
-      index: 2,
-      ProductID: '002',
-      ProductName: 'ผงซักฟอง',
-      number: 2,
-      Price: 208,
-      CostPrice: 200
-    }, {
-      index: 3,
-      ProductID: '003',
-      ProductName: 'ปรับผ้านุ่ม',
-      number: 10,
-      Price: 180,
-      CostPrice: 175
-    }, {
-      index: 4,
-      ProductID: '004',
-      ProductName: 'ไม้กวาด',
-      number: 1,
-      Price: 40,
-      CostPrice: 39
-    }, {
-      index: 5,
-      ProductID: '005',
-      ProductName: 'ไม้ถูพื้น',
-      number: 1,
-      Price: 100,
-      CostPrice: 98
+  submitForm(value) {
+    for (const i in this.validateForm.controls) {
+      this.validateForm.controls[i].markAsDirty();
+      this.validateForm.controls[i].updateValueAndValidity();
     }
-  ];
+    this.Data[0] = value
+    debugger
+    if (this.Data[0].ProductID != undefined && this.Data[0].CostPrice != undefined &&this.Data[0].ProductPrice != undefined &&this.Data[0].ProductAmount != undefined &&
+      this.Data[0].TypeProduct != undefined &&this.Data[0].ProductName != undefined&&this.Data[0].ProductReference != undefined ) {
+      this.service.AddProduct(this.Data).subscribe((res: any) => {
+        if (res === 'success') {
+          this.notification.create('success', 'เพิ่มสินเค้าใหม่สำเร็จ', '')
+          this.ngOnInit();
+          this.ProductName = '';
+          this.TypeProduct = '';
+          this.ProductAmount = '';
+          this.ProductPrice = '';
+          this.ProductReference = '';
+          this.ProductID = '';
+          this.CostPrice = '';
+        }
+      })
+    }
+  }
+
+  Product
+  searchProduct(value) {
+    this.listOfData = this.Data.filter(a => a.productId === value)
+    debugger
+    if (value === undefined ||value === "" ) {
+      this.listOfData = this.Data
+    }
+  }
+
+  Title
+  number
+  Id
+  // Modal
+  showModal(data1,data2,dataId): void {
+    this.isVisible = true;
+    this.Title = data1;
+    this.number = data2;
+    this.Id = dataId;
+  }
+
+  handleOk(number): void {
+    this.service.updateProduct(number,this.Id).subscribe((res :any) =>{
+      this.isVisible = false;
+      if (res === 'success') {
+        this.notification.create('success', 'แก้ไขจำนวนสินค้าสำเร็จ', '')
+        this.ngOnInit();
+      }
+    })
+  }
+
+  handleCancel(): void {
+    console.log('Button cancel clicked!');
+    this.isVisible = false;
+  }
+
 }

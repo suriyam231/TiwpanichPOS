@@ -18,8 +18,8 @@ export class HomeComponent implements OnInit {
   LastName: string;
   Position: string;
   StoreID : any;
-
-
+  ProductData;
+  listOfData;
   constructor(private modalService: NzModalService,
     private router: ActivatedRoute,
     private service: PageService,
@@ -35,6 +35,8 @@ export class HomeComponent implements OnInit {
     this.FirstName = this.router.snapshot.params.FirstName;
     this.LastName = this.router.snapshot.params.LastName;
     this.getStore();
+    this.getProduct();
+
     for (let i = 0; i < this.listOfData.length; i++) {
       this.Total = this.Total + this.listOfData[i].Price
     }
@@ -45,6 +47,17 @@ export class HomeComponent implements OnInit {
       this.StoreName = res[0].storeName
     })
   }
+  getProduct(){
+    this.service.getProduct().subscribe((res : any[])=>{
+      this.ProductData = res;
+      
+    })
+  }
+
+  searchProduct(values){
+  this.listOfData = this.ProductData.filter(a => a.productId === values)
+  debugger
+  }
 
 
 
@@ -52,39 +65,19 @@ export class HomeComponent implements OnInit {
   onClickPreviousbills() {
     this.Ruoter.navigate(['/previousbills', { UserID: this.UserID, Storeid: this.StoreID, FirstName: this.FirstName, LastName: this.LastName, Position: this.Position }]);
   }
+
+  onClickAddproducts() {
+    this.Ruoter.navigate(['/addproducts', { UserID: this.UserID, Storeid: this.StoreID, FirstName: this.FirstName, LastName: this.LastName, Position: this.Position }]);
+  }
+
+
+
   //ส่งค่าไปหน้า "แก้ไข้ข้อมูลร้าน"
   onClickEditstore(){
     this.Ruoter.navigate(['/editstore', { UserID: this.UserID, Storeid: this.StoreID, FirstName: this.FirstName, LastName: this.LastName, Position: this.Position }]);
   }
 
-  listOfData = [
-    {
-      index: 1,
-      ProductName: 'เลย์',
-      number: 1,
-      Price: 20
-    }, {
-      index: 2,
-      ProductName: 'ผงซักฟอง',
-      number: 2,
-      Price: 208
-    }, {
-      index: 3,
-      ProductName: 'ปรับผ้านุ่ม',
-      number: 10,
-      Price: 180
-    }, {
-      index: 4,
-      ProductName: 'ไม้กวาด',
-      number: 1,
-      Price: 40
-    }, {
-      index: 5,
-      ProductName: 'ไม้ถูพื้น',
-      number: 1,
-      Price: 100
-    }
-  ];
+
 
   Key
   @ViewChild('Checkbill', { static: false }) checkbill: ElementRef;
@@ -94,7 +87,7 @@ export class HomeComponent implements OnInit {
 
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
-    if (event.key === 'Enter') {
+    if (event.key === '') {
 
       let el: HTMLElement = document.getElementById('Checkbill') as HTMLElement;
       el.click();

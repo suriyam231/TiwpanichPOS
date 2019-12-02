@@ -23,7 +23,6 @@ export class NavbarComponent implements OnInit {
     this.StoreID = this.router.snapshot.params.Storeid;
     this.FirstName = this.router.snapshot.params.FirstName;
     this.LastName = this.router.snapshot.params.LastName;
-    debugger
   }
 
   onClickEvent() {

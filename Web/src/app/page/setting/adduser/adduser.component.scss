@@ -49,3 +49,30 @@
   .fontSize{
     font-size: 30px;
   }
+  .steps-content {
+    margin-top: 16px;
+    border: 2px solid #F0F2F5;
+    border-radius: 6px;
+    padding-top: 100px;
+    height: 650px;
+  }
+
+  .steps-action {
+    margin-top: 24px;
+  }
+
+  button {
+    margin-right: 8px;
+  }
+  .center {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+  }
+  nz-date-picker,
+  nz-month-picker,
+  nz-year-picker,
+  nz-range-picker,
+  nz-week-picker {
+    margin: 0 8px 12px 0;
+  }

@@ -3,9 +3,75 @@
     <app-navbar [pageInput]="pageInput"></app-navbar>
   </nz-header>
   <nz-content>
-    <p>
-      adduser works!
-    </p>
+    <div class="inner-content">
+      <nz-steps [nzCurrent]="current">
+        <nz-step nzTitle="ข้อมูลส่วนตัว"></nz-step>
+        <nz-step nzTitle="ข้อมูลร้าน"></nz-step>
+        <nz-step nzTitle="ข้อมูลที่อยู่"></nz-step>
+      </nz-steps>
+
+      <div class="steps-content" [ngSwitch]="index">
+        <div class="center" *ngSwitchCase="'First-content'">
+          <form nz-form (ngSubmit)="submitForm(f.value)" #f="ngForm">
+            <div class="row">
+              <nz-form-item class="col-6">
+                <div class="row">
+                  <nz-form-label class="col-4" for="UserName">Username </nz-form-label>
+                  <nz-form-control class="col-8">
+                    <input type="text" nz-input class="form-control" id="UserName" size="90" placeholder="Username"
+                      name="UserName" [(ngModel)]="UserName" />
+                  </nz-form-control>
+                </div>
+              </nz-form-item>
+              <nz-form-item class="col-6">
+                <div class="row">
+                  <nz-form-label class="col-4" for="Password">Password </nz-form-label>
+                  <nz-form-control class="col-8">
+                    <input type="text" nz-input class="form-control" id="Password" size="90" placeholder="Password"
+                      name="Password" [(ngModel)]="Password" />
+                  </nz-form-control>
+                </div>
+              </nz-form-item>
+            </div>
+            <div class="row">
+              <nz-form-item class="col-6">
+                <div class="row">
+                  <nz-form-label class="col-4" for="Firstname">ชื่อ </nz-form-label>
+                  <nz-form-control class="col-8">
+                    <input type="text" nz-input class="form-control" id="Firstname" size="90" placeholder="Firstname"
+                      name="Firstname" [(ngModel)]="Firstname" />
+                  </nz-form-control>
+                </div>
+              </nz-form-item>
+              <nz-form-item class="col-6">
+                <div class="row">
+                  <nz-form-label class="col-4" for="Lastname">นามสกุล </nz-form-label>
+                  <nz-form-control class="col-8">
+                    <input type="text" nz-input class="form-control" id="Lastname" size="90" placeholder="Lastname"
+                      name="Lastname" [(ngModel)]="Lastname" />
+                  </nz-form-control>
+                </div>
+              </nz-form-item>
+            </div>
+          </form>
+        </div>
+        <div style="font-size: 35px ; margin: 0px 0px 0px 25px;" *ngSwitchCase="'Second-content'">2</div>
+        <div style="font-size: 35px ; margin: 0px 0px 0px 25px;" *ngSwitchCase="'Third-content'">3</div>
+      </div>
+      <br>
+      <div class="text-center">
+        <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">
+          <span>Previous</span>
+        </button>
+
+        <button nz-button nzType="default" (click)="next()" *ngIf="current < 2">
+          <span>Next</span>
+        </button>
+        <button class="done" nz-button nzType="primary" (click)="done()" *ngIf="current === 2">
+          <span>Done</span>
+        </button>
+      </div>
+    </div>
   </nz-content>
   <nz-footer>Ant Design ©2019 Implement By Angular</nz-footer>
 </nz-layout>

@@ -27,7 +27,7 @@
           </ng-template>
         </div>
       </div>
-      <nz-table class="table-padding" #rowSelectionTable nzShowSizeChanger [nzData]="listOfAllData">
+      <nz-table class="table-padding" #rowSelectionTable [nzData]="listOfAllData" [nzPageSize]=[8]>
         <thead>
           <tr>
             <th nzWidth="100px">ลำดับ</th>

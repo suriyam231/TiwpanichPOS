@@ -9,17 +9,17 @@
         <div class="inner-content">
           <div class="row">
             <div class="col-6">
-                <p>เลือกประเภทสินค้า</p>
-              <form nz-form  >
-                  <nz-select (ngModelChange)="ChangType($event)" nzSize="large" nzShowSearch nzAllowClear nzPlaceHolder="กรอกประเภทสินค้า" name="selectedType"
-                    [(ngModel)]="selectedType">
-                    <nz-option *ngFor="let data of TypeGroup" nzLabel="{{data.typeName}}" nzValue="{{ data.typeName }}">
-                    </nz-option>
-                  </nz-select>
-            </form> 
+              <p>เลือกประเภทสินค้า</p>
+              <form nz-form>
+                <nz-select (ngModelChange)="ChangType($event)" nzSize="large" nzShowSearch nzAllowClear
+                  nzPlaceHolder="กรอกประเภทสินค้า" name="selectedType" [(ngModel)]="selectedType">
+                  <nz-option *ngFor="let data of TypeGroup" nzLabel="{{data.typeName}}" nzValue="{{ data.typeName }}">
+                  </nz-option>
+                </nz-select>
+              </form>
             </div>
             <div class="col-6">
-              <p>ก่อนสแกนบาร์โค้ดกรุณาเปลี่ยนภาษาเป็น English</p>
+              <p>ก่อนสแกนบาร์โค้ดกรุณาเปลี่ยนภาษาเป็นภาษาอังกฤษ</p>
               <form nz-form (ngSubmit)="searchProduct(Product)">
                 <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
                   <input type="text" nz-input placeholder="สแกนบาร์โค้ด" [(ngModel)]="Product" name="Product" />
@@ -30,7 +30,7 @@
               </form>
             </div>
           </div>
-          <nz-table #borderedTable nzTitle="สินค้า" [nzData]="listOfData"  >
+          <nz-table #borderedTable nzTitle="สินค้า" [nzData]="listOfData" [nzPageSize]=[8]>
             <thead>
               <tr>
                 <th>ลำดับ</th>
@@ -53,9 +53,10 @@
                 <td class="text-center">{{ data.productPrice }}</td>
                 <td class="text-center">{{ data.costPrice }}</td>
                 <td class="text-center">
-                  <button style="height: 23px;" nz-button nzType="primary"
-                    (click)="showModal(data.productName,data.productAmount,data.productId)">เพิ่ม / ลด</button>&nbsp;
-
+                  <button style="height: 23px; background: #903AF2; color: white;" nz-button nzType="default"
+                    (click)="showModal(data.productName,data.productAmount,data.productId)">เพิ่ม</button>&nbsp;
+                  <button style="height: 23px; background: lightcoral; color: white;" nz-button nzType="default"
+                    (click)="showModal(data.productName,data.productAmount,data.productId)">ลด</button>&nbsp;
                 </td>
               </tr>
             </tbody>
@@ -127,7 +128,7 @@
               <nz-form-label [nzSm]="8" [nzXs]="24" for="ProductID">สแกนบาร์โค้ดของสินค้า <span
                   style="color: red;">*</span></nz-form-label>
               <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="กรุณาสแกนบาร์โค้ดของสินค้า">
-                <input type="text" nz-input id="ProductID" placeholder="ก่อนสแกนบาร์โค้ดกรุณาเปลี่ยนภาษาเป็น ENG"
+                <input type="text" nz-input id="ProductID" placeholder="ก่อนสแกนกรุณาเปลี่ยนภาษาเป็นภาษาอังกฤษ"
                   name="ProductID" formControlName="ProductID" [(ngModel)]="ProductID" />
               </nz-form-control>
             </nz-form-item>

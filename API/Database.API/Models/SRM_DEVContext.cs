@@ -79,15 +79,9 @@ namespace Database.API.Models
                     .HasMaxLength(30)
                     .IsUnicode(false);
 
-                entity.Property(e => e.TypeId)
-                    .HasColumnName("TypeID")
-                    .HasMaxLength(5)
+                entity.Property(e => e.TypeName)
+                    .HasMaxLength(30)
                     .IsUnicode(false);
-
-                entity.HasOne(d => d.Type)
-                    .WithMany(p => p.Product)
-                    .HasForeignKey(d => d.TypeId)
-                    .HasConstraintName("FK_TypeID");
             });
 
             modelBuilder.Entity<Profile>(entity =>

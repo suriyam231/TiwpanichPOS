@@ -38,7 +38,7 @@ namespace Database.API.Service
                                          ProductDetail = data.ProductDetail,
                                          CostPrice = data.CostPrice,
                                          ProductReference = data.ProductReference,
-                                         TypeId = data.TypeId
+                                         TypeName = data.TypeName
                                      }).ToList();
             return product;
         }
@@ -53,7 +53,7 @@ namespace Database.API.Service
             ProValues.ProductDetail = values[0].ProductDetail;
             ProValues.CostPrice = values[0].CostPrice;
             ProValues.ProductReference = values[0].ProductReference;
-            ProValues.TypeId = values[0].TypeId;
+            ProValues.TypeName = values[0].TypeName;
             Context.Product.Add(ProValues);
             Context.SaveChanges();
             return "success";

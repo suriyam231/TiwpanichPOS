@@ -6,14 +6,7 @@ namespace Database.API.Models
 {
     public partial class TypeProduct
     {
-        public TypeProduct()
-        {
-            Product = new HashSet<Product>();
-        }
-
         public string TypeId { get; set; }
         public string TypeName { get; set; }
-
-        public virtual ICollection<Product> Product { get; set; }
     }
 }

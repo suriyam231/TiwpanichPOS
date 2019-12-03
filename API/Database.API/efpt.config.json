@@ -49,5 +49,6 @@
    "UseFluentApiOnly": true,
    "UseHandleBars": false,
    "UseInflector": false,
-   "UseLegacyPluralizer": false
+   "UseLegacyPluralizer": false,
+   "UseSpatial": false
 }

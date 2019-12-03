@@ -19,9 +19,9 @@ export class AddproductsComponent implements OnInit {
   productname: '';
   Data: any[];
   TypeGroup: any[];
-
+  selectedType
   ProductName;
-  TypeProduct;
+  TypeName;
   ProductAmount;
   ProductPrice;
   CostPrice;
@@ -44,7 +44,7 @@ export class AddproductsComponent implements OnInit {
 
     this.validateForm = this.fb.group({
       ProductName: [null, [Validators.required]],
-      TypeProduct: [null, [Validators.required]],
+      TypeName: [null, [Validators.required]],
       ProductAmount: [null, [Validators.required]],
       ProductPrice: [null, [Validators.required]],
       CostPrice: [null, [Validators.required]],
@@ -70,20 +70,20 @@ export class AddproductsComponent implements OnInit {
 
   pageInput = 'addproducts';
   submitForm(value) {
+    
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
     this.Data[0] = value
-    debugger
     if (this.Data[0].ProductID != undefined && this.Data[0].CostPrice != undefined &&this.Data[0].ProductPrice != undefined &&this.Data[0].ProductAmount != undefined &&
-      this.Data[0].TypeProduct != undefined &&this.Data[0].ProductName != undefined&&this.Data[0].ProductReference != undefined ) {
+      this.Data[0].TypeName != undefined &&this.Data[0].ProductName != undefined&&this.Data[0].ProductReference != undefined ) {
       this.service.AddProduct(this.Data).subscribe((res: any) => {
         if (res === 'success') {
           this.notification.create('success', 'เพิ่มสินเค้าใหม่สำเร็จ', '')
           this.ngOnInit();
           this.ProductName = '';
-          this.TypeProduct = '';
+          this.TypeName = '';
           this.ProductAmount = '';
           this.ProductPrice = '';
           this.ProductReference = '';
@@ -97,8 +97,13 @@ export class AddproductsComponent implements OnInit {
   Product
   searchProduct(value) {
     this.listOfData = this.Data.filter(a => a.productId === value)
-    debugger
     if (value === undefined ||value === "" ) {
+      this.listOfData = this.Data
+    }
+  }
+  ChangType(value){
+    this.listOfData = this.Data.filter(a => a.typeName === value)
+    if (value === undefined ||value === null ) {
       this.listOfData = this.Data
     }
   }

@@ -33,7 +33,7 @@
 
   .inner-content {
     background: #fff;
-    padding: 24px;
+    padding: 25px;
     min-height: 700px;
   }
 
@@ -50,29 +50,31 @@
     font-size: 30px;
   }
   .steps-content {
-    margin-top: 16px;
+    margin-top: 26px;
     border: 2px solid #F0F2F5;
     border-radius: 6px;
-    padding-top: 100px;
-    height: 650px;
+    padding-top: 80px;
+    height: 600px;
   }
 
-  .steps-action {
-    margin-top: 24px;
-  }
 
   button {
     margin-right: 8px;
   }
   .center {
     margin: auto;
-    width: 60%;
+    width: 80%;
     padding: 10px;
   }
-  nz-date-picker,
-  nz-month-picker,
-  nz-year-picker,
-  nz-range-picker,
-  nz-week-picker {
-    margin: 0 8px 12px 0;
+  nz-date-picker ::ng-deep .ant-calendar-picker{
+    // margin: 0 8px 12px 0;
+    width: 100%;
   }
+  .border-round {
+    border: 2px solid #F0F2F5;
+    border-radius: 8px;
+  }
+  .head-content {
+    margin: 30px 0px 30px 0px;
+  }
+  

@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NzI18nService, zh_CN, en_US } from 'ng-zorro-antd';
+interface Status{
+  Single : string,
+  Married : string,
+  Widowed : string,
+  Divorced : string,
+
+  }
 @Component({
   selector: 'app-adduser',
   templateUrl: './adduser.component.html',
@@ -7,6 +14,7 @@ import { NzI18nService, zh_CN, en_US } from 'ng-zorro-antd';
 })
 export class AdduserComponent implements OnInit {
 
+  
   constructor(private i18n: NzI18nService) { }
 
   ngOnInit() {
@@ -16,17 +24,17 @@ export class AdduserComponent implements OnInit {
 
   index = 'First-content';
 
-  pre(): void {
+  onPrev(): void {
     this.current -= 1;
     this.changeContent();
   }
 
-  next(): void {
+  onNext(): void {
     this.current += 1;
     this.changeContent();
   }
 
-  done(): void {
+  onDone(): void {
     console.log('done');
   }
 
@@ -61,4 +69,8 @@ export class AdduserComponent implements OnInit {
     this.i18n.setLocale(this.isEnglish ? zh_CN : en_US);
     this.isEnglish = !this.isEnglish;
   }
+
+  Fistname : string;
+  Lastname : string;
+  Gender : string;
 }

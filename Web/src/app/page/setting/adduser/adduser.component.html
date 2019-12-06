@@ -5,70 +5,234 @@
   <nz-content>
     <div class="inner-content">
       <nz-steps [nzCurrent]="current">
+        <nz-step nzTitle="ข้อมูลผู้ใช้งาน"></nz-step>
         <nz-step nzTitle="ข้อมูลส่วนตัว"></nz-step>
         <nz-step nzTitle="ข้อมูลร้าน"></nz-step>
-        <nz-step nzTitle="ข้อมูลที่อยู่"></nz-step>
       </nz-steps>
-
-      <div class="steps-content" [ngSwitch]="index">
-        <div class="center" *ngSwitchCase="'First-content'">
+      <!-- first-step -->
+      <div class="steps-content row" [ngSwitch]="index">
+        <div class="col-1"></div>
+        <div class="col-10" *ngSwitchCase="'First-content'">
           <form nz-form (ngSubmit)="submitForm(f.value)" #f="ngForm">
-            <div class="row">
-              <nz-form-item class="col-6">
+            <div class="center border-round">
+              <h3 class="text-center head-content">ข้อมูลผู้ใช้งาน</h3>
+              <hr style="margin-bottom: 40px;">
+              <nz-form-item>
                 <div class="row">
-                  <nz-form-label class="col-4" for="UserName">Username </nz-form-label>
-                  <nz-form-control class="col-8">
-                    <input type="text" nz-input class="form-control" id="UserName" size="90" placeholder="Username"
+                  <nz-form-label class="col-5" for="UserName">รหัสผู้ใช้งาน </nz-form-label>
+                  <nz-form-control class="col-4">
+                    <input type="text" nz-input class="form-control" id="UserName" placeholder="กรุณากรอกรหัสผู้ใช้งาน"
                       name="UserName" [(ngModel)]="UserName" />
                   </nz-form-control>
                 </div>
               </nz-form-item>
-              <nz-form-item class="col-6">
+              <nz-form-item>
                 <div class="row">
-                  <nz-form-label class="col-4" for="Password">Password </nz-form-label>
-                  <nz-form-control class="col-8">
-                    <input type="text" nz-input class="form-control" id="Password" size="90" placeholder="Password"
+                  <nz-form-label class="col-5" for="Password">รหัสผ่าน </nz-form-label>
+                  <nz-form-control class="col-4">
+                    <input type="text" nz-input class="form-control" id="Password" placeholder="กรุณากรอกรหัสผ่าน"
                       name="Password" [(ngModel)]="Password" />
                   </nz-form-control>
                 </div>
               </nz-form-item>
-            </div>
-            <div class="row">
-              <nz-form-item class="col-6">
+              <nz-form-item>
                 <div class="row">
-                  <nz-form-label class="col-4" for="Firstname">ชื่อ </nz-form-label>
-                  <nz-form-control class="col-8">
-                    <input type="text" nz-input class="form-control" id="Firstname" size="90" placeholder="Firstname"
-                      name="Firstname" [(ngModel)]="Firstname" />
-                  </nz-form-control>
-                </div>
-              </nz-form-item>
-              <nz-form-item class="col-6">
-                <div class="row">
-                  <nz-form-label class="col-4" for="Lastname">นามสกุล </nz-form-label>
-                  <nz-form-control class="col-8">
-                    <input type="text" nz-input class="form-control" id="Lastname" size="90" placeholder="Lastname"
-                      name="Lastname" [(ngModel)]="Lastname" />
+                  <nz-form-label class="col-5" for="Repassword">รหัสผ่านอีกครั้ง </nz-form-label>
+                  <nz-form-control class="col-4">
+                    <input type="text" nz-input class="form-control" id="Repassword" placeholder="กรุณากรอกรหัสผ่านอีกครั้ง"
+                      name="Repassword" [(ngModel)]="Repassword" />
                   </nz-form-control>
                 </div>
               </nz-form-item>
             </div>
           </form>
         </div>
-        <div style="font-size: 35px ; margin: 0px 0px 0px 25px;" *ngSwitchCase="'Second-content'">2</div>
-        <div style="font-size: 35px ; margin: 0px 0px 0px 25px;" *ngSwitchCase="'Third-content'">3</div>
+        <div class="col-10" *ngSwitchCase="'Second-content'">
+          <form nz-form (ngSubmit)="submitForm(f.value)" #f="ngForm">
+            <div class="center border-round">
+              <h3 class="text-center head-content">ข้อมูลส่วนตัว</h3>
+              <hr style="margin-bottom: 40px;">
+              <div class="row">
+                <nz-form-item class="col-6">
+                  <div class="row">
+                    <nz-form-label class="col-4" for="Fistname">ชื่อ </nz-form-label>
+                    <nz-form-control class="col-8">
+                      <input type="text" nz-input class="form-control" id="Fistname" placeholder="กรุณากรอกชื่อ"
+                        name="Fistname" [(ngModel)]="Fistname" />
+                    </nz-form-control>
+                  </div>
+                </nz-form-item>
+                <nz-form-item class="col-6">
+                  <div class="row">
+                    <nz-form-label class="col-2" for="Lastname">นามสกุล </nz-form-label>
+                    <nz-form-control class="col-8">
+                      <input type="text" nz-input class="form-control" id="Lastname" placeholder="กรุณากรอกนามสกุล"
+                        name="Lastname" [(ngModel)]="Lastname" />
+                    </nz-form-control>
+                  </div>
+                </nz-form-item>
+              </div>
+              <div class="row">
+                <nz-form-item class="col-6">
+                  <div class="row">
+                    <nz-form-label class="col-4" for="Gender">เพศ </nz-form-label>
+                    <nz-form-control class="col-8">
+                      <nz-radio-group>
+                        <label nz-radio nzValue="male">ชาย</label>
+                        <label nz-radio nzValue="female">หญิง</label>
+                      </nz-radio-group>
+                    </nz-form-control>
+                  </div>
+                </nz-form-item>
+                <nz-form-item class="col-6">
+                  <div class="row">
+                    <nz-form-label class="col-2">สถานะ </nz-form-label>
+                    <nz-form-control class="col-8">
+                      <nz-select nzAllowClear nzSize="large" nzPlaceHolder="กรุณาเลือกสถานะ">
+                        <nz-option nzValue="Single" nzLabel="โสด"></nz-option>
+                        <nz-option nzValue="Married" nzLabel="สมรส"></nz-option>
+                        <nz-option nzValue="Widowed" nzLabel="หม้าย"></nz-option>
+                        <nz-option nzValue="Divorced" nzLabel="หย่าร้าง"></nz-option>
+                      </nz-select>
+                    </nz-form-control>
+                  </div>
+                </nz-form-item>
+              </div>
+              <div class="row">
+                <nz-form-item class="col-6">
+                  <div class="row">
+                    <nz-form-label class="col-4" for="Birthdate">วัน/เดือน/ปี เกิด </nz-form-label>
+                    <nz-form-control class="col-8">
+                      <div>
+                        <nz-date-picker style='width: 100%;' nzSize="large" nzFormat="yyyy-MM-dd"
+                          nzPlaceHolder="กรุณาเลือก วัน/ เดือน/ ปี เกิด" (ngModelChange)="onChange($event)">
+                        </nz-date-picker>
+                      </div>
+                    </nz-form-control>
+                  </div>
+                </nz-form-item>
+                <nz-form-item class="col-6">
+                  <div class="row">
+                    <nz-form-label class="col-2">อายุ </nz-form-label>
+                    <nz-form-control class="col-8">
+                      <input type="number" nz-input class="form-control" id="Age" placeholder="กรุณากรอกอายุ" name="Age" />
+                    </nz-form-control>
+                  </div>
+                </nz-form-item>
+              </div>
+              <div class="row">
+                <nz-form-item class="col-6">
+                  <div class="row">
+                    <nz-form-label class="col-4">สถานะทางร้าน </nz-form-label>
+                    <nz-form-control class="col-8">
+                      <nz-select nzAllowClear nzSize="large" nzPlaceHolder="กรุณาเลือกสถานะ">
+                        <nz-option nzValue="Single" nzLabel="เจ้าของร้าน"></nz-option>
+                        <nz-option nzValue="Married" nzLabel="ผู้จัดการ"></nz-option>
+                        <nz-option nzValue="Widowed" nzLabel="ลูกจ้าง"></nz-option>
+                      </nz-select>
+                    </nz-form-control>
+                  </div>
+                </nz-form-item>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-10" *ngSwitchCase="'Third-content'">
+          <form nz-form (ngSubmit)="submitForm(f.value)" #f="ngForm">
+            <div class="center border-round">
+              <h3 class="text-center head-content">ข้อมูลร้าน</h3>
+              <hr style="margin-bottom: 40px;">
+              <div class="row">
+                <nz-form-item class="col-6">
+                  <div class="row">
+                    <nz-form-label class="col-4" for="StoreID">หมายเลขทะเบียนพานิชย์ </nz-form-label>
+                    <nz-form-control class="col-8">
+                      <input type="text" nz-input class="form-control" id="StoreID"
+                        placeholder="กรุณากรอกหมายเลขทะเบียนพานิชย์" name="StoreID" />
+                    </nz-form-control>
+                  </div>
+                </nz-form-item>
+                <nz-form-item class="col-6">
+                  <div class="row">
+                    <nz-form-label class="col-2" for="StoreName">ชื่อร้าน </nz-form-label>
+                    <nz-form-control class="col-8">
+                      <input type="text" nz-input class="form-control" id="StoreName" placeholder="กรุณากรอกชื่อร้าน"
+                        name="StoreName" [(ngModel)]="StoreName" />
+                    </nz-form-control>
+                  </div>
+                </nz-form-item>
+              </div>
+              <div class="row">
+                <nz-form-item class="col-6">
+                  <div class="row">
+                    <nz-form-label class="col-4" for="Province">ที่อยู่ของร้าน <i nz-icon style="margin-top: 12px;"
+                        nzType="caret-right" nzTheme="outline"></i> จังหวัด </nz-form-label>
+                    <nz-form-control class="col-8">
+                      <nz-select nzAllowClear nzSize="large" nzPlaceHolder="กรุณาเลือกจังหวัด">
+                        <nz-option nzValue="value" nzLabel="จังหวัด"></nz-option>
+                      </nz-select>
+                    </nz-form-control>
+                  </div>
+                </nz-form-item>
+                <nz-form-item class="col-6">
+                  <div class="row">
+                    <nz-form-label class="col-2" for="Postalcode">รหัสไปรษณีย์ </nz-form-label>
+                    <nz-form-control class="col-8">
+                      <nz-select nzAllowClear nzSize="large" nzPlaceHolder="กรุณาเลือกรหัสไปรษณีย์">
+                        <nz-option nzValue="value" nzLabel="รหัสไปรษณีย์"></nz-option>
+                      </nz-select>
+                    </nz-form-control>
+                  </div>
+                </nz-form-item>
+              </div>
+              <div class="row">
+                <nz-form-item class="col-6">
+                  <div class="row">
+                    <nz-form-label class="col-4" for="District">อำเภอ / เขต </nz-form-label>
+                    <nz-form-control class="col-8">
+                      <nz-select nzAllowClear nzSize="large" nzPlaceHolder="กรุณาเลือกอำเภอ">
+                        <nz-option nzValue="value" nzLabel="อำเภอ"></nz-option>
+                      </nz-select>
+                    </nz-form-control>
+                  </div>
+                </nz-form-item>
+                <nz-form-item class="col-6">
+                  <div class="row">
+                    <nz-form-label class="col-2" for="SubDistrict">ตำบล / แขวง </nz-form-label>
+                    <nz-form-control class="col-8">
+                      <nz-select nzAllowClear nzSize="large" nzPlaceHolder="กรุณาเลือกตำบล">
+                        <nz-option nzValue="value" nzLabel="ตำบล"></nz-option>
+                      </nz-select>
+                    </nz-form-control>
+                  </div>
+                </nz-form-item>
+              </div>
+              <div class="row">
+                <nz-form-item class="col-6">
+                  <div class="row">
+                    <nz-form-label class="col-4" for="District">บ้านเลขที่ </nz-form-label>
+                    <nz-form-control class="col-8">
+                      <input type="text" nz-input class="form-control" id="StoreID"
+                        placeholder="ตัวอย่าง : xx หมู่ที่ x หมู่บ้าน xxxxx" name="StoreID" />
+                    </nz-form-control>
+                  </div>
+                </nz-form-item>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
       <br>
       <div class="text-center">
-        <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">
-          <span>Previous</span>
+        <button nz-button nzType="default" (click)="onPrev()" *ngIf="current > 0">
+          <span>ย้อนกลับ</span>
         </button>
 
-        <button nz-button nzType="default" (click)="next()" *ngIf="current < 2">
-          <span>Next</span>
+        <button nz-button nzType="default" (click)="onNext()" *ngIf="current < 2">
+          <span>ถัดไป</span>
         </button>
-        <button class="done" nz-button nzType="primary" (click)="done()" *ngIf="current === 2">
-          <span>Done</span>
+        <button class="done" nz-button nzType="primary" (click)="onDone()" *ngIf="current === 2">
+          <span>เสร็จสิ้น</span>
         </button>
       </div>
     </div>

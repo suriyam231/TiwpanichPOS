@@ -117,6 +117,11 @@ Price = 0;
     this.Ruoter.navigate(['/editstore', { UserID: this.UserID, Storeid: this.StoreID, FirstName: this.FirstName, LastName: this.LastName, Position: this.Position }]);
   }
 
+  //ส่งค่าไปหน้า "แก้ไข้ข้อมูลร้าน"
+  onClickAdduser() {
+    this.Ruoter.navigate(['/adduser', { UserID: this.UserID, Storeid: this.StoreID, FirstName: this.FirstName, LastName: this.LastName, Position: this.Position }]);
+  }
+
 
 
   Key

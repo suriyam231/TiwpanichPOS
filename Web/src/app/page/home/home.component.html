@@ -105,8 +105,10 @@
                   style="font-size: 18px;">ข้อมูลร้าน </b></button>
             </div>
             <div class="col-3">
-              <button [routerLink]="['/adduser']" class="buttonSize" style="background: rgba(247, 194, 202, 0.884);"
-                nz-button [nzSize]="size" nzType="default"><b style="font-size: 18px;">เพิ่มรหัสผู้ใช้งาน </b></button>
+
+              <button  [routerLink]="['/adduser']" (click)="onClickAdduser()" class="buttonSize" style="background: rgba(247, 194, 202, 0.884);" nz-button [nzSize]="size"
+                nzType="default"><b style="font-size: 18px;">เพิ่มรหัสผู้ใช้งาน </b></button>
+
             </div>
             <div class="col-3">
               <button [routerLink]="['/testscanner']" class="buttonSize" style="background: rgba(253, 174, 186, 0.884);"

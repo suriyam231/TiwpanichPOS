@@ -50,8 +50,17 @@ export class PageService {
   public AddProduct(values){
     return this.http.post(`Warehouse/addProduct`,values ,{ responseType: 'text' });
   }
-  public updateProduct(number,ProductID){
+  public updateProduct(ModalType,number,ProductID){
     debugger
-    return this.http.post(`Warehouse/updateProduct/${ProductID}/${number}`,number,{ responseType: 'text' });
+    return this.http.post(`Warehouse/updateProduct/${ModalType}/${ProductID}/${number}`,number,{ responseType: 'text' });
+  }
+
+  // หน้า Warehouse
+  public updateProductDe(values){
+    return this.http.post(`Warehouse/Productupdate`,values ,{ responseType: 'text' });
+  }
+
+  public deleteProduct(values){
+    return this.http.delete(`Warehouse/deleteProduct/${values}`);
   }
 } 

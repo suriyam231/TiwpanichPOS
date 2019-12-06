@@ -152,11 +152,11 @@
 
 
 <nz-modal [(nzVisible)]="isVisible" nzTitle="{{ModalType}}จำนวนสินค้า : {{Title}} " (nzOnCancel)="handleCancel()"
-  (nzOnOk)="handleOk(number)">
+  (nzOnOk)="handleOk(ModalType,number)">
   <nz-form-item class="text-center">
     <nz-form-label [nzSm]="10" [nzXs]="0">{{ModalType}}จำนวนสินค้า (ชิ้น)</nz-form-label>
     <nz-form-control [nzSm]="10" [nzXs]="10">
-      <input type="number" nz-input [(ngModel)]="number" placeholder="กรอกจำนวนที่ต้องการ{{ModalType}}"/>  
+      <input type="number" nz-input [(ngModel)]="number" placeholder="กรอกจำนวนที่ต้องการ{{ModalType}}" autofocus/>  
     </nz-form-control>
   </nz-form-item>
 </nz-modal>

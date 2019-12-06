@@ -105,9 +105,14 @@ Price = 0;
   onClickPreviousbills() {
     this.Ruoter.navigate(['/previousbills', { UserID: this.UserID, Storeid: this.StoreID, FirstName: this.FirstName, LastName: this.LastName, Position: this.Position }]);
   }
-
+  //ส่งค่าไปหน้า "เพิ่มสินค้า"
   onClickAddproducts() {
     this.Ruoter.navigate(['/addproducts', { UserID: this.UserID, Storeid: this.StoreID, FirstName: this.FirstName, LastName: this.LastName, Position: this.Position }]);
+  }
+
+  //ส่งค่าไปหน้า "คลังสินค้า"
+  onClickWarehouse(){
+    this.Ruoter.navigate(['/warehouse', { UserID: this.UserID, Storeid: this.StoreID, FirstName: this.FirstName, LastName: this.LastName, Position: this.Position }]);
   }
 
 
@@ -117,7 +122,7 @@ Price = 0;
     this.Ruoter.navigate(['/editstore', { UserID: this.UserID, Storeid: this.StoreID, FirstName: this.FirstName, LastName: this.LastName, Position: this.Position }]);
   }
 
-  //ส่งค่าไปหน้า "แก้ไข้ข้อมูลร้าน"
+  //ส่งค่าไปหน้า "เพิ่มผู้ใช้"
   onClickAdduser() {
     this.Ruoter.navigate(['/adduser', { UserID: this.UserID, Storeid: this.StoreID, FirstName: this.FirstName, LastName: this.LastName, Position: this.Position }]);
   }

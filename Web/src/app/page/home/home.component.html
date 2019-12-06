@@ -58,7 +58,7 @@
                 nz-button [nzSize]="size" nzType="default"> <b style="font-size: 18px;">แก้ไขสินค้า </b> </button>
             </div>
             <div class="col-3">
-              <button [routerLink]="['/warehouse']" class="buttonSize" style="background: rgba(33, 240, 229, 0.733);"
+              <button [routerLink]="['/warehouse']" (click)="onClickWarehouse()"class="buttonSize" style="background: rgba(33, 240, 229, 0.733);"
                 nz-button [nzSize]="size" nzType="default"><b style="font-size: 18px;">คลังสินค้า </b></button>
             </div>
           </div>

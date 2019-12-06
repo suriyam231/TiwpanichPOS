@@ -227,8 +227,7 @@
         <button nz-button nzType="default" (click)="onPrev()" *ngIf="current > 0">
           <span>ย้อนกลับ</span>
         </button>
-
-        <button nz-button nzType="default" (click)="onNext()" *ngIf="current < 2">
+        <button nz-button nzType="default" (click)="onNext()" *ngIf=" 2 > current">
           <span>ถัดไป</span>
         </button>
         <button class="done" nz-button nzType="primary" (click)="onDone()" *ngIf="current === 2">

@@ -40,12 +40,29 @@ namespace Database.API.Controllers
             return Ok(result);
         }
 
-        [HttpPost("updateProduct/{ProductID}/{number}")]
-        public IActionResult updateProduct(string ProductID,float number)
+        [HttpPost("updateProduct/{ModalType}/{ProductID}/{number}")]
+        public IActionResult updateProduct(string ModalType, string ProductID,float number)
         {
             try
             {
-                string result = IWarehouse.updateProduct(ProductID, number);
+                string result = IWarehouse.updateProduct(ModalType, ProductID, number);
+                return Ok(result);
+            }
+            catch (Exception e) { return Ok(e.InnerException.Message); }
+        }
+        [HttpPost("Productupdate")]
+        public IActionResult Productupdate(Product values)
+        {
+            string result = IWarehouse.Productupdate(values);
+            return Ok(result);
+        }
+
+        [HttpDelete("deleteProduct/{values}")]
+        public IActionResult deleteProduct(string values)
+        {
+            try
+            {
+                string result = IWarehouse.deleteProduct(values);
                 return Ok(result);
             }
             catch (Exception e) { return Ok(e.InnerException.Message); }

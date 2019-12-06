@@ -82,13 +82,13 @@ export class AddproductsComponent implements OnInit {
         if (res === 'success') {
           this.notification.create('success', 'เพิ่มสินเค้าใหม่สำเร็จ', '')
           this.ngOnInit();
-          this.ProductName = '';
-          this.TypeName = '';
-          this.ProductAmount = '';
-          this.ProductPrice = '';
-          this.ProductReference = '';
-          this.ProductID = '';
-          this.CostPrice = '';
+          this.ProductName = undefined;
+          this.TypeName = undefined;
+          this.ProductAmount = undefined;
+          this.ProductPrice = undefined;
+          this.ProductReference = undefined;
+          this.ProductID = undefined;
+          this.CostPrice = undefined;
         }
       })
     }
@@ -123,11 +123,13 @@ export class AddproductsComponent implements OnInit {
     this.Id = dataId;
   }
 
-  handleOk(number): void {
-    this.service.updateProduct(number,this.Id).subscribe((res :any) =>{
+  handleOk(ModalType,number): void {
+    
+    this.service.updateProduct(ModalType,number,this.Id).subscribe((res :any) =>{
       this.isVisible = false;
       if (res === 'success') {
-        this.notification.create('success', 'แก้ไขจำนวนสินค้าสำเร็จ', '')
+        this.notification.create('success', ModalType+'จำนวนสินค้าสำเร็จ', '')
+       this.number = undefined
         this.ngOnInit();
       }
     })

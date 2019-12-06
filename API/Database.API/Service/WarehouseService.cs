@@ -60,14 +60,43 @@ namespace Database.API.Service
 
         }
 
-        public string updateProduct(string ProductID, float number)
+        public string updateProduct(string ModalType, string ProductID, float number)
         {
             Product PD = new Product();
 
             PD = Context.Product.Where(x => x.ProductId == ProductID).FirstOrDefault();
-
-            PD.ProductAmount = number;
+            if(ModalType == "เพิ่ม")
+            {
+                PD.ProductAmount = PD.ProductAmount + number;
+            }
+            if(ModalType == "ลด")
+            {
+                PD.ProductAmount = PD.ProductAmount - number;
+            }
             Context.Product.Update(PD);
+            Context.SaveChanges();
+            return "success";
+        }
+        public string Productupdate(Product values)
+        {
+            Product PD = new Product();
+            PD = Context.Product.Where(x => x.ProductId == values.ProductId).FirstOrDefault();
+            PD.ProductName = values.ProductName;
+            PD.ProductAmount = values.ProductAmount;
+            PD.ProductPrice = values.ProductPrice;
+            PD.ProductDetail = values.ProductDetail;
+            PD.CostPrice = values.CostPrice;
+            PD.ProductReference = values.ProductReference;
+            PD.TypeName = values.TypeName;
+            Context.Product.Update(PD);
+            Context.SaveChanges();
+            return "success";
+        }
+        public string deleteProduct(string values)
+        {
+            Product PD = new Product();
+            PD = Context.Product.Where(x => x.ProductId == values).FirstOrDefault();
+            Context.Product.Remove(PD);
             Context.SaveChanges();
             return "success";
         }

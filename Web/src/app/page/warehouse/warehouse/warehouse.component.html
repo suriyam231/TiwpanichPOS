@@ -8,30 +8,39 @@
         <div class="col-4">
           <div class="row">
             <nz-form-label class="col-2" for="listOfData.ProductName">ประเภทสินค้า</nz-form-label>
-            <nz-select class="col-10" nzShowSearch nzAllowClear nzSize="large" nzPlaceHolder="เลือกประเภทของสินค้า"
-              [(ngModel)]="selectedValue">
-              <nz-option nzLabel="ขนมขบเขี้ยว" nzValue="ขนมขบเขี้ยว"></nz-option>
-              <nz-option nzLabel="เครื่องดื่ม" nzValue="เครื่องดื่ม"></nz-option>
-              <nz-option nzLabel="เครื่องใช้" nzValue="เครื่องใช้"></nz-option>
-              <nz-option nzLabel="อาหารสำเร็จรูป" nzValue="อาหารสำเร็จรูป"></nz-option>
+            <nz-select (ngModelChange)="ChangType($event)" class="col-10" nzShowSearch nzAllowClear nzSize="large"
+              nzPlaceHolder="เลือกประเภทของสินค้า" [(ngModel)]="selectedValue">
+              <nz-option *ngFor="let data of TypeGroup" nzLabel="{{data.typeName}}" nzValue="{{data.typeName}}">
+              </nz-option>
             </nz-select>
           </div>
 
         </div>
-        <div class="col-8">
+        <div class="col-4">
           <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
-            <input type="text" nz-input placeholder="กรองชื่อสินค้า" />
+            <input type="text" nz-input placeholder="กรองชื่อสินค้า" [(ngModel)]="inputValue"
+              (ngModelChange)="onChange($event)" [nzAutocomplete]="auto" />
           </nz-input-group>
           <ng-template #suffixButton>
             <button nz-button nzType="primary" nzSize="large" nzSearch>ค้นหาสินค้า</button>
           </ng-template>
+          <nz-autocomplete [nzDataSource]="autocomplete" #auto></nz-autocomplete>
+        </div>
+        <div class="col-4">
+          <form nz-form (ngSubmit)="searchProduct(Product)">
+            <nz-input-group nzSearch nzSize="large">
+              <input type="text" nz-input placeholder="สแกนบาร์โค้ด" [(ngModel)]="Product" name="Product" />
+            </nz-input-group>
+
+          </form>
         </div>
       </div>
-      <nz-table class="table-padding" #rowSelectionTable [nzData]="listOfAllData" [nzPageSize]=[8]>
+      <nz-table class="table-padding" #rowSelectionTable [nzData]="listOfAllData" [nzPageSize]=[10]>
         <thead>
           <tr>
             <th nzWidth="100px">ลำดับ</th>
             <th nzWidth="300px">รหัสสินค้า</th>
+            <th nzWidth="300px">ประเภทสินค้า</th>
             <th nzWidth="300px">ชื่อสินค้า</th>
             <th nzWidth="200px" class="text-center">จำนวน</th>
             <th nzWidth="200px" class="text-center">ราคา(บาท)</th>
@@ -40,62 +49,20 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let data of rowSelectionTable.data">
-            <td>{{ data.index }}</td>
-            <td>{{ data.ProductID }}</td>
-            <td>{{ data.ProductName }}</td>
-            <td class="text-center">{{ data.number }}</td>
-            <td class="text-center">{{ data.Price }}</td>
-            <td class="text-center">{{ data.CostPrice }}</td>
+          <tr *ngFor="let data of rowSelectionTable.data; let i = index">
+            <td>{{ i+1 }}</td>
+            <td>{{ data.productId }}</td>
+            <td>{{ data.typeName }}</td>
+            <td>{{ data.productName }}</td>
+            <td class="text-center">{{ data.productAmount }}</td>
+            <td class="text-center">{{ data.productPrice }}</td>
+            <td class="text-center">{{ data.costPrice }}</td>
             <td class="text-center">
-              <button style="height: 23px; background: rgb(243, 231, 231); border: red;" (click)="onEdit(data)"
-                nz-button> <span style="color: red;">แก้ไข</span></button>
-              <!-- modal  -->
-              <nz-modal [(nzVisible)]="isVisible" nzTitle="แก้ไขสินค้า" (nzOnCancel)="handleCancel()"
-                (nzOnOk)="handleOk()">
-                <form nz-form (ngSubmit)="submitForm(f.value)" #f="ngForm">
-                  <nz-form-item>
-                  </nz-form-item>
-                  <nz-form-item>
-                    <nz-form-label for="ProductID">รหัสสินค้า </nz-form-label>
-                    <nz-form-control>
-                      <input type="text" nz-input class="form-control" id="ProductID" name="ProductID"
-                        [(ngModel)]="dataTest" />
-                    </nz-form-control>
-                  </nz-form-item>
-                  <nz-form-item>
-                    <nz-form-label for="ProductName">ชื่อสินค้า </nz-form-label>
-                    <nz-form-control>
-                      <input type="text" nz-input class="form-control" id="ProductName" placeholder="กรอกรหัสสินค้า"
-                        name="ProductName" [(ngModel)]="ProductName" />
-                    </nz-form-control>
-                  </nz-form-item>
-                  <nz-form-item>
-                    <nz-form-label for="number">จำนวน </nz-form-label>
-                    <nz-form-control>
-                      <input type="number" nz-input class="form-control" id="number" placeholder="กรอกรหัสสินค้า"
-                        name="number" [(ngModel)]="number" />
-                    </nz-form-control>
-                  </nz-form-item>
-                  <nz-form-item>
-                    <nz-form-label for="Price">ราคา </nz-form-label>
-                    <nz-form-control>
-                      <input type="number" nz-input class="form-control" id="Price" placeholder="กรอกรหัสสินค้า"
-                        name="Price" [(ngModel)]="Price" />
-                    </nz-form-control>
-                  </nz-form-item>
-                  <nz-form-item>
-                    <nz-form-label for="CostPrice">ราคาต้นทุน </nz-form-label>
-                    <nz-form-control>
-                      <input type="number" nz-input class="form-control" id="CostPrice" placeholder="กรอกรหัสสินค้า"
-                        name="CostPrice" [(ngModel)]="CostPrice" />
-                    </nz-form-control>
-                  </nz-form-item>
-                </form>
-              </nz-modal>
+              <button style="height: 23px; background: rgb(243, 231, 231); border: red;"
+                (click)="onEdit(data.productId)" nz-button> <span style="color: red;">แก้ไข</span></button>
               &nbsp;
-              <button style="height: 23px; background: lightcoral; border: 0px;" nz-button> <span
-                  style="color: white;">ลบ</span></button>&nbsp;
+              <button (click)="deleteProduct(data.productId)" style="height: 23px; background: lightcoral; border: 0px;"
+                nz-button> <span style="color: white;">ลบ</span></button>&nbsp;
 
             </td>
           </tr>
@@ -106,3 +73,81 @@
   </nz-content>
   <nz-footer>Ant Design ©2019 Implement By Angular</nz-footer>
 </nz-layout>
+
+
+
+<!-- modal Edit  -->
+<nz-modal [(nzVisible)]="isVisible" nzTitle="แก้ไขรายละเอียดสินค้า" (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk(f.value)">
+  <form nz-form (ngSubmit)="submitForm(f.value)" #f="ngForm">
+    <nz-form-item>
+      <nz-form-label [nzSm]="5" [nzXs]="24" for="ProductID">รหัสสินค้า </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input type="text" nz-input id="ProductID" name="ProductID" [(ngModel)]="ProductID" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="5" [nzXs]="24" for="ProductName">ชื่อสินค้า
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input type="text" nz-input id="listOfData.ProductName" name="ProductName" [(ngModel)]="ProductName" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="5" [nzXs]="24" for="TypeName">ประเภทสินค้า
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <nz-select nzShowSearch nzAllowClear name="TypeName" [(ngModel)]="TypeName">
+          <nz-option *ngFor="let data of TypeGroup" nzLabel="{{data.typeName}}" nzValue="{{ data.typeName }}">
+          </nz-option>
+
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="5" [nzXs]="24" for="number">จำนวน
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input type="number" nz-input name="ProductAmount" [(ngModel)]="ProductAmount" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="5" [nzXs]="24" for="CostPrice">ราคาต้นทุน
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input type="number" nz-input id="listOfData.CostPrice" name="CostPrice" [(ngModel)]="CostPrice" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="5" [nzXs]="24" for="Price">ราคาขาย
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input type="number" nz-input id="listOfData.Price" name="ProductPrice" [(ngModel)]="ProductPrice" />
+      </nz-form-control>
+    </nz-form-item>
+
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="5" [nzXs]="24" for="CostPrice">ซื้อสินค้าจาก
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input type="text" nz-input id="listOfData.CostPrice" name="ProductReference" [(ngModel)]="ProductReference" />
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</nz-modal>
+
+<!-- modal Delete -->
+<nz-modal [(nzVisible)]="isDelete" nzTitle="ยืนยันลบสินค้า" (nzOnCancel)="handleCancel()" (nzOnOk)="OkDeleye()">
+  <div class="container">
+    <div class="row">
+      <div class="col-2">
+          <i class="fas fa-trash-alt" style="font-size: 50px; color: rgb(207, 34, 34);"></i>
+      </div>
+      <div class="col-10">
+        <h6> ลบสินค้า : {{DeleteName}} กด "ตกลง" เพื่อยืนยันการลบสินค้า</h6>
+      </div>
+    </div>
+  </div>
+  
+</nz-modal>

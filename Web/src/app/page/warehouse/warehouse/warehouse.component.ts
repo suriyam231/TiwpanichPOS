@@ -1,14 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { PageService } from '../../page.service';
+import { NzNotificationService } from 'ng-zorro-antd';
 
 
-interface ItemData {
-  index: number,
-  ProductID: string,
-  ProductName: string,
-  number: number,
-  Price: number,
-  CostPrice: number
-}
 @Component({
   selector: 'app-warehouse',
   templateUrl: './warehouse.component.html',
@@ -16,115 +10,123 @@ interface ItemData {
 })
 export class WarehouseComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: PageService, private notification: NzNotificationService, ) { }
   pageInput = 'warehouse';
-  // ngOnInit() {
-  // }
-  // listOfData = [
-  //   {
-  //     index: 1,
-  //     ProductID: '001',
-  //     ProductName: 'เลย์',
-  //     number: 1,
-  //     Price: 20,
-  //     CostPrice: 18
-  //   }, {
-  //     index: 2,
-  //     ProductID: '002',
-  //     ProductName: 'ผงซักฟอง',
-  //     number: 2,
-  //     Price: 208,
-  //     CostPrice: 200
-  //   }, {
-  //     index: 3,
-  //     ProductID: '003',
-  //     ProductName: 'ปรับผ้านุ่ม',
-  //     number: 10,
-  //     Price: 180,
-  //     CostPrice: 175
-  //   }, {
-  //     index: 4,
-  //     ProductID: '004',
-  //     ProductName: 'ไม้กวาด',
-  //     number: 1,
-  //     Price: 40,
-  //     CostPrice: 39
-  //   }, {
-  //     index: 5,
-  //     ProductID: '005',
-  //     ProductName: 'ไม้ถูพื้น',
-  //     number: 1,
-  //     Price: 100,
-  //     CostPrice: 98
-  //   }, {
-  //     index: 5,
-  //     ProductID: '005',
-  //     ProductName: 'ไม้ถูพื้น',
-  //     number: 1,
-  //     Price: 100,
-  //     CostPrice: 98
-  //   }, {
-  //     index: 5,
-  //     ProductID: '005',
-  //     ProductName: 'ไม้ถูพื้น',
-  //     number: 1,
-  //     Price: 100,
-  //     CostPrice: 98
-  //   }, {
-  //     index: 5,
-  //     ProductID: '005',
-  //     ProductName: 'ไม้ถูพื้น',
-  //     number: 1,
-  //     Price: 100,
-  //     CostPrice: 98
-  //   }, {
-  //     index: 5,
-  //     ProductID: '005',
-  //     ProductName: 'ไม้ถูพื้น',
-  //     number: 1,
-  //     Price: 100,
-  //     CostPrice: 98
-  //   },
-  // ];
-  
+
   isAllDisplayDataChecked = false;
   isIndeterminate = false;
-  listOfDisplayData: ItemData[] = [];
-  listOfAllData: ItemData[] = [];
   selectedValue = null;
-  
-  ngOnInit(): void {
-    for (let i = 0; i < 100; i++) {
-      this.listOfAllData.push({
-        index: i,
-        ProductID: `00${i}`,
-        ProductName: `Product moc.${i}`,
-        number: 50+i,
-        Price: 500+i,
-        CostPrice: 450+i
-      });
+  listOfAllData;
+  TypeGroup;
+  autocomplete = [];
+  options = [];
+  data = [];
+  ngOnInit() {
+    this.getProduct();
+    this.getTypeProduct();
+
+  }
+  getProduct() {
+    this.service.getProduct().subscribe((res: any[]) => {
+      this.listOfAllData = res;
+      this.data = res;
+      for (let i = 0; i < res.length; i++) {
+        this.options.push(res[i].productName)
+      }
+      this.autocomplete = this.options;
+    })
+  }
+  getTypeProduct() {
+    this.service.getTypeProduct().subscribe((res: any[]) => {
+      this.TypeGroup = res;
+    })
+  }
+
+  ChangType(value) {
+    this.listOfAllData = this.data.filter(a => a.typeName === value);
+    if (value === null) {
+      this.listOfAllData = this.data;
     }
-
-    console.log(this.selectedValue)
   }
+
+  onChange(value: string): void {
+
+    this.autocomplete = this.options.filter(option => option.toLowerCase().indexOf(value.toLowerCase()) !== -1);
+    this.listOfAllData = this.data.filter(a => a.productName === value);
+    if (value === "") {
+      this.listOfAllData = this.data;
+    }
+  }
+  Product;
+  searchProduct(value) {
+    this.listOfAllData = this.data.filter(a => a.productId === value);
+    if (this.Product === "") {
+      this.listOfAllData = this.data;
+    }
+  }
+
+
+  // Modal แก้ไข 
   isVisible = false;
-  dataEdit : any;
-  dataTest = "test modal";
-  onEdit(value){
-    this.isVisible = true;
-    this.dataEdit = this.listOfAllData.filter(item => item.index === value);
-    console.log('Data',this.dataEdit);
+  dataEdit: any;
 
+
+  ProductID;
+  ProductName;
+  TypeName;
+  ProductAmount;
+  ProductPrice;
+  CostPrice;
+  ProductReference;
+
+  onEdit(value) {
+    let values = this.data.filter(a => a.productId === value);
+    this.isVisible = true;
+    this.ProductID = values[0].productId;
+    this.ProductName = values[0].productName;
+    this.TypeName = values[0].typeName;
+    this.ProductAmount = values[0].productAmount;
+    this.ProductPrice = values[0].productPrice;
+    this.CostPrice = values[0].costPrice;
+    this.ProductReference = values[0].productReference;
   }
 
-  handleOk(): void {
-    console.log('Button ok clicked!');
+  handleOk(value): void {
+    this.service.updateProductDe(value).subscribe((res :any) =>{
+      if (res === 'success') {
+        this.notification.create('success', 'แกไขรายละเอียดสินค้าสำเร็จ', value.ProductName+'อัพเดทเรียบร้อยแล้ว')
+        this.ngOnInit();
+      }
+    })
     this.isVisible = false;
   }
 
   handleCancel(): void {
-    console.log('Button cancel clicked!');
     this.isVisible = false;
+    this.isDelete = false;
   }
+  
+
+  // Modal Delete
+  isDelete = false;
+  DeleteName;
+  DeleteID;
+  deleteProduct(value){
+    let values = this.data.filter(a => a.productId === value);
+    this.DeleteName = values[0].productName;
+    this.DeleteID = values[0].productId;
+    this.isDelete = true;
+  }
+  OkDeleye(){
+    this.DeleteID
+    this.service.deleteProduct(this.DeleteID).subscribe((res : any) => {
+      if (res === 'success') {
+        this.notification.create('success', 'ลบสินค้าสำเร็จ', '')
+        this.isDelete = false;
+        this.ngOnInit();
+      }
+    })
+  }
+
 }
 

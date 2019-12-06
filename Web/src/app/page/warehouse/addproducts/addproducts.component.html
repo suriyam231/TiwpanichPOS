@@ -30,7 +30,7 @@
               </form>
             </div>
           </div>
-          <nz-table #borderedTable nzTitle="สินค้า" [nzData]="listOfData" [nzPageSize]=[8]>
+          <nz-table #borderedTable nzTitle="สินค้า" [nzData]="listOfData" [nzPageSize]=[7]>
             <thead>
               <tr>
                 <th>ลำดับ</th>
@@ -54,9 +54,9 @@
                 <td class="text-center">{{ data.costPrice }}</td>
                 <td class="text-center">
                   <button style="height: 23px; background: #903AF2; color: white;" nz-button nzType="default"
-                    (click)="showModal(data.productName,data.productAmount,data.productId)">เพิ่ม</button>&nbsp;
+                    (click)="showModal('เพิ่ม',data.productName,data.productAmount,data.productId)">เพิ่ม</button>&nbsp;
                   <button style="height: 23px; background: lightcoral; color: white;" nz-button nzType="default"
-                    (click)="showModal(data.productName,data.productAmount,data.productId)">ลด</button>&nbsp;
+                    (click)="showModal('ลด',data.productName,data.productAmount,data.productId)">ลด</button>&nbsp;
                 </td>
               </tr>
             </tbody>
@@ -151,12 +151,12 @@
 </nz-layout>
 
 
-<nz-modal [(nzVisible)]="isVisible" nzTitle="แก้ไขจำนวนสินค้า : {{Title}}" (nzOnCancel)="handleCancel()"
+<nz-modal [(nzVisible)]="isVisible" nzTitle="{{ModalType}}จำนวนสินค้า : {{Title}} " (nzOnCancel)="handleCancel()"
   (nzOnOk)="handleOk(number)">
-  <nz-form-item>
-    <nz-form-label [nzSm]="7" [nzXs]="24">จำนวนสินค้า (ชิ้น) </nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24">
-      <input type="number" nz-input [(ngModel)]="number" />
+  <nz-form-item class="text-center">
+    <nz-form-label [nzSm]="10" [nzXs]="0">{{ModalType}}จำนวนสินค้า (ชิ้น)</nz-form-label>
+    <nz-form-control [nzSm]="10" [nzXs]="10">
+      <input type="number" nz-input [(ngModel)]="number" placeholder="กรอกจำนวนที่ต้องการ{{ModalType}}"/>  
     </nz-form-control>
   </nz-form-item>
 </nz-modal>

@@ -108,14 +108,18 @@ export class AddproductsComponent implements OnInit {
     }
   }
 
+
+
+// Modal
   Title
   number
   Id
-  // Modal
-  showModal(data1,data2,dataId): void {
+  ModalType
+  showModal(data,dataName,dataAmount,dataId): void {
     this.isVisible = true;
-    this.Title = data1;
-    this.number = data2;
+    this.ModalType = data;
+    this.Title = dataName;
+    this.number 
     this.Id = dataId;
   }
 

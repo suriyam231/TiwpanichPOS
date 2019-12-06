@@ -24,7 +24,8 @@
         <button nz-button nzType="default">รายละเอียดร้าน</button>
       </div>
       <div class="col-1 ">
-        <button [routerLink]="['../']" style="background: rgb(243, 67, 67);" nz-button> <span style="color: white;">ออกจากระบบ</span> </button>
+        <button [routerLink]="['../']" style="background: rgb(243, 67, 67);" nz-button> <span
+            style="color: white;">ออกจากระบบ</span> </button>
       </div>
 
     </div>
@@ -39,35 +40,38 @@
 
           <div class="row">
             <div class="col-3">
-              <button [routerLink]="['/previousbills']" (click)="onClickPreviousbills()"class="buttonSize" style="background: rgba(141, 241, 236, 0.733);" nz-button [nzSize]="size"
-                nzType="default"> <b style="font-size: 18px;">ตรวจสอบบิล <br> ย้อนหลัง</b> </button>
+              <button [routerLink]="['/previousbills']" (click)="onClickPreviousbills()" class="buttonSize"
+                style="background: rgba(141, 241, 236, 0.733);" nz-button [nzSize]="size" nzType="default"> <b
+                  style="font-size: 18px;">ตรวจสอบบิล <br> ย้อนหลัง</b> </button>
             </div>
             <!-- <div class="col-3">
               <button  [routerLink]="['/billmanage']" (click)="onClickEvent('billmanage')" class="buttonSize" style="background: rgba(113, 245, 238, 0.733);" nz-button [nzSize]="size"
                 nzType="default"> <b style="font-size: 18px;"> จัดการบิล</b> </button>
             </div> -->
             <div class="col-3">
-              <button [routerLink]="['/addproducts']" (click)="onClickAddproducts()" class="buttonSize" style="background: rgba(88, 243, 235, 0.733);" nz-button [nzSize]="size"
-                nzType="default"> <b style="font-size: 18px;"> เพิ่มสินค้า</b></button>
+              <button [routerLink]="['/addproducts']" (click)="onClickAddproducts()" class="buttonSize"
+                style="background: rgba(88, 243, 235, 0.733);" nz-button [nzSize]="size" nzType="default"> <b
+                  style="font-size: 18px;"> เพิ่มสินค้า</b></button>
             </div>
             <div class="col-3">
-              <button  [routerLink]="['/editproducts']" class="buttonSize" style="background: rgba(64, 245, 236, 0.733);" nz-button [nzSize]="size"
-                nzType="default"> <b style="font-size: 18px;">แก้ไขสินค้า </b> </button>
+              <button [routerLink]="['/editproducts']" class="buttonSize" style="background: rgba(64, 245, 236, 0.733);"
+                nz-button [nzSize]="size" nzType="default"> <b style="font-size: 18px;">แก้ไขสินค้า </b> </button>
             </div>
             <div class="col-3">
-                <button  [routerLink]="['/warehouse']" class="buttonSize" style="background: rgba(33, 240, 229, 0.733);" nz-button [nzSize]="size"
-                  nzType="default"><b style="font-size: 18px;">คลังสินค้า </b></button>
-              </div>
+              <button [routerLink]="['/warehouse']" class="buttonSize" style="background: rgba(33, 240, 229, 0.733);"
+                nz-button [nzSize]="size" nzType="default"><b style="font-size: 18px;">คลังสินค้า </b></button>
+            </div>
           </div>
           <div class="row" style="margin-top: 20px;">
-           
+
             <div class="col-3">
-              <button [routerLink]="['/littleproduct']" class="buttonSize" style="background: rgba(13, 219, 209, 0.733);" nz-button [nzSize]="size"
-                nzType="default"><b style="font-size: 18px;">สินค้าเหลือน้อย </b></button>
+              <button [routerLink]="['/littleproduct']" class="buttonSize"
+                style="background: rgba(13, 219, 209, 0.733);" nz-button [nzSize]="size" nzType="default"><b
+                  style="font-size: 18px;">สินค้าเหลือน้อย </b></button>
             </div>
             <div class="col-3">
-              <button [routerLink]="['/outstock']" class="buttonSize" style="background: rgba(13, 180, 172, 0.733);" nz-button [nzSize]="size"
-                nzType="default"><b style="font-size: 18px;">สินค้าที่หมด </b></button>
+              <button [routerLink]="['/outstock']" class="buttonSize" style="background: rgba(13, 180, 172, 0.733);"
+                nz-button [nzSize]="size" nzType="default"><b style="font-size: 18px;">สินค้าที่หมด </b></button>
             </div>
             <div class="col-3">
               <!-- <button class="buttonSize" nz-button [nzSize]="size" nzType="default">Default</button> -->
@@ -77,16 +81,16 @@
           <br>
           <div class="row" style="margin-top: 20px;">
             <div class="col-3">
-              <button [routerLink]="['/salesreport']" class="buttonSize" style="background: rgb(247, 241, 189);" nz-button [nzSize]="size"
-                nzType="default"><b style="font-size: 18px;">รายงานการขาย </b></button>
+              <button [routerLink]="['/salesreport']" class="buttonSize" style="background: rgb(247, 241, 189);"
+                nz-button [nzSize]="size" nzType="default"><b style="font-size: 18px;">รายงานการขาย </b></button>
             </div>
             <div class="col-3">
-              <button  [routerLink]="['/bestseller']" class="buttonSize" style="background: rgba(245, 234, 141, 0.849);" nz-button [nzSize]="size"
-                nzType="default"><b style="font-size: 18px;">สินค้าขายดี</b></button>
+              <button [routerLink]="['/bestseller']" class="buttonSize" style="background: rgba(245, 234, 141, 0.849);"
+                nz-button [nzSize]="size" nzType="default"><b style="font-size: 18px;">สินค้าขายดี</b></button>
             </div>
             <div class="col-3">
-              <button [routerLink]="['/lesssale']" class="buttonSize" style="background: rgb(250, 239, 142);" nz-button [nzSize]="size"
-                nzType="default"><b style="font-size: 18px;">สินค้าขายได้น้อย </b></button>
+              <button [routerLink]="['/lesssale']" class="buttonSize" style="background: rgb(250, 239, 142);" nz-button
+                [nzSize]="size" nzType="default"><b style="font-size: 18px;">สินค้าขายได้น้อย </b></button>
             </div>
             <div class="col-3">
               <!-- <button class="buttonSize" nz-button [nzSize]="size" nzType="default">Default</button> -->
@@ -96,20 +100,22 @@
           <br>
           <div class="row" style="margin-top: 20px;">
             <div class="col-3">
-              <button [routerLink]="['/editstore']" (click)="onClickEditstore()"class="buttonSize" style="background: rgba(248, 210, 216, 0.884);" nz-button [nzSize]="size"
-                nzType="default"><b style="font-size: 18px;">ข้อมูลร้าน </b></button>
+              <button [routerLink]="['/editstore']" (click)="onClickEditstore()" class="buttonSize"
+                style="background: rgba(248, 210, 216, 0.884);" nz-button [nzSize]="size" nzType="default"><b
+                  style="font-size: 18px;">ข้อมูลร้าน </b></button>
             </div>
             <div class="col-3">
-              <button  [routerLink]="['/adduser']" class="buttonSize" style="background: rgba(247, 194, 202, 0.884);" nz-button [nzSize]="size"
-                nzType="default"><b style="font-size: 18px;">เพิ่มรหัสผู้ใช้งาน </b></button>
+              <button [routerLink]="['/adduser']" class="buttonSize" style="background: rgba(247, 194, 202, 0.884);"
+                nz-button [nzSize]="size" nzType="default"><b style="font-size: 18px;">เพิ่มรหัสผู้ใช้งาน </b></button>
             </div>
             <div class="col-3">
-              <button [routerLink]="['/testscanner']" class="buttonSize" style="background: rgba(253, 174, 186, 0.884);" nz-button [nzSize]="size"
-                nzType="default"><b style="font-size: 18px;">ทดสอบเครื่องสแกน <br> บาร์โค้ด</b></button>
+              <button [routerLink]="['/testscanner']" class="buttonSize" style="background: rgba(253, 174, 186, 0.884);"
+                nz-button [nzSize]="size" nzType="default"><b style="font-size: 18px;">ทดสอบเครื่องสแกน <br>
+                  บาร์โค้ด</b></button>
             </div>
             <div class="col-3">
-              <button [routerLink]="['/howtouse']" class="buttonSize" style="background: rgba(247, 152, 166, 0.884);" nz-button [nzSize]="size"
-                nzType="default"><b style="font-size: 18px;">วิธีใช้งานระบบ </b></button>
+              <button [routerLink]="['/howtouse']" class="buttonSize" style="background: rgba(247, 152, 166, 0.884);"
+                nz-button [nzSize]="size" nzType="default"><b style="font-size: 18px;">วิธีใช้งานระบบ </b></button>
             </div>
           </div>
           <!-- <div class="row" style="margin-top: 20px;">
@@ -126,7 +132,8 @@
           <p>ก่อนจะสแกนสินค้ากรุณาตรวจสอบภาษาให้เป็นภาษา English </p>
           <form nz-form (ngSubmit)="searchProduct(ProductID)">
             <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
-              <input type="text" nz-input placeholder="สแกนสินค้าใส่ในช่องนี้"[(ngModel)]="ProductID"name="ProductID" autofocus="autofocus"/>
+              <input type="text" nz-input placeholder="สแกนสินค้าใส่ในช่องนี้" [(ngModel)]="ProductID" name="ProductID"
+                autofocus />
             </nz-input-group>
             <ng-template #suffixButton>
               <button nz-button nzType="primary" nzSize="large" nzSearch>สแกน</button>
@@ -141,7 +148,7 @@
                 <th nzWidth="200px">ชื่อสินค้า</th>
                 <th nzWidth="100px" class="text-center">จำนวน(ชิ้น)</th>
                 <th nzWidth="100px" class="text-center">ราคา(บาท)</th>
-                
+
               </tr>
             </thead>
             <tbody>
@@ -150,27 +157,30 @@
                 <td>{{ data.PRODUCTNAME }}</td>
                 <td class="text-center">{{ data.PRODUCTNUMBER }}</td>
                 <td class="text-center">{{ data.PRODUCTPRICE}}</td>
-                
+
               </tr>
             </tbody>
           </nz-table>
           <br>
 
           <nz-affix [nzOffsetTop]="600">
-              <div class="text-right">
-                  <B class="fontSize">ยอดรวม : {{ Total }} </B>
-                </div>
+            <div class="text-right">
+              <B class="fontSize">ยอดรวม : {{ Total }} </B>
+            </div>
             <div class="row" style="margin-top: 20px;">
               <div class="col-3">
-                <button id="Checkbill" (click)="Checkbill(CheckbillTitle, CheckbillContent, CheckbillFooter)" class="buttonSize" style="background: lightgreen;" nz-button
-                  [nzSize]="size" nzType="default"> <b class="fontSize">คิดเงิน</b><br> (Enter) </button>
+                <button id="Checkbill" (click)="Checkbill(CheckbillTitle, CheckbillContent, CheckbillFooter)"
+                  class="buttonSize" style="background: lightgreen;" nz-button [nzSize]="size" nzType="default"> <b
+                    class="fontSize">คิดเงิน</b><br> (Enter) </button>
               </div>
               <div class="col-3">
-                <button id="Getbill" (click)="Getbill(GetbillTitle, GetbillContent, GetbillFooter)" class="buttonSize " style="background: rgb(245, 245, 147);" nz-button [nzSize]="size"
-                  nzType="default"><b class="fontSize">เก็บบิล</b><br> (F2) </button>
+                <button id="Getbill" (click)="Getbill(GetbillTitle, GetbillContent, GetbillFooter)" class="buttonSize "
+                  style="background: rgb(245, 245, 147);" nz-button [nzSize]="size" nzType="default"><b
+                    class="fontSize">เก็บบิล</b><br> (F2) </button>
               </div>
               <div class="col-3">
-                <button  id="Selectbill" (click)="Selectbill(SelectbillTitle, SelectbillContent, SelectbillFooter)" class="buttonSize " style="background: rgb(241, 198, 77);" nz-button [nzSize]="size"
+                <button id="Selectbill" (click)="Selectbill(SelectbillTitle, SelectbillContent, SelectbillFooter)"
+                  class="buttonSize " style="background: rgb(241, 198, 77);" nz-button [nzSize]="size"
                   nzType="default"><b class="fontSize">เรียกบิล</b><br> (F3) </button>
               </div>
               <div class="col-3">
@@ -192,19 +202,38 @@
 
 <!-- Modal Checkbill -->
 <ng-template #CheckbillTitle>
-  <span>Title Template</span>
+  <span>คิดเงิน</span>
 </ng-template>
 <ng-template #CheckbillContent>
-  <p>some contents...</p>
-  <p>some contents...</p>
-  <p>some contents...</p>
-  <p>some contents...</p>
-  <p>some contents...</p>
+  <div class="text-center" style="color: rgb(44, 216, 87);">
+    <i class="fas fa-money-bill-wave" style="font-size: 70px;"></i>
+  </div>
+  <div class="text-center">
+    <h2>รวม : {{ Total }} บาท</h2>
+  </div>
+  <nz-form-item>
+    <nz-form-label [nzSm]="10" [nzXs]="1" for="number" style="font-size: 35px;">
+      รับเงิน   
+    </nz-form-label>
+    <nz-form-control [nzSm]="10" [nzXs]="20" nzErrorTip="กรุณากรอกจำนวนเงิน">
+      <input nzSize="large" type="number" nz-input placeholder="กรอกจำนวน" name="BillPrice" [(ngModel)]="BillPrice"
+        (keyup)="Bill(BillPrice)" />
+    </nz-form-control>
+  </nz-form-item>
+  <div class="text-center">
+    <h2>ทอนเงิน : {{ Withdraw }} บาท</h2>
+  </div>
+
+
 </ng-template>
 <ng-template #CheckbillFooter>
-  <button nz-button nzType="default" (click)="Close()" >
-    Close after submit
+  <button nz-button nzType="primary" (click)="SuccessCheckbill()" autofocus>
+    ตกลง
   </button>
+  <button nz-button nzType="default" (click)="CloseCheckbill()">
+    ยกเลิก
+  </button>
+
 </ng-template>
 
 
@@ -220,7 +249,7 @@
   <p>some contents...</p>
 </ng-template>
 <ng-template #GetbillFooter>
-  <button nz-button nzType="default" (click)="Close()" >
+  <button nz-button nzType="default" (click)="Close()">
     Close after submit
   </button>
 </ng-template>
@@ -238,7 +267,7 @@
   <p>some contents...</p>
 </ng-template>
 <ng-template #SelectbillFooter>
-  <button nz-button nzType="default" (click)="Close()" >
+  <button nz-button nzType="default" (click)="Close()">
     Close after submit
   </button>
 </ng-template>

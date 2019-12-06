@@ -133,8 +133,7 @@ Price = 0;
 
       let el: HTMLElement = document.getElementById('Checkbill') as HTMLElement;
       el.click();
-      event = undefined
-      this.Key = event
+
     }
     if (event.key === 'Escape') {
       this.CheckModal = false
@@ -151,11 +150,13 @@ Price = 0;
 
 
   CheckbillModal: NzModalRef;
-  tplModalButtonLoading = false;
   htmlModalVisible = false;
   disabled = false;
   CheckModal = false;
 
+  BillPrice
+  Withdraw
+  getMoney = 0;
   Checkbill(tplTitle: TemplateRef<{}>, tplContent: TemplateRef<{}>, tplFooter: TemplateRef<{}>): void {
     this.CheckbillModal = this.modalService.create({
       nzTitle: tplTitle,
@@ -164,9 +165,22 @@ Price = 0;
       nzMaskClosable: false,
       nzClosable: false,
       nzOnOk: () => console.log('Click ok')
-
     });
     this.CheckModal = true
+  }
+  Bill(value){
+   this.Withdraw = value - this.Total
+debugger
+  }
+  SuccessCheckbill() : void {
+    if(this.getMoney != 0){
+      this.CheckbillModal.destroy();
+    }
+  }
+  CloseCheckbill(): void {
+
+      this.CheckbillModal.destroy();
+ 
   }
 
   GetbillModal: NzModalRef;

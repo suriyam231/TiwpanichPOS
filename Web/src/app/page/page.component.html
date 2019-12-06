@@ -10,9 +10,8 @@
             <form style="margin: 0px 20px 0px 20px" nz-form [formGroup]="validateForm" class="login-form"
                 (ngSubmit)="submitForm()">
                 <br>
-                <br>
                 <h2 class="text-center">
-                    <b style="color: #6d12e6be">โปรแกรมขายหน้าร้าน POS </b>
+                    <b style="color: #6a04f0be">ระบบบริหารจัดการร้านสะดวกซื้อทิวพาณิช</b>
                 </h2>
                 <br>
                 <br>
@@ -20,7 +19,7 @@
                     <nz-form-control nzErrorTip="กรุณากรอกชื่อผู้ใช้!">
                         <nz-input-group nzPrefixIcon="user">
                             <input type="text" nz-input formControlName="userName" [(ngModel)]="userName"
-                                placeholder="Username" />
+                                placeholder="กรอกชื่อผู้ใช้" />
                         </nz-input-group>
                         <nz-form-explain
                             *ngIf="validateForm.get('userName')?.dirty && validateForm.get('userName')?.errors">
@@ -32,7 +31,7 @@
                     <nz-form-control nzErrorTip="กรุณากรอกรหัสผ่าน!">
                         <nz-input-group nzPrefixIcon="lock">
                             <input type="password" nz-input formControlName="password" [(ngModel)]="password"
-                                placeholder="Password" />
+                                placeholder="กรอกรหัสผ่าน" />
                         </nz-input-group>
                         <nz-form-explain
                             *ngIf="validateForm.get('password')?.dirty && validateForm.get('password')?.errors">
@@ -42,9 +41,7 @@
                 </nz-form-item>
                 <nz-form-item>
                     <nz-form-control>
-                        <label nz-checkbox formControlName="remember">
-                            <span>จำรหัสผ่าน</span>
-                        </label>
+                        
                         <button nz-button class="login-form-button" [nzType]="'primary'">เข้าสู่ระบบ</button>
                         <!-- สำหรับลูกค้าที่ไม่มีร้านในระบบ
                         <button nz-button [nzType]="'default'"

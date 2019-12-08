@@ -120,10 +120,6 @@ namespace Database.API.Models
                     .HasMaxLength(30)
                     .IsUnicode(false);
 
-                entity.Property(e => e.StoreOwner)
-                    .HasMaxLength(30)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.Username)
                     .HasMaxLength(30)
                     .IsUnicode(false);

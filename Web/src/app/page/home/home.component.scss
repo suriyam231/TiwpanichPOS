@@ -40,12 +40,31 @@
   nz-footer {
     text-align: center;
   }
-  .buttonSize{
-    width: 180px;
-    height: 80px;
-    text-align: center;
-  }
+
 
   .fontSize{
     font-size: 30px;
+  }
+
+  @media (min-width: 1700px) and (max-width: 2000px) { 
+    .buttonSize{
+      width: 200px;
+      height: 80px;
+      text-align: center;
+    }
+    .Logoutbutom{
+      margin-left: 140px;
+    }
+  }
+  @media (min-width: 1300px) and (max-width: 1640px) { 
+    .buttonSize{
+      width: 150px;
+      height: 80px;
+      text-align: center;
+    }
+    .Logoutbutom{
+      margin-left: 100px;
+    }
+
+    
   }

@@ -17,15 +17,13 @@
       <div class="col-0" style="margin-top: 7px;">
         <i class="fas fa-map-pin Usericon"></i>
       </div>
-      <div class="col-5">
+      <div class="col-2">
         <div style="font-size: 20px;">ตำแหน่ง : {{ Position }}</div>
       </div>
-      <div class="col-1">
-        <button nz-button nzType="default">รายละเอียดร้าน</button>
-      </div>
-      <div class="col-1 ">
-        <button [routerLink]="['../']" style="background: rgb(243, 67, 67);" nz-button> <span
-            style="color: white;">ออกจากระบบ</span> </button>
+      <div class="col-4 Logoutbutom text-right">
+        <button  nz-button nzType="default">รายละเอียดร้าน</button> &nbsp;
+        <button  [routerLink]="['../']" style="background: rgb(243, 67, 67);" nz-button> <span
+          style="color: white;">ออกจากระบบ</span> </button>
       </div>
 
     </div>
@@ -112,8 +110,7 @@
             </div>
             <div class="col-3">
               <button [routerLink]="['/testscanner']" class="buttonSize" style="background: rgba(253, 174, 186, 0.884);"
-                nz-button [nzSize]="size" nzType="default"><b style="font-size: 18px;">ทดสอบเครื่องสแกน <br>
-                  บาร์โค้ด</b></button>
+                nz-button [nzSize]="size" nzType="default"><b style="font-size: 18px;">ทดสอบเครื่อง<br>สแกนบาร์โค้ด</b></button>
             </div>
             <div class="col-3">
               <button [routerLink]="['/howtouse']" class="buttonSize" style="background: rgba(247, 152, 166, 0.884);"

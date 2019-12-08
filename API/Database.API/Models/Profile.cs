@@ -12,7 +12,6 @@ namespace Database.API.Models
         public string StoreName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string StoreOwner { get; set; }
         public string Position { get; set; }
         public string StoreId { get; set; }
 

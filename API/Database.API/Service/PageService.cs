@@ -86,7 +86,6 @@ namespace Database.API.Service
                                      StoreName = data.StoreName,
                                      FirstName = data.FirstName,
                                      LastName = data.LastName,
-                                     StoreOwner = data.StoreOwner,
                                      Position = data.Position,
                                      StoreId = data.StoreId
                                  }).ToList();

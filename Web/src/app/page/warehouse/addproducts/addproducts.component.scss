@@ -24,31 +24,56 @@
 
   nz-content {
     padding: 0 20px;
-    margin-top: 80px;
+    margin-top: 50px;
   }
 
   nz-breadcrumb {
     margin: 16px 0;
   }
 
-  .inner-content {
-    background: #fff;
-    padding: 24px;
-    min-height: 700px;
-  }
+
 
   nz-footer {
     text-align: center;
   }
-  .buttonSize{
-    width: 180px;
-    height: 80px;
-    text-align: center;
-  }
+
 
   .fontSize{
     font-size: 30px;
   }
   .addButton{
     margin-left: 388px;
+  }
+
+  @media (min-width: 1700px) and (max-width: 2000px) { 
+    .buttonSize{
+      width: 200px;
+      height: 80px;
+      text-align: center;
+    }
+    .Logoutbutom{
+      margin-left: 140px;
+    }
+    .inner-content {
+      background: rgb(255, 255, 255);
+      padding: 24px;
+      min-height: 700px;
+    }
+  }
+  @media (min-width: 1300px) and (max-width: 1640px) { 
+    .buttonSize{
+      width: 150px;
+      height: 80px;
+      text-align: center;
+    }
+    .Logoutbutom{
+      margin-left: 100px;
+    }
+    .inner-content {
+      background: rgb(255, 255, 255);
+      padding: 24px;
+      min-height: 700px;
+    }
+
+    
   }

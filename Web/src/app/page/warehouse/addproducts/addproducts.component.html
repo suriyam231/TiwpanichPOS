@@ -30,7 +30,8 @@
               </form>
             </div>
           </div>
-          <nz-table #borderedTable nzTitle="สินค้า" [nzData]="listOfData" [nzPageSize]=[7]>
+          <br>
+          <nz-table #borderedTable [nzData]="listOfData" [nzPageSize]=[5]>
             <thead>
               <tr>
                 <th>ลำดับ</th>
@@ -40,7 +41,7 @@
                 <th>จำนวน</th>
                 <th>ราคา(บาท)</th>
                 <th class="text-center">ราคาต้นทุน(บาท)</th>
-                <th class="text-center"> แก้ไขจำนวนสินค้า</th>
+                <th style="width: 150px;" class="text-center"> แก้ไขจำนวนสินค้า</th>
               </tr>
             </thead>
             <tbody>
@@ -52,7 +53,7 @@
                 <td class="text-center">{{ data.productAmount }}</td>
                 <td class="text-center">{{ data.productPrice }}</td>
                 <td class="text-center">{{ data.costPrice }}</td>
-                <td class="text-center">
+                <td  style="width: 150px;" class="text-center">
                   <button style="height: 23px; background: #903AF2; color: white;" nz-button nzType="default"
                     (click)="showModal('เพิ่ม',data.productName,data.productAmount,data.productId)">เพิ่ม</button>&nbsp;
                   <button style="height: 23px; background: lightcoral; color: white;" nz-button nzType="default"
@@ -125,14 +126,13 @@
               </nz-form-control>
             </nz-form-item>
             <nz-form-item>
-              <nz-form-label [nzSm]="8" [nzXs]="24" for="ProductID">สแกนบาร์โค้ดของสินค้า <span
+              <nz-form-label [nzSm]="10" [nzXs]="24" for="ProductID">สแกนบาร์โค้ดของสินค้า <span
                   style="color: red;">*</span></nz-form-label>
               <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="กรุณาสแกนบาร์โค้ดของสินค้า">
-                <input type="text" nz-input id="ProductID" placeholder="ก่อนสแกนกรุณาเปลี่ยนภาษาเป็นภาษาอังกฤษ"
+                <input type="text" nz-input id="ProductID" placeholder="กรุณาสแกนบาร์โค้ดของสินค้า"
                   name="ProductID" formControlName="ProductID" [(ngModel)]="ProductID" />
               </nz-form-control>
             </nz-form-item>
-            <br>
             <div class="text-center">
               <nz-form-item>
                 <nz-form-control>
@@ -142,9 +142,7 @@
             </div>
           </form>
         </div>
-
       </div>
-
     </div>
   </nz-content>
   <nz-footer></nz-footer>

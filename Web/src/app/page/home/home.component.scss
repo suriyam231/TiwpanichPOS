@@ -31,11 +31,7 @@
     margin: 16px 0;
   }
 
-  .inner-content {
-    background: rgb(255, 255, 255);
-    padding: 24px;
-    min-height: 700px;
-  }
+  
 
   nz-footer {
     text-align: center;
@@ -55,6 +51,11 @@
     .Logoutbutom{
       margin-left: 140px;
     }
+    .inner-content {
+      background: rgb(255, 255, 255);
+      padding: 24px;
+      min-height: 700px;
+    }
   }
   @media (min-width: 1300px) and (max-width: 1640px) { 
     .buttonSize{
@@ -64,6 +65,11 @@
     }
     .Logoutbutom{
       margin-left: 100px;
+    }
+    .inner-content {
+      background: rgb(255, 255, 255);
+      padding: 24px;
+      min-height: 600px;
     }
 
     

@@ -7,8 +7,8 @@
       <div class="row">
         <div class="col-4">
           <div class="row">
-            <nz-form-label class="col-2" for="listOfData.ProductName">ประเภทสินค้า</nz-form-label>
-            <nz-select (ngModelChange)="ChangType($event)" class="col-10" nzShowSearch nzAllowClear nzSize="large"
+            <nz-form-label class="col-3" for="listOfData.ProductName">ประเภทสินค้า</nz-form-label>
+            <nz-select (ngModelChange)="ChangType($event)" class="col-9" nzShowSearch nzAllowClear nzSize="large"
               nzPlaceHolder="เลือกประเภทของสินค้า" [(ngModel)]="selectedValue">
               <nz-option *ngFor="let data of TypeGroup" nzLabel="{{data.typeName}}" nzValue="{{data.typeName}}">
               </nz-option>
@@ -35,7 +35,7 @@
           </form>
         </div>
       </div>
-      <nz-table class="table-padding" #rowSelectionTable [nzData]="listOfAllData" [nzPageSize]=[10]>
+      <nz-table class="table-padding" #rowSelectionTable [nzData]="listOfAllData" [nzPageSize]=[6]>
         <thead>
           <tr>
             <th nzWidth="100px">ลำดับ</th>
@@ -71,7 +71,7 @@
     </div>
 
   </nz-content>
-  <nz-footer>Ant Design ©2019 Implement By Angular</nz-footer>
+  
 </nz-layout>
 
 

@@ -138,7 +138,7 @@
               <button nz-button nzType="primary" nzSize="large" nzSearch>สแกน</button>
             </ng-template>
           </form>
-          <br><br><br>
+          <br>
           <nz-table #basicTable [nzData]="Data" [nzScroll]="{ x: '300px'}" [nzBordered]="false"
             [nzFrontPagination]="false" [nzShowPagination]="false">
             <thead>
@@ -147,7 +147,7 @@
                 <th nzWidth="200px">ชื่อสินค้า</th>
                 <th nzWidth="100px" class="text-center">จำนวน(ชิ้น)</th>
                 <th nzWidth="100px" class="text-center">ราคา(บาท)</th>
-
+                <th style="width: 150px;" class="text-center"> แก้ไขจำนวนสินค้า</th>
               </tr>
             </thead>
             <tbody>
@@ -156,13 +156,18 @@
                 <td>{{ data.PRODUCTNAME }}</td>
                 <td class="text-center">{{ data.PRODUCTNUMBER }}</td>
                 <td class="text-center">{{ data.PRODUCTPRICE}}</td>
-
+                <td  style="width: 150px;" class="text-center">
+                  <button style="height: 23px; background: #903AF2; color: white;" nz-button nzType="default"
+                    (click)="EditAmount('เพิ่ม',data.PRODUCTID,i+1)">เพิ่ม</button>&nbsp;
+                  <button style="height: 23px; background: lightcoral; color: white;" nz-button nzType="default"
+                    (click)="EditAmount('ลด',data.PRODUCTID,i+1 )">ลด</button>&nbsp;
+                </td>
               </tr>
             </tbody>
           </nz-table>
           <br>
 
-          <nz-affix [nzOffsetTop]="520">
+          <nz-affix [nzOffsetTop]="550">
             <div class="text-right">
               <B class="fontSize">ยอดรวม : {{ Total }} </B>
             </div>

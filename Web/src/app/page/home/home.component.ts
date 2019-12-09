@@ -38,10 +38,6 @@ export class HomeComponent implements OnInit {
     this.LastName = this.router.snapshot.params.LastName;
     this.getStore();
     this.getProduct();
-
-    // for (let i = 0; i < this.listOfData.length; i++) {
-    //   this.Total = this.Total + this.listOfData[i].Price
-    // }
   }
 
   getStore() {
@@ -95,6 +91,35 @@ export class HomeComponent implements OnInit {
     this.Price = 0;
     for(let i = 0 ; i < this.listOfData.length;i++){
       this.Price = this.Price + this.listOfData[i].PRODUCTPRICE;
+    }
+    this.Total = this.Price;
+  }
+  EditAmount(type,dataID,index){
+    let data = this.ProductData.filter(a => a.productId === dataID)
+    if(type === 'เพิ่ม'){
+      for(let i = 0 ; i < this.Data.length ; i++){
+        if(this.Data[i].PRODUCTID === dataID){
+          this.Data[i].PRODUCTNUMBER = this.Data[i].PRODUCTNUMBER + 1;
+          this.Data[i].PRODUCTPRICE = this.Data[i].PRODUCTPRICE + data[0].productPrice;
+        }
+      }
+    }
+    if(type === 'ลด'){
+      for(let i = 0 ; i < this.Data.length ; i++){
+        if(this.Data[i].PRODUCTID === dataID){
+          this.Data[i].PRODUCTNUMBER = this.Data[i].PRODUCTNUMBER - 1;
+          this.Data[i].PRODUCTPRICE = this.Data[i].PRODUCTPRICE - data[0].productPrice;
+          if(this.Data[i].PRODUCTPRICE === 0 && this.Data[i].PRODUCTNUMBER === 0){
+            this.Data.splice(index-1,index)
+            break;
+          }
+        }
+      }
+    }
+    this.Price = 0;
+    for(let i = 0 ; i < this.Data.length;i++){
+
+      this.Price = this.Price + this.Data[i].PRODUCTPRICE;
     }
     this.Total = this.Price;
   }
@@ -180,7 +205,6 @@ Price = 0;
   }
   Bill(value){
    this.Withdraw = value - this.Total
-debugger
   }
   SuccessCheckbill() : void {
     if(this.getMoney != 0){
